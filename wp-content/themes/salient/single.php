@@ -78,7 +78,7 @@ endwhile; endif;
 
 	if($theme_skin != 'ascend' && $theme_skin != 'material') { ?>
 		<div class="container">
-			<div id="single-below-header" class="<?php echo $fullscreen_class; ?> custom-skip">
+			<!-- <div id="single-below-header" class="<?php echo $fullscreen_class; ?> custom-skip">
 				<?php if($blog_social_style != 'fixed_bottom_right') { ?>
 					<span class="meta-share-count"><i class="icon-default-style steadysets-icon-share"></i> <?php echo '<a href=""><span class="share-count-total">0</span> <span class="plural">'. __('Shares','salient') . '</span> <span class="singular">'. __('Share','salient') .'</span> </a>'; nectar_blog_social_sharing(); ?> </span>
 				<?php } else { ?>
@@ -86,7 +86,7 @@ endwhile; endif;
 				<?php } ?>
 				<span class="meta-category"><i class="icon-default-style steadysets-icon-book2"></i> <?php the_category(', '); ?></span>
 				<span class="meta-comment-count"><i class="icon-default-style steadysets-icon-chat-3"></i> <a href="<?php comments_link(); ?>"><?php comments_number( __('No Comments', 'salient'), __('One Comment ', 'salient'), __('% Comments', 'salient') ); ?></a></span>
-			</div><!--/single-below-header-->
+			</div>/single-below-header -->
 		</div>
 
 	<?php }

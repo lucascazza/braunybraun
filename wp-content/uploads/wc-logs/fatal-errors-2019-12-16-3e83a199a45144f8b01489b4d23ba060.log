@@ -1,0 +1,20 @@
+2019-12-16T14:34:13+00:00 CRITICAL Uncaught Error: Maximum function nesting level of '256' reached, aborting! in C:\wamp64\www\braunybraun\wp-includes\cache.php:726
+Stack trace:
+#0 C:\wamp64\www\braunybraun\wp-includes\cache.php(544): WP_Object_Cache->_exists('notoptions', 'options')
+#1 C:\wamp64\www\braunybraun\wp-includes\cache.php(123): WP_Object_Cache->get('notoptions', 'options', false, NULL)
+#2 C:\wamp64\www\braunybraun\wp-includes\option.php(73): wp_cache_get('notoptions', 'options')
+#3 C:\wamp64\www\braunybraun\wp-content\plugins\js_composer_salient\include\classes\settings\class-vc-settings.php(417): get_option('wpb_js_not_resp...', false)
+#4 C:\wamp64\www\braunybraun\wp-content\plugins\js_composer_salient\include\params\column_offset\column_offset.php(146): Vc_Settings::get('not_responsive_...')
+#5 C:\wamp64\www\braunybraun\wp-content\themes\salient\nectar\nectar-vc-addons\vc_templates\vc_column.php(42): vc_column_offset_class_merge('', 'vc_col-sm-12')
+#6 C:\wamp64\www\braunybraun\wp-content\plugins\js_composer_salient\include\classe en C:\wamp64\www\braunybraun\wp-includes\cache.php en la línea 726
+
+2019-12-16T14:34:28+00:00 CRITICAL Uncaught Error: Maximum function nesting level of '256' reached, aborting! in C:\wamp64\www\braunybraun\wp-includes\cache.php:726
+Stack trace:
+#0 C:\wamp64\www\braunybraun\wp-includes\cache.php(544): WP_Object_Cache->_exists('notoptions', 'options')
+#1 C:\wamp64\www\braunybraun\wp-includes\cache.php(123): WP_Object_Cache->get('notoptions', 'options', false, NULL)
+#2 C:\wamp64\www\braunybraun\wp-includes\option.php(73): wp_cache_get('notoptions', 'options')
+#3 C:\wamp64\www\braunybraun\wp-content\plugins\js_composer_salient\include\classes\settings\class-vc-settings.php(417): get_option('wpb_js_not_resp...', false)
+#4 C:\wamp64\www\braunybraun\wp-content\plugins\js_composer_salient\include\params\column_offset\column_offset.php(146): Vc_Settings::get('not_responsive_...')
+#5 C:\wamp64\www\braunybraun\wp-content\themes\salient\nectar\nectar-vc-addons\vc_templates\vc_column.php(42): vc_column_offset_class_merge('', 'vc_col-sm-12')
+#6 C:\wamp64\www\braunybraun\wp-content\plugins\js_composer_salient\include\classe en C:\wamp64\www\braunybraun\wp-includes\cache.php en la línea 726
+
