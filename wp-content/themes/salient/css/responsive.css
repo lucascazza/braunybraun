@@ -1142,8 +1142,8 @@
 	}
 	
 	#page-header-bg .span_6 h1 {
-  		font-size: 32px!important;
-  		line-height: 38px!important;
+  		font-size: 32px;
+  		line-height: 38px;
   	}
 
 	#page-header-bg .span_6 {
@@ -1823,7 +1823,7 @@
   .material #page-header-bg.fullscreen-header .author-section { margin-top: 5px}
 	
 	#page-header-bg h1 {
-		font-size: 34px!important;
+		font-size: 34px;
 	}
 	
 	html.js #page-header-bg[data-parallax="0"].not-loaded {
@@ -2142,9 +2142,9 @@
   	}
 
   	#page-header-bg .span_6 h1, .single.single-post .section-title h1 {
-  		font-size: 24px!important;
-  		line-height: 30px!important;
-  		margin-bottom: 4px!important;
+  		font-size: 24px;
+  		line-height: 30px;
+  		margin-bottom: 4px;
   	}
   	
   	#page-header-bg .span_6 {

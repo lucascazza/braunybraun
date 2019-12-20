@@ -4011,11 +4011,11 @@ if (!function_exists('project_single_control')) {
 			 ?>
 				 
 				 <div id="portfolio-nav">
-				 	<?php if($single_nav_pos != 'after_project_2') { ?>
+				 <?php if($single_nav_pos != 'after_project_2') { ?> 
 					 	<ul>
-					 		<li id="all-items"><a href="<?php echo $portfolio_link; ?>"><i class="icon-salient-back-to-all"></i></a></li>               
+					 		<li id="all-items"><a href="../"><i class="icon-salient-back-to-all"></i></a></li>               
 					 	</ul>
-				 	<?php } ?>
+					 <?php } ?>
 					<ul class="controls">                                 
 						<?php if($single_nav_pos == 'after_project') { ?>
 
@@ -4047,7 +4047,7 @@ if (!function_exists('project_single_control')) {
 				<div id="portfolio-nav">
 					<?php if($single_nav_pos != 'after_project_2') { ?>
 						<ul>
-							<li id="all-items"><a href="<?php echo $portfolio_link; ?>" title="<?php echo __('Back to all projects', 'salient'); ?>"><i class="icon-salient-back-to-all"></i></a></li>  
+							<li id="all-items"><a href="../" title="<?php echo __('Back to all projects', 'salient'); ?>"><i class="icon-salient-back-to-all"></i></a></li>  
 						</ul>
 					<?php } ?>
 

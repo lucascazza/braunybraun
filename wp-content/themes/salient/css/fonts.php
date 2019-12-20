@@ -1268,8 +1268,8 @@ $external_dynamic = (!empty($options['external-dynamic-css']) && $options['exter
 
 			@media only screen and (min-width: 690px) and (max-width: 1000px) {
 				#page-header-bg .span_6 h1, .overlaid-content h1 {
-					font-size: <?php if(!empty($options['page_heading_font_size']) && $options['page_heading_font_size'] != '-') echo intval($options['page_heading_font_size'])*0.7 . 'px!important' ?>;
-					line-height: <?php if(!empty($options['page_heading_font_size']) && $options['page_heading_font_size'] != '-') echo (intval($options['page_heading_font_size'])*0.7) +4 . 'px!important' ?>;
+					font-size: <?php if(!empty($options['page_heading_font_size']) && $options['page_heading_font_size'] != '-') echo intval($options['page_heading_font_size'])*0.7 . 'px' ?>;
+					line-height: <?php if(!empty($options['page_heading_font_size']) && $options['page_heading_font_size'] != '-') echo (intval($options['page_heading_font_size'])*0.7) +4 . 'px' ?>;
 				}
 			}
 
@@ -1289,8 +1289,8 @@ $external_dynamic = (!empty($options['external-dynamic-css']) && $options['exter
 
 			@media only screen and (max-width: 690px) {
 				#page-header-bg.fullscreen-header .span_6 h1, .overlaid-content h1 {
-					font-size: <?php if(!empty($options['page_heading_font_size']) && $options['page_heading_font_size'] != '-') echo intval($options['page_heading_font_size'])*0.45 . 'px!important' ?>;
-					line-height: <?php if($the_line_height) echo (intval($the_line_height)*0.45) . 'px!important' ?>;
+					font-size: <?php if(!empty($options['page_heading_font_size']) && $options['page_heading_font_size'] != '-') echo intval($options['page_heading_font_size'])*0.45 . 'px!' ?>;
+					line-height: <?php if($the_line_height) echo (intval($the_line_height)*0.45) . 'px' ?>;
 				}
 			}
 		
@@ -1364,11 +1364,11 @@ $external_dynamic = (!empty($options['external-dynamic-css']) && $options['exter
 
 				<?php if(!empty($options['page_heading_subtitle_font_size']) && $options['page_heading_subtitle_font_size'] != '-' && $options['page_heading_subtitle_font_size'] > 22) { ?>
 					#page-header-bg .span_6 span.subheader {
-				  		font-size: 22px!important;
+				  		font-size: 22px;
 				  	} 
 			  	<?php } else if( empty($options['page_heading_subtitle_font_size']) || !empty($options['page_heading_subtitle_font_size']) && $options['page_heading_subtitle_font_size'] == '-' ) { ?>
 				  	#page-header-bg .span_6 span.subheader {
-				  		font-size: 22px!important;
+				  		font-size: 22px;
 				  	} 
 				 <?php } ?>
 			}
@@ -1381,11 +1381,11 @@ $external_dynamic = (!empty($options['external-dynamic-css']) && $options['exter
 
 				<?php if(!empty($options['page_heading_subtitle_font_size']) && $options['page_heading_subtitle_font_size'] != '-' && $options['page_heading_subtitle_font_size'] > 15) { ?>
 					#page-header-bg .span_6 span.subheader {
-				  		font-size: 15px!important;
+				  		font-size: 15px;
 				  	}
 			  	<?php } else if( empty($options['page_heading_subtitle_font_size']) || !empty($options['page_heading_subtitle_font_size']) && $options['page_heading_subtitle_font_size'] == '-' ) { ?>
 			  		#page-header-bg .span_6 span.subheader {
-				  		font-size: 15px!important;
+				  		font-size: 15px;
 				  	} 
 				 <?php } ?>
 			}

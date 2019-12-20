@@ -11,3 +11,169 @@ Text Domain:  SalientChild
 */
 
 /* Write here your own personal stylesheet */
+
+
+/* GLOBAL */
+
+.d-none {
+    display: none !important;
+}
+
+.titulo-seccion {
+    padding-top: 100px;
+}
+
+@media screen and (min-width: 768px) {
+    .titulo-seccion {
+        padding-top: 80px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .titulo-seccion {
+        padding-top: 50rem;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .titulo-seccion {
+        padding-top: 1rem;
+    }
+}
+
+
+
+/* MENU IZQUIERDO */
+
+.admin-bar #slide-out-widget-area.slide-out-from-right-hover {
+    padding-top: 100px;
+    padding: 25px;
+    width: 250px;
+    box-shadow: -3px 0px 7px rgba(0, 0, 0, 0.2);
+    background-color: #f9f9f9 !important;
+}
+
+body #slide-out-widget-area.slide-out-from-right-hover .inner .off-canvas-menu-container li a {
+    font-size: 1.5rem !important;
+    line-height: 34px !important;
+    color: #3c3c3b !important;
+}
+
+body.material #slide-out-widget-area[class*="slide-out-from-right"] .off-canvas-menu-container li a:after {
+    border-color: #d90e21 !important;
+}
+
+#slide-out-widget-area.slide-out-from-right-hover .bottom-text {
+    color: #d90e21;
+    line-height: 20px;
+}
+
+.slide-out-hover-icon-effect.slide-out-widget-area-toggle[data-icon-animation="simple-transform"] .unhidden-line .lines:before,
+.slide-out-hover-icon-effect.slide-out-widget-area-toggle[data-icon-animation="simple-transform"] .unhidden-line .lines:after,
+.slide-out-hover-icon-effect.slide-out-widget-area-toggle[data-icon-animation="simple-transform"] .unhidden-line.lines-button:after {
+    background-color: #3c3c3b;
+}
+
+body.material #header-outer[data-header-resize="1"]:not([data-format="left-header"]):not(.small-nav) {
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+@media screen and (min-width: 576px) {
+    .admin-bar #slide-out-widget-area.slide-out-from-right-hover {
+        width: 300px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .admin-bar #slide-out-widget-area.slide-out-from-right-hover {
+        width: 335px;
+        z-index: 9999;
+    }
+
+    body #slide-out-widget-area.slide-out-from-right-hover .inner .off-canvas-menu-container li a {
+        font-size: 2rem !important;
+    }
+
+}
+
+@media screen and (min-width: 992px) {}
+
+@media screen and (min-width: 1200px) {}
+
+
+
+/* HEADERS PAGES */
+
+#page-header-bg .span_6 h1 {
+    font-size: 2rem !important;
+    line-height: 2.2rem !important;
+    color: #fff;
+}
+
+body #page-header-bg .span_6 span.subheader {
+    line-height: 1.25rem !important;
+    letter-spacing: 0px !important;
+    font-size: .85rem !important;
+    color: #fff;
+}
+
+#page-header-bg .inner-wrap {
+    padding-top: 30px;
+}
+
+@media screen and (min-width: 576px) {
+    #page-header-bg .span_6 h1 {
+        font-size: 2.5rem !important;
+        line-height: 2.25rem !important;
+    }
+
+    body #page-header-bg .span_6 span.subheader {
+        line-height: 1.25rem !important;
+        letter-spacing: 0px !important;
+        font-size: 1rem !important;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #page-header-bg .span_6 h1 {
+        font-size: 2.75rem !important;
+    }
+
+    body #page-header-bg .span_6 span.subheader {
+        line-height: 1rem !important;
+        font-size: 1rem !important;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    #page-header-bg .span_6 h1 {
+        max-width: 800px;
+        line-height: 2.5rem !important;
+    }
+
+    body #page-header-bg .span_6 span.subheader {
+        line-height: 1.5rem !important;
+        font-size: 1rem !important;
+        max-width: 950px !important;
+        display: block;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    #page-header-bg[data-alignment-v="middle"] .span_6 .inner-wrap {
+        padding-top: 45px !important;
+    }
+}
+
+
+/* SLIDE HOME */
+
+.nectar-flickity[data-controls="material_pagination"]:not(.masonry) .flickity-viewport {
+    margin: 20px 0 130px 0;
+}
+
+@media screen and (min-width: 768px) {
+    .nectar-flickity[data-controls="material_pagination"]:not(.masonry) .flickity-viewport {
+        margin: 80px 0 130px 0;
+    }
+}
