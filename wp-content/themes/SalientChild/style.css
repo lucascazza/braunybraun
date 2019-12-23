@@ -15,6 +15,30 @@ Text Domain:  SalientChild
 
 /* GLOBAL */
 
+@font-face {
+    font-family: futuraBook;
+    src: url(./fonts/FuturaStd-Book.otf);
+}
+
+@font-face {
+    font-family: futuraBold;
+    src: url(./fonts/FuturaStd-Bold.otf);
+}
+
+@font-face {
+    font-family: futuraLight;
+    src: url(./fonts/FuturaStd-Light.otf);
+}
+
+@font-face {
+    font-family: futuraMedium;
+    src: url(./fonts/FuturaStd-Medium.otf);
+}
+
+p, h1, h2, h3, h4, h5, h6, a, label{
+    font-family: futuraBook !important;
+}
+
 .d-none {
     display: none !important;
 }
@@ -75,7 +99,7 @@ body.material #slide-out-widget-area[class*="slide-out-from-right"] .off-canvas-
 }
 
 body.material #header-outer[data-header-resize="1"]:not([data-format="left-header"]):not(.small-nav) {
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2) !important;
+    /* box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2) !important; */
 }
 
 @media screen and (min-width: 576px) {
@@ -103,6 +127,11 @@ body.material #header-outer[data-header-resize="1"]:not([data-format="left-heade
 
 
 /* HEADERS PAGES */
+
+#header-outer.header-customizado{
+    box-shadow: none !important;
+    background-color: transparent !important; 
+}
 
 #page-header-bg .span_6 h1 {
     font-size: 2rem !important;
@@ -176,4 +205,30 @@ body #page-header-bg .span_6 span.subheader {
     .nectar-flickity[data-controls="material_pagination"]:not(.masonry) .flickity-viewport {
         margin: 80px 0 130px 0;
     }
+}
+
+
+/* SINGLE PORTFOLIO */
+
+html body .row .col.section-title h1{
+    font-size: 3rem !important;
+    color: #3c3c3b;
+    font-family: futuraLight !important;
+}
+
+#portfolio-nav #all-items a i,
+#portfolio-nav #next-link a i,
+#portfolio-nav #prev-link a i{
+    font-weight: 700 !important;
+}
+
+
+/* NOVEDADES */
+
+.blog-recent .post-meta{
+    display: none !important;
+}
+
+.meta-category{
+    display: none !important;
 }

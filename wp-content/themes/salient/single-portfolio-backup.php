@@ -64,7 +64,88 @@ $project_social_style = (!empty($options['portfolio_social_style'])) ? $options[
 					
 					<div class="post-area col <?php if($fwp != 'enabled') { echo 'span_9'; } else { echo 'span_12'; } ?>">
 						
-					
+						<?php 
+
+	 						if(!post_password_required()) {
+							 
+								$video_embed = get_post_meta($post->ID, '_nectar_video_embed', true);
+								$video_m4v = get_post_meta($post->ID, '_nectar_video_m4v', true);
+								$video_ogv = get_post_meta($post->ID, '_nectar_video_ogv', true); 
+								$video_poster = get_post_meta($post->ID, '_nectar_video_poster', true); 
+						
+								//Gallery
+								  
+								if(class_exists('MultiPostThumbnails') && MultiPostThumbnails::has_post_thumbnail(get_post_type(), 'second-slide') || !empty($enable_gallery_slider) && $enable_gallery_slider == 'on'){
+									
+									if ( floatval(get_bloginfo('version')) < "3.6" ) {
+
+									}
+									else {
+										
+										if(!empty($enable_gallery_slider) && $enable_gallery_slider == 'on') { $gallery_ids = grab_ids_from_gallery(); ?>
+									
+										<div class="flex-gallery"> 
+											 <ul class="slides">
+											 	<?php 
+												foreach( $gallery_ids as $image_id ) {
+												     echo '<li>' . wp_get_attachment_image($image_id, '', false) . '</li>';
+												} ?>
+									    	</ul>
+								   	  </div><!--/gallery-->
+								   	  	
+								   	 <?php }	
+										
+									}
+									
+								}
+								
+								//Video
+								else if( !empty($video_embed) && $hidden_featured_media != 'on' || !empty($video_m4v) && $hidden_featured_media != 'on' ){
+									
+												
+									//video embed
+									if( !empty( $video_embed ) ) {
+										
+							             echo '<div class="video">' . do_shortcode($video_embed) . '</div>';
+										
+							        } 
+							        //self hosted video pre 3-6
+							        else if( !empty($video_m4v) && floatval(get_bloginfo('version')) < "3.6") {
+							        	
+							        	 echo '<div class="video">'; 
+							            	 nectar_video($post->ID); 
+										 echo '</div>'; 
+										 
+							        } 
+							        //self hosted video post 3-6
+							        else if(floatval(get_bloginfo('version')) >= "3.6"){
+						
+							        	if(!empty($video_m4v) || !empty($video_ogv)) {
+							        		
+											$video_output = '[video ';
+											
+											if(!empty($video_m4v)) { $video_output .= 'mp4="'. $video_m4v .'" '; }
+											if(!empty($video_ogv)) { $video_output .= 'ogv="'. $video_ogv .'"'; }
+											
+											$video_output .= ' poster="'.$video_poster.'" height="720" width="1280"]';
+											
+							        		echo '<div class="video">' . do_shortcode($video_output) . '</div>';	
+							        	}
+							        }
+									
+								}
+								
+								//Regular Featured Img
+								else if($hidden_featured_media != 'on') {
+									 
+									if (has_post_thumbnail()) { 
+										echo get_the_post_thumbnail($post->ID, 'full', array('title' => '')); 
+									} 
+									
+								}
+						
+							}
+					?>
 						
 						<?php
 							//extra content 
