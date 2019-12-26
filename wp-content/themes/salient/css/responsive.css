@@ -1934,7 +1934,7 @@
   	body.single-portfolio .row .col.section-title h1 {
 		width: 280px;
 		margin: 0 auto;
-		line-height: 16px !important;
+		line-height: 16px;
 	}
 
 	.portfolio-items:not(.carousel) .col.span_4, .portfolio-items:not(.carousel) .col.span_3 {

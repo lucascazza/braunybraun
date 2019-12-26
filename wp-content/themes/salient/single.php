@@ -123,7 +123,8 @@ endwhile; endif;
 
 							</span> <?php } ?>
 							<h1 class="entry-title"><?php the_title(); ?></h1>
-							
+							<div class="divider-wrap" data-alignment="default"><div style="margin: auto; margin-top: 15px; width: 120px; height: 3px; margin-bottom: 15px;" data-width="120" data-animate="yes" data-animation-delay="100" data-color="extra-color-1" class="divider-small-border"></div></div>
+
 							<?php if( 'post' == get_post_type()) { ?>
 								<div id="single-below-header">
 									<span class="meta-author vcard author"><span class="fn"><?php echo __('By', 'salient'); ?> <?php the_author_posts_link(); ?></span></span>

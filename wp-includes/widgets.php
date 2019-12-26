@@ -1156,7 +1156,7 @@ function the_widget( $widget, $instance = array(), $args = array() ) {
 	$default_args          = array(
 		'before_widget' => '<div class="widget %s">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h2 class="widgettitle">',
+		'before_title'  => '<h2 class="widgettitle" style="padding: 5px 1rem; font-size: 2rem; background: #fff;">',
 		'after_title'   => '</h2>',
 	);
 	$args                  = wp_parse_args( $args, $default_args );

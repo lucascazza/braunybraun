@@ -748,6 +748,7 @@ html .woocommerce #content div.product form.cart div.quantity, .woocommerce-page
 	width: 23.45%;
 	margin-right: 2%;
 	margin-bottom: 2%;
+	padding: 0 6px;
 }
 
 .woocommerce .span_9 ul.products li.product, .woocommerce-page .span_9 ul.products li.product {
@@ -1828,7 +1829,7 @@ html body[data-fancy-form-rcs="1"] .woocommerce-ordering .select2-container--def
 	line-height: 29px!important;
 	padding: 7px!important; 
 	right: 15px;
-	width: 44px!important;
+	width: auto !important;
 	margin-top: -8px!important;
 	box-shadow: none!important;
 	-moz-box-shadow: none!important;
@@ -4278,7 +4279,7 @@ body .nectar-quick-view-box h1.product_title.entry-title {
 
 @media only screen and (min-width: 1000px) {
 	body .woocommerce.columns-4 ul[data-product-style="minimal"].products li.product {
-		width: calc(24.9% - 15px);
+		width: calc(24.9% - 18px);
 	}
 }
 @media only screen and (min-width: 690px) {

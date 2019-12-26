@@ -6515,7 +6515,7 @@ if (!function_exists('product_thumbnail_minimal')) {
 	 		do_action( 'woocommerce_after_shop_loop_item_title' ); 
 			echo '<div class="price-hover-wrap">';
 			do_action( 'nectar_woo_minimal_price' );
-	 		echo '<div class="product-add-to-cart" data-nectar-quickview="'. $nectar_quick_view_in_use .'">'; 
+	 		echo '<div class="product-add-to-cart info-producto" data-nectar-quickview="'. $nectar_quick_view_in_use .'">'; 
 		  	  woocommerce_template_loop_add_to_cart(); 
 					do_action( 'nectar_woocommerce_before_add_to_cart' );
 		    echo '</div></div></div>'; ?>
