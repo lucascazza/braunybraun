@@ -29,7 +29,7 @@ $project_social_style = (!empty($options['portfolio_social_style'])) ? $options[
 			
 			if(empty($bg) && empty($bg_color) && $bg_type != 'video_bg') {?>
 	  		
-				<div class="row project-title">
+				<div class="row project-title" style="padding-top: 100px">
 					<div class="container">
 						<div class="title-wrap">
 						<div class="col span_12 section-title <?php if(empty($options['portfolio_social']) || $options['portfolio_social'] == 0 || empty($options['portfolio_date']) || $options['portfolio_date'] == 0 ) echo 'no-date'?>">

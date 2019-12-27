@@ -98,7 +98,7 @@ endwhile; endif;
 
 
 <div class="container-wrap <?php echo ($fullscreen_header == true) ? 'fullscreen-blog-header': null; ?> <?php if($blog_type == 'std-blog-fullwidth' || $hide_sidebar == '1') echo 'no-sidebar'; ?>" data-midnight="dark">
-	<div class="container main-content mt-40">
+	<div class="container main-content">
 		
 		<?php if(get_post_format() != 'quote' && get_post_format() != 'status' && get_post_format() != 'aside') { ?>
 			
