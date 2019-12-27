@@ -24,7 +24,7 @@ if ( ! $messages ) {
 }
 
 ?>
-<ul class="woocommerce-error" role="alert">
+<ul class="woocommerce-error custom" role="alert">
 	<?php foreach ( $messages as $message ) : ?>
 		<li>
 			<?php

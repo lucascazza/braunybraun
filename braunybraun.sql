@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 26-12-2019 a las 20:49:15
--- Versión del servidor: 5.7.26
--- Versión de PHP: 7.2.18
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 27-12-2019 a las 04:11:00
+-- Versión del servidor: 10.4.10-MariaDB
+-- Versión de PHP: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -28,15 +28,11 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `wp_commentmeta`
 --
 
-DROP TABLE IF EXISTS `wp_commentmeta`;
-CREATE TABLE IF NOT EXISTS `wp_commentmeta` (
-  `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `comment_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+CREATE TABLE `wp_commentmeta` (
+  `meta_id` bigint(20) UNSIGNED NOT NULL,
+  `comment_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci,
-  PRIMARY KEY (`meta_id`),
-  KEY `comment_id` (`comment_id`),
-  KEY `meta_key` (`meta_key`(191))
+  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -45,10 +41,9 @@ CREATE TABLE IF NOT EXISTS `wp_commentmeta` (
 -- Estructura de tabla para la tabla `wp_comments`
 --
 
-DROP TABLE IF EXISTS `wp_comments`;
-CREATE TABLE IF NOT EXISTS `wp_comments` (
-  `comment_ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `comment_post_ID` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+CREATE TABLE `wp_comments` (
+  `comment_ID` bigint(20) UNSIGNED NOT NULL,
+  `comment_post_ID` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
   `comment_author` tinytext COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `comment_author_email` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `comment_author_url` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
@@ -56,20 +51,13 @@ CREATE TABLE IF NOT EXISTS `wp_comments` (
   `comment_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `comment_date_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `comment_content` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `comment_karma` int(11) NOT NULL DEFAULT '0',
+  `comment_karma` int(11) NOT NULL DEFAULT 0,
   `comment_approved` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '1',
   `comment_agent` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `comment_type` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `comment_parent` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
-  `user_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
-  PRIMARY KEY (`comment_ID`),
-  KEY `comment_post_ID` (`comment_post_ID`),
-  KEY `comment_approved_date_gmt` (`comment_approved`,`comment_date_gmt`),
-  KEY `comment_date_gmt` (`comment_date_gmt`),
-  KEY `comment_parent` (`comment_parent`),
-  KEY `comment_author_email` (`comment_author_email`(10)),
-  KEY `woo_idx_comment_type` (`comment_type`)
-) ENGINE=MyISAM AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  `comment_parent` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `user_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Volcado de datos para la tabla `wp_comments`
@@ -136,7 +124,13 @@ INSERT INTO `wp_comments` (`comment_ID`, `comment_post_ID`, `comment_author`, `c
 (64, 6243, 'ActionScheduler', '', '', '', '2019-12-26 19:30:29', '2019-12-26 19:30:29', 'action created', 0, '1', 'ActionScheduler', 'action_log', 0, 0),
 (65, 6243, 'ActionScheduler', '', '', '', '2019-12-26 20:31:14', '2019-12-26 20:31:14', 'action started', 0, '1', 'ActionScheduler', 'action_log', 0, 0),
 (66, 6243, 'ActionScheduler', '', '', '', '2019-12-26 20:31:14', '2019-12-26 20:31:14', 'action complete', 0, '1', 'ActionScheduler', 'action_log', 0, 0),
-(67, 6244, 'ActionScheduler', '', '', '', '2019-12-26 20:31:14', '2019-12-26 20:31:14', 'action created', 0, '1', 'ActionScheduler', 'action_log', 0, 0);
+(67, 6244, 'ActionScheduler', '', '', '', '2019-12-26 20:31:14', '2019-12-26 20:31:14', 'action created', 0, '1', 'ActionScheduler', 'action_log', 0, 0),
+(68, 6244, 'ActionScheduler', '', '', '', '2019-12-27 02:09:06', '2019-12-27 02:09:06', 'action started', 0, '1', 'ActionScheduler', 'action_log', 0, 0),
+(69, 6244, 'ActionScheduler', '', '', '', '2019-12-27 02:09:06', '2019-12-27 02:09:06', 'action complete', 0, '1', 'ActionScheduler', 'action_log', 0, 0),
+(70, 6248, 'ActionScheduler', '', '', '', '2019-12-27 02:09:06', '2019-12-27 02:09:06', 'action created', 0, '1', 'ActionScheduler', 'action_log', 0, 0),
+(71, 6248, 'ActionScheduler', '', '', '', '2019-12-27 03:09:09', '2019-12-27 03:09:09', 'action started', 0, '1', 'ActionScheduler', 'action_log', 0, 0),
+(72, 6248, 'ActionScheduler', '', '', '', '2019-12-27 03:09:09', '2019-12-27 03:09:09', 'action complete', 0, '1', 'ActionScheduler', 'action_log', 0, 0),
+(73, 6249, 'ActionScheduler', '', '', '', '2019-12-27 03:09:09', '2019-12-27 03:09:09', 'action created', 0, '1', 'ActionScheduler', 'action_log', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -144,23 +138,20 @@ INSERT INTO `wp_comments` (`comment_ID`, `comment_post_ID`, `comment_author`, `c
 -- Estructura de tabla para la tabla `wp_links`
 --
 
-DROP TABLE IF EXISTS `wp_links`;
-CREATE TABLE IF NOT EXISTS `wp_links` (
-  `link_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_links` (
+  `link_id` bigint(20) UNSIGNED NOT NULL,
   `link_url` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `link_name` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `link_image` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `link_target` varchar(25) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `link_description` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `link_visible` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'Y',
-  `link_owner` bigint(20) UNSIGNED NOT NULL DEFAULT '1',
-  `link_rating` int(11) NOT NULL DEFAULT '0',
+  `link_owner` bigint(20) UNSIGNED NOT NULL DEFAULT 1,
+  `link_rating` int(11) NOT NULL DEFAULT 0,
   `link_updated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `link_rel` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `link_notes` mediumtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `link_rss` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`link_id`),
-  KEY `link_visible` (`link_visible`)
+  `link_rss` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT ''
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -169,14 +160,12 @@ CREATE TABLE IF NOT EXISTS `wp_links` (
 -- Estructura de tabla para la tabla `wp_mailchimp_carts`
 --
 
-DROP TABLE IF EXISTS `wp_mailchimp_carts`;
-CREATE TABLE IF NOT EXISTS `wp_mailchimp_carts` (
+CREATE TABLE `wp_mailchimp_carts` (
   `id` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `email` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `cart` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `created_at` datetime NOT NULL,
-  PRIMARY KEY (`email`)
+  `created_at` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -185,13 +174,11 @@ CREATE TABLE IF NOT EXISTS `wp_mailchimp_carts` (
 -- Estructura de tabla para la tabla `wp_mailchimp_jobs`
 --
 
-DROP TABLE IF EXISTS `wp_mailchimp_jobs`;
-CREATE TABLE IF NOT EXISTS `wp_mailchimp_jobs` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `obj_id` text COLLATE utf8mb4_unicode_520_ci,
+CREATE TABLE `wp_mailchimp_jobs` (
+  `id` bigint(20) NOT NULL,
+  `obj_id` text COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `job` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `created_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  `created_at` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -200,16 +187,12 @@ CREATE TABLE IF NOT EXISTS `wp_mailchimp_jobs` (
 -- Estructura de tabla para la tabla `wp_options`
 --
 
-DROP TABLE IF EXISTS `wp_options`;
-CREATE TABLE IF NOT EXISTS `wp_options` (
-  `option_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_options` (
+  `option_id` bigint(20) UNSIGNED NOT NULL,
   `option_name` varchar(191) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `option_value` longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `autoload` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'yes',
-  PRIMARY KEY (`option_id`),
-  UNIQUE KEY `option_name` (`option_name`),
-  KEY `autoload` (`autoload`)
-) ENGINE=MyISAM AUTO_INCREMENT=2235 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  `autoload` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'yes'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Volcado de datos para la tabla `wp_options`
@@ -321,7 +304,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (102, 'widget_meta', 'a:3:{i:2;a:1:{s:5:\"title\";s:0:\"\";}i:3;a:1:{s:5:\"title\";s:0:\"\";}s:12:\"_multiwidget\";i:1;}', 'yes'),
 (103, 'sidebars_widgets', 'a:9:{s:19:\"wp_inactive_widgets\";a:1:{i:0;s:6:\"text-2\";}s:12:\"blog-sidebar\";a:6:{i:0;s:8:\"search-2\";i:1;s:14:\"recent-posts-2\";i:2;s:17:\"recent-comments-2\";i:3;s:10:\"archives-3\";i:4;s:12:\"categories-3\";i:5;s:6:\"meta-3\";}s:12:\"page-sidebar\";a:4:{i:0;s:10:\"archives-2\";i:1;s:12:\"categories-2\";i:2;s:6:\"meta-2\";i:3;s:14:\"recent-posts-3\";}s:19:\"woocommerce-sidebar\";a:0:{}s:20:\"nectar-extra-sidebar\";a:0:{}s:13:\"footer-area-1\";a:0:{}s:21:\"slide-out-widget-area\";a:0:{}s:21:\"footer-area-copyright\";a:0:{}s:13:\"array_version\";i:3;}', 'yes'),
 (182, 'recently_activated', 'a:0:{}', 'yes'),
-(104, 'cron', 'a:17:{i:1577393287;a:1:{s:26:\"action_scheduler_run_queue\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:12:\"every_minute\";s:4:\"args\";a:0:{}s:8:\"interval\";i:60;}}}i:1577393296;a:1:{s:33:\"woocommerce_cleanup_personal_data\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1577393306;a:1:{s:30:\"woocommerce_tracker_send_event\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1577393728;a:1:{s:30:\"wp_scheduled_auto_draft_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1577395662;a:1:{s:32:\"woocommerce_cancel_unpaid_orders\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:2:{s:8:\"schedule\";b:0;s:4:\"args\";a:0:{}}}}i:1577396479;a:1:{s:20:\"jetpack_clean_nonces\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}}i:1577396635;a:1:{s:34:\"wp_privacy_delete_old_export_files\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}}i:1577396673;a:1:{s:33:\"wc_admin_process_orders_milestone\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}}i:1577404096;a:1:{s:24:\"woocommerce_cleanup_logs\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1577414896;a:1:{s:28:\"woocommerce_cleanup_sessions\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}}i:1577415600;a:1:{s:27:\"woocommerce_scheduled_sales\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1577436235;a:3:{s:16:\"wp_version_check\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:17:\"wp_update_plugins\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:16:\"wp_update_themes\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}}i:1577465073;a:1:{s:14:\"wc_admin_daily\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1577479435;a:1:{s:32:\"recovery_mode_clean_expired_keys\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1577479484;a:2:{s:19:\"wp_scheduled_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}s:25:\"delete_expired_transients\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1578355200;a:1:{s:25:\"woocommerce_geoip_updater\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:7:\"monthly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:2635200;}}}s:7:\"version\";i:2;}', 'yes'),
+(104, 'cron', 'a:17:{i:1577416267;a:1:{s:26:\"action_scheduler_run_queue\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:12:\"every_minute\";s:4:\"args\";a:0:{}s:8:\"interval\";i:60;}}}i:1577418079;a:1:{s:20:\"jetpack_clean_nonces\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}}i:1577418235;a:1:{s:34:\"wp_privacy_delete_old_export_files\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}}i:1577418273;a:1:{s:33:\"wc_admin_process_orders_milestone\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}}i:1577419749;a:1:{s:32:\"woocommerce_cancel_unpaid_orders\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:2:{s:8:\"schedule\";b:0;s:4:\"args\";a:0:{}}}}i:1577436235;a:3:{s:16:\"wp_version_check\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:17:\"wp_update_plugins\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:16:\"wp_update_themes\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}}i:1577458096;a:1:{s:28:\"woocommerce_cleanup_sessions\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}}i:1577465073;a:1:{s:14:\"wc_admin_daily\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1577479435;a:1:{s:32:\"recovery_mode_clean_expired_keys\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1577479484;a:2:{s:19:\"wp_scheduled_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}s:25:\"delete_expired_transients\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1577479696;a:1:{s:33:\"woocommerce_cleanup_personal_data\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1577479706;a:1:{s:30:\"woocommerce_tracker_send_event\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1577480128;a:1:{s:30:\"wp_scheduled_auto_draft_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1577490496;a:1:{s:24:\"woocommerce_cleanup_logs\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1577502000;a:1:{s:27:\"woocommerce_scheduled_sales\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1578355200;a:1:{s:25:\"woocommerce_geoip_updater\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:7:\"monthly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:2635200;}}}s:7:\"version\";i:2;}', 'yes'),
 (105, 'widget_pages', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
 (106, 'widget_calendar', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
 (107, 'widget_media_audio', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
@@ -547,7 +530,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (342, '_transient_timeout_wc_shipping_method_count_legacy', '1578775830', 'no'),
 (343, '_transient_wc_shipping_method_count_legacy', 'a:2:{s:7:\"version\";s:10:\"1576183830\";s:5:\"value\";i:0;}', 'no'),
 (344, 'woocommerce_maybe_regenerate_images_hash', 'f295711100eef51cf7195e603d0739ad', 'yes'),
-(355, '_transient_product_query-transient-version', '1577392274', 'yes'),
+(355, '_transient_product_query-transient-version', '1577416149', 'yes'),
 (356, 'nav_menu_options', 'a:2:{i:0;b:0;s:8:\"auto_add\";a:0:{}}', 'yes'),
 (1841, '_site_transient_update_core', 'O:8:\"stdClass\":4:{s:7:\"updates\";a:1:{i:0;O:8:\"stdClass\":10:{s:8:\"response\";s:6:\"latest\";s:8:\"download\";s:65:\"https://downloads.wordpress.org/release/es_AR/wordpress-5.3.2.zip\";s:6:\"locale\";s:5:\"es_AR\";s:8:\"packages\";O:8:\"stdClass\":5:{s:4:\"full\";s:65:\"https://downloads.wordpress.org/release/es_AR/wordpress-5.3.2.zip\";s:10:\"no_content\";b:0;s:11:\"new_bundled\";b:0;s:7:\"partial\";b:0;s:8:\"rollback\";b:0;}s:7:\"current\";s:5:\"5.3.2\";s:7:\"version\";s:5:\"5.3.2\";s:11:\"php_version\";s:6:\"5.6.20\";s:13:\"mysql_version\";s:3:\"5.0\";s:11:\"new_bundled\";s:3:\"5.3\";s:15:\"partial_version\";s:0:\"\";}}s:12:\"last_checked\";i:1577393048;s:15:\"version_checked\";s:5:\"5.3.2\";s:12:\"translations\";a:0:{}}', 'no'),
 (1842, '_site_transient_update_plugins', 'O:8:\"stdClass\":5:{s:12:\"last_checked\";i:1577393049;s:7:\"checked\";a:12:{s:19:\"akismet/akismet.php\";s:5:\"4.1.3\";s:47:\"child-theme-generator/child-theme-generator.php\";s:5:\"2.2.5\";s:33:\"classic-editor/classic-editor.php\";s:3:\"1.5\";s:36:\"contact-form-7/wp-contact-form-7.php\";s:5:\"5.1.6\";s:53:\"facebook-for-woocommerce/facebook-for-woocommerce.php\";s:6:\"1.9.15\";s:9:\"hello.php\";s:5:\"1.7.2\";s:19:\"jetpack/jetpack.php\";s:3:\"8.0\";s:51:\"mailchimp-for-woocommerce/mailchimp-woocommerce.php\";s:3:\"2.3\";s:35:\"js_composer_salient/js_composer.php\";s:5:\"5.5.2\";s:31:\"what-the-file/what-the-file.php\";s:5:\"1.5.4\";s:27:\"woocommerce/woocommerce.php\";s:5:\"3.8.1\";s:39:\"woocommerce-admin/woocommerce-admin.php\";s:6:\"0.23.3\";}s:8:\"response\";a:0:{}s:12:\"translations\";a:0:{}s:9:\"no_update\";a:11:{s:19:\"akismet/akismet.php\";O:8:\"stdClass\":9:{s:2:\"id\";s:21:\"w.org/plugins/akismet\";s:4:\"slug\";s:7:\"akismet\";s:6:\"plugin\";s:19:\"akismet/akismet.php\";s:11:\"new_version\";s:5:\"4.1.3\";s:3:\"url\";s:38:\"https://wordpress.org/plugins/akismet/\";s:7:\"package\";s:56:\"https://downloads.wordpress.org/plugin/akismet.4.1.3.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:59:\"https://ps.w.org/akismet/assets/icon-256x256.png?rev=969272\";s:2:\"1x\";s:59:\"https://ps.w.org/akismet/assets/icon-128x128.png?rev=969272\";}s:7:\"banners\";a:1:{s:2:\"1x\";s:61:\"https://ps.w.org/akismet/assets/banner-772x250.jpg?rev=479904\";}s:11:\"banners_rtl\";a:0:{}}s:47:\"child-theme-generator/child-theme-generator.php\";O:8:\"stdClass\":9:{s:2:\"id\";s:35:\"w.org/plugins/child-theme-generator\";s:4:\"slug\";s:21:\"child-theme-generator\";s:6:\"plugin\";s:47:\"child-theme-generator/child-theme-generator.php\";s:11:\"new_version\";s:5:\"2.2.5\";s:3:\"url\";s:52:\"https://wordpress.org/plugins/child-theme-generator/\";s:7:\"package\";s:70:\"https://downloads.wordpress.org/plugin/child-theme-generator.2.2.5.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:74:\"https://ps.w.org/child-theme-generator/assets/icon-256x256.png?rev=1573887\";s:2:\"1x\";s:74:\"https://ps.w.org/child-theme-generator/assets/icon-256x256.png?rev=1573887\";}s:7:\"banners\";a:1:{s:2:\"1x\";s:76:\"https://ps.w.org/child-theme-generator/assets/banner-772x250.png?rev=1573887\";}s:11:\"banners_rtl\";a:0:{}}s:33:\"classic-editor/classic-editor.php\";O:8:\"stdClass\":9:{s:2:\"id\";s:28:\"w.org/plugins/classic-editor\";s:4:\"slug\";s:14:\"classic-editor\";s:6:\"plugin\";s:33:\"classic-editor/classic-editor.php\";s:11:\"new_version\";s:3:\"1.5\";s:3:\"url\";s:45:\"https://wordpress.org/plugins/classic-editor/\";s:7:\"package\";s:61:\"https://downloads.wordpress.org/plugin/classic-editor.1.5.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:67:\"https://ps.w.org/classic-editor/assets/icon-256x256.png?rev=1998671\";s:2:\"1x\";s:67:\"https://ps.w.org/classic-editor/assets/icon-128x128.png?rev=1998671\";}s:7:\"banners\";a:2:{s:2:\"2x\";s:70:\"https://ps.w.org/classic-editor/assets/banner-1544x500.png?rev=1998671\";s:2:\"1x\";s:69:\"https://ps.w.org/classic-editor/assets/banner-772x250.png?rev=1998676\";}s:11:\"banners_rtl\";a:0:{}}s:36:\"contact-form-7/wp-contact-form-7.php\";O:8:\"stdClass\":9:{s:2:\"id\";s:28:\"w.org/plugins/contact-form-7\";s:4:\"slug\";s:14:\"contact-form-7\";s:6:\"plugin\";s:36:\"contact-form-7/wp-contact-form-7.php\";s:11:\"new_version\";s:5:\"5.1.6\";s:3:\"url\";s:45:\"https://wordpress.org/plugins/contact-form-7/\";s:7:\"package\";s:63:\"https://downloads.wordpress.org/plugin/contact-form-7.5.1.6.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:66:\"https://ps.w.org/contact-form-7/assets/icon-256x256.png?rev=984007\";s:2:\"1x\";s:66:\"https://ps.w.org/contact-form-7/assets/icon-128x128.png?rev=984007\";}s:7:\"banners\";a:2:{s:2:\"2x\";s:69:\"https://ps.w.org/contact-form-7/assets/banner-1544x500.png?rev=860901\";s:2:\"1x\";s:68:\"https://ps.w.org/contact-form-7/assets/banner-772x250.png?rev=880427\";}s:11:\"banners_rtl\";a:0:{}}s:53:\"facebook-for-woocommerce/facebook-for-woocommerce.php\";O:8:\"stdClass\":9:{s:2:\"id\";s:38:\"w.org/plugins/facebook-for-woocommerce\";s:4:\"slug\";s:24:\"facebook-for-woocommerce\";s:6:\"plugin\";s:53:\"facebook-for-woocommerce/facebook-for-woocommerce.php\";s:11:\"new_version\";s:6:\"1.9.15\";s:3:\"url\";s:55:\"https://wordpress.org/plugins/facebook-for-woocommerce/\";s:7:\"package\";s:74:\"https://downloads.wordpress.org/plugin/facebook-for-woocommerce.1.9.15.zip\";s:5:\"icons\";a:3:{s:2:\"2x\";s:77:\"https://ps.w.org/facebook-for-woocommerce/assets/icon-256x256.png?rev=2040223\";s:2:\"1x\";s:69:\"https://ps.w.org/facebook-for-woocommerce/assets/icon.svg?rev=2040223\";s:3:\"svg\";s:69:\"https://ps.w.org/facebook-for-woocommerce/assets/icon.svg?rev=2040223\";}s:7:\"banners\";a:0:{}s:11:\"banners_rtl\";a:0:{}}s:9:\"hello.php\";O:8:\"stdClass\":9:{s:2:\"id\";s:25:\"w.org/plugins/hello-dolly\";s:4:\"slug\";s:11:\"hello-dolly\";s:6:\"plugin\";s:9:\"hello.php\";s:11:\"new_version\";s:5:\"1.7.2\";s:3:\"url\";s:42:\"https://wordpress.org/plugins/hello-dolly/\";s:7:\"package\";s:60:\"https://downloads.wordpress.org/plugin/hello-dolly.1.7.2.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:64:\"https://ps.w.org/hello-dolly/assets/icon-256x256.jpg?rev=2052855\";s:2:\"1x\";s:64:\"https://ps.w.org/hello-dolly/assets/icon-128x128.jpg?rev=2052855\";}s:7:\"banners\";a:1:{s:2:\"1x\";s:66:\"https://ps.w.org/hello-dolly/assets/banner-772x250.jpg?rev=2052855\";}s:11:\"banners_rtl\";a:0:{}}s:19:\"jetpack/jetpack.php\";O:8:\"stdClass\":9:{s:2:\"id\";s:21:\"w.org/plugins/jetpack\";s:4:\"slug\";s:7:\"jetpack\";s:6:\"plugin\";s:19:\"jetpack/jetpack.php\";s:11:\"new_version\";s:3:\"8.0\";s:3:\"url\";s:38:\"https://wordpress.org/plugins/jetpack/\";s:7:\"package\";s:54:\"https://downloads.wordpress.org/plugin/jetpack.8.0.zip\";s:5:\"icons\";a:3:{s:2:\"2x\";s:60:\"https://ps.w.org/jetpack/assets/icon-256x256.png?rev=1791404\";s:2:\"1x\";s:52:\"https://ps.w.org/jetpack/assets/icon.svg?rev=1791404\";s:3:\"svg\";s:52:\"https://ps.w.org/jetpack/assets/icon.svg?rev=1791404\";}s:7:\"banners\";a:2:{s:2:\"2x\";s:63:\"https://ps.w.org/jetpack/assets/banner-1544x500.png?rev=1791404\";s:2:\"1x\";s:62:\"https://ps.w.org/jetpack/assets/banner-772x250.png?rev=1791404\";}s:11:\"banners_rtl\";a:0:{}}s:51:\"mailchimp-for-woocommerce/mailchimp-woocommerce.php\";O:8:\"stdClass\":9:{s:2:\"id\";s:39:\"w.org/plugins/mailchimp-for-woocommerce\";s:4:\"slug\";s:25:\"mailchimp-for-woocommerce\";s:6:\"plugin\";s:51:\"mailchimp-for-woocommerce/mailchimp-woocommerce.php\";s:11:\"new_version\";s:3:\"2.3\";s:3:\"url\";s:56:\"https://wordpress.org/plugins/mailchimp-for-woocommerce/\";s:7:\"package\";s:72:\"https://downloads.wordpress.org/plugin/mailchimp-for-woocommerce.2.3.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:78:\"https://ps.w.org/mailchimp-for-woocommerce/assets/icon-256x256.png?rev=1509501\";s:2:\"1x\";s:78:\"https://ps.w.org/mailchimp-for-woocommerce/assets/icon-256x256.png?rev=1509501\";}s:7:\"banners\";a:2:{s:2:\"2x\";s:81:\"https://ps.w.org/mailchimp-for-woocommerce/assets/banner-1544x500.png?rev=1950415\";s:2:\"1x\";s:80:\"https://ps.w.org/mailchimp-for-woocommerce/assets/banner-772x250.jpg?rev=1950415\";}s:11:\"banners_rtl\";a:0:{}}s:31:\"what-the-file/what-the-file.php\";O:8:\"stdClass\":9:{s:2:\"id\";s:27:\"w.org/plugins/what-the-file\";s:4:\"slug\";s:13:\"what-the-file\";s:6:\"plugin\";s:31:\"what-the-file/what-the-file.php\";s:11:\"new_version\";s:5:\"1.5.4\";s:3:\"url\";s:44:\"https://wordpress.org/plugins/what-the-file/\";s:7:\"package\";s:62:\"https://downloads.wordpress.org/plugin/what-the-file.1.5.4.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:66:\"https://ps.w.org/what-the-file/assets/icon-256x256.png?rev=1223609\";s:2:\"1x\";s:66:\"https://ps.w.org/what-the-file/assets/icon-128x128.png?rev=1223609\";}s:7:\"banners\";a:1:{s:2:\"1x\";s:67:\"https://ps.w.org/what-the-file/assets/banner-772x250.jpg?rev=685200\";}s:11:\"banners_rtl\";a:0:{}}s:27:\"woocommerce/woocommerce.php\";O:8:\"stdClass\":9:{s:2:\"id\";s:25:\"w.org/plugins/woocommerce\";s:4:\"slug\";s:11:\"woocommerce\";s:6:\"plugin\";s:27:\"woocommerce/woocommerce.php\";s:11:\"new_version\";s:5:\"3.8.1\";s:3:\"url\";s:42:\"https://wordpress.org/plugins/woocommerce/\";s:7:\"package\";s:60:\"https://downloads.wordpress.org/plugin/woocommerce.3.8.1.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:64:\"https://ps.w.org/woocommerce/assets/icon-256x256.png?rev=2075035\";s:2:\"1x\";s:64:\"https://ps.w.org/woocommerce/assets/icon-128x128.png?rev=2075035\";}s:7:\"banners\";a:2:{s:2:\"2x\";s:67:\"https://ps.w.org/woocommerce/assets/banner-1544x500.png?rev=2075035\";s:2:\"1x\";s:66:\"https://ps.w.org/woocommerce/assets/banner-772x250.png?rev=2075035\";}s:11:\"banners_rtl\";a:0:{}}s:39:\"woocommerce-admin/woocommerce-admin.php\";O:8:\"stdClass\":9:{s:2:\"id\";s:31:\"w.org/plugins/woocommerce-admin\";s:4:\"slug\";s:17:\"woocommerce-admin\";s:6:\"plugin\";s:39:\"woocommerce-admin/woocommerce-admin.php\";s:11:\"new_version\";s:6:\"0.23.3\";s:3:\"url\";s:48:\"https://wordpress.org/plugins/woocommerce-admin/\";s:7:\"package\";s:60:\"https://downloads.wordpress.org/plugin/woocommerce-admin.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:70:\"https://ps.w.org/woocommerce-admin/assets/icon-256x256.jpg?rev=2057866\";s:2:\"1x\";s:70:\"https://ps.w.org/woocommerce-admin/assets/icon-128x128.jpg?rev=2057866\";}s:7:\"banners\";a:2:{s:2:\"2x\";s:73:\"https://ps.w.org/woocommerce-admin/assets/banner-1544x500.jpg?rev=2057866\";s:2:\"1x\";s:72:\"https://ps.w.org/woocommerce-admin/assets/banner-772x250.jpg?rev=2057866\";}s:11:\"banners_rtl\";a:0:{}}}}', 'no'),
@@ -576,8 +559,8 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (1983, '_transient_wc_report_taxes_stats_f26ff58448b6cb5d27adafd6e0598e85', 'a:2:{s:7:\"version\";s:10:\"1576687475\";s:5:\"value\";O:8:\"stdClass\":5:{s:6:\"totals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}s:9:\"intervals\";a:26:{i:0;a:6:{s:8:\"interval\";s:10:\"2019-12-01\";s:10:\"date_start\";s:19:\"2019-12-01 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-01 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-01 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-01 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}i:1;a:6:{s:8:\"interval\";s:10:\"2019-12-02\";s:10:\"date_start\";s:19:\"2019-12-02 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-02 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-02 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-02 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}i:2;a:6:{s:8:\"interval\";s:10:\"2019-12-03\";s:10:\"date_start\";s:19:\"2019-12-03 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-03 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-03 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-03 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}i:3;a:6:{s:8:\"interval\";s:10:\"2019-12-04\";s:10:\"date_start\";s:19:\"2019-12-04 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-04 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-04 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-04 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}i:4;a:6:{s:8:\"interval\";s:10:\"2019-12-05\";s:10:\"date_start\";s:19:\"2019-12-05 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-05 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-05 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-05 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}i:5;a:6:{s:8:\"interval\";s:10:\"2019-12-06\";s:10:\"date_start\";s:19:\"2019-12-06 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-06 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-06 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-06 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}i:6;a:6:{s:8:\"interval\";s:10:\"2019-12-07\";s:10:\"date_start\";s:19:\"2019-12-07 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-07 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-07 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-07 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}i:7;a:6:{s:8:\"interval\";s:10:\"2019-12-08\";s:10:\"date_start\";s:19:\"2019-12-08 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-08 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-08 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-08 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}i:8;a:6:{s:8:\"interval\";s:10:\"2019-12-09\";s:10:\"date_start\";s:19:\"2019-12-09 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-09 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-09 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-09 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}i:9;a:6:{s:8:\"interval\";s:10:\"2019-12-10\";s:10:\"date_start\";s:19:\"2019-12-10 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-10 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-10 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-10 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}i:10;a:6:{s:8:\"interval\";s:10:\"2019-12-11\";s:10:\"date_start\";s:19:\"2019-12-11 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-11 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-11 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-11 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}i:11;a:6:{s:8:\"interval\";s:10:\"2019-12-12\";s:10:\"date_start\";s:19:\"2019-12-12 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-12 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-12 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-12 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}i:12;a:6:{s:8:\"interval\";s:10:\"2019-12-13\";s:10:\"date_start\";s:19:\"2019-12-13 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-13 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-13 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-13 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}i:13;a:6:{s:8:\"interval\";s:10:\"2019-12-14\";s:10:\"date_start\";s:19:\"2019-12-14 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-14 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-14 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-14 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}i:14;a:6:{s:8:\"interval\";s:10:\"2019-12-15\";s:10:\"date_start\";s:19:\"2019-12-15 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-15 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-15 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-15 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}i:15;a:6:{s:8:\"interval\";s:10:\"2019-12-16\";s:10:\"date_start\";s:19:\"2019-12-16 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-16 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-16 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-16 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}i:16;a:6:{s:8:\"interval\";s:10:\"2019-12-17\";s:10:\"date_start\";s:19:\"2019-12-17 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-17 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-17 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-17 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}i:17;a:6:{s:8:\"interval\";s:10:\"2019-12-18\";s:10:\"date_start\";s:19:\"2019-12-18 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-18 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-18 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-18 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}i:18;a:6:{s:8:\"interval\";s:10:\"2019-12-19\";s:10:\"date_start\";s:19:\"2019-12-19 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-19 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-19 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-19 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}i:19;a:6:{s:8:\"interval\";s:10:\"2019-12-20\";s:10:\"date_start\";s:19:\"2019-12-20 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-20 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-20 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-20 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}i:20;a:6:{s:8:\"interval\";s:10:\"2019-12-21\";s:10:\"date_start\";s:19:\"2019-12-21 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-21 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-21 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-21 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}i:21;a:6:{s:8:\"interval\";s:10:\"2019-12-22\";s:10:\"date_start\";s:19:\"2019-12-22 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-22 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-22 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-22 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}i:22;a:6:{s:8:\"interval\";s:10:\"2019-12-23\";s:10:\"date_start\";s:19:\"2019-12-23 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-23 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-23 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-23 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}i:23;a:6:{s:8:\"interval\";s:10:\"2019-12-24\";s:10:\"date_start\";s:19:\"2019-12-24 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-24 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-24 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-24 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}i:24;a:6:{s:8:\"interval\";s:10:\"2019-12-25\";s:10:\"date_start\";s:19:\"2019-12-25 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-25 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-25 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-25 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}i:25;a:6:{s:8:\"interval\";s:10:\"2019-12-26\";s:10:\"date_start\";s:19:\"2019-12-26 00:00:00\";s:14:\"date_start_gmt\";s:19:\"2019-12-26 00:00:00\";s:8:\"date_end\";s:19:\"2019-12-26 23:59:59\";s:12:\"date_end_gmt\";s:19:\"2019-12-26 23:59:59\";s:9:\"subtotals\";O:8:\"stdClass\":6:{s:9:\"tax_codes\";i:0;s:9:\"total_tax\";d:0;s:9:\"order_tax\";d:0;s:12:\"shipping_tax\";d:0;s:12:\"orders_count\";i:0;s:8:\"segments\";a:0:{}}}}s:5:\"total\";i:26;s:5:\"pages\";i:1;s:7:\"page_no\";i:1;}}', 'no'),
 (928, 'classic-editor-replace', 'classic', 'yes'),
 (929, 'classic-editor-allow-users', 'disallow', 'yes'),
-(2197, '_transient_timeout_jetpack_idc_allowed', '1577395676', 'no'),
-(2198, '_transient_jetpack_idc_allowed', '1', 'no'),
+(2270, '_transient_timeout_jetpack_idc_allowed', '1577419785', 'no'),
+(2271, '_transient_jetpack_idc_allowed', '1', 'no'),
 (1128, 'jetpack_activated', '1', 'yes'),
 (1131, 'jetpack_activation_source', 'a:2:{i:0;s:7:\"unknown\";i:1;N;}', 'yes'),
 (1132, 'jetpack_options', 'a:4:{s:7:\"version\";s:14:\"8.0:1576687279\";s:11:\"old_version\";s:14:\"8.0:1576687279\";s:28:\"fallback_no_verify_ssl_certs\";i:0;s:9:\"time_diff\";i:0;}', 'yes'),
@@ -597,8 +580,8 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (2215, '_site_transient_browser_4341dcf593216754978b0d513f3f2f41', 'a:10:{s:4:\"name\";s:7:\"unknown\";s:7:\"version\";s:0:\"\";s:8:\"platform\";s:0:\"\";s:10:\"update_url\";s:0:\"\";s:7:\"img_src\";s:0:\"\";s:11:\"img_src_ssl\";s:0:\"\";s:15:\"current_version\";s:0:\"\";s:7:\"upgrade\";b:0;s:8:\"insecure\";b:0;s:6:\"mobile\";b:0;}', 'no'),
 (2094, '_transient_timeout_wc_related_6235', '1577471636', 'no'),
 (1948, 'woocommerce_thumbnail_cropping', '1:1', 'yes'),
-(2202, '_transient_timeout_wc_admin_unsnooze_admin_notes_checked', '1577395850', 'no'),
-(2203, '_transient_wc_admin_unsnooze_admin_notes_checked', 'yes', 'no'),
+(2272, '_transient_timeout_wc_admin_unsnooze_admin_notes_checked', '1577419785', 'no'),
+(2273, '_transient_wc_admin_unsnooze_admin_notes_checked', 'yes', 'no'),
 (1807, '_transient_timeout_jetpack_a8c_data', '1577464026', 'no'),
 (1808, '_transient_jetpack_a8c_data', 'a:4:{s:4:\"a12s\";i:1154;s:9:\"countries\";i:74;s:9:\"languages\";i:93;s:16:\"featured_plugins\";a:4:{i:0;s:11:\"woocommerce\";i:1;s:14:\"wp-super-cache\";i:2;s:14:\"wp-job-manager\";i:3;s:15:\"co-authors-plus\";}}', 'no'),
 (1809, '_transient_timeout_jetpack_https_test', '1577464027', 'no'),
@@ -607,11 +590,11 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (1812, '_transient_jetpack_https_test_message', '', 'no'),
 (1813, '_site_transient_timeout_browser_5b21a4f36fd10e23154b80cac949aedf', '1577982428', 'no'),
 (1814, '_site_transient_browser_5b21a4f36fd10e23154b80cac949aedf', 'a:10:{s:4:\"name\";s:6:\"Chrome\";s:7:\"version\";s:12:\"79.0.3945.88\";s:8:\"platform\";s:7:\"Windows\";s:10:\"update_url\";s:29:\"https://www.google.com/chrome\";s:7:\"img_src\";s:43:\"http://s.w.org/images/browsers/chrome.png?1\";s:11:\"img_src_ssl\";s:44:\"https://s.w.org/images/browsers/chrome.png?1\";s:15:\"current_version\";s:2:\"18\";s:7:\"upgrade\";b:0;s:8:\"insecure\";b:0;s:6:\"mobile\";b:0;}', 'no'),
-(1815, '_transient_timeout_wc_report_sales_by_date', '1577478854', 'no'),
-(1816, '_transient_wc_report_sales_by_date', 'a:16:{s:32:\"2cf14d9e813bddd966e4081e83c11c39\";a:0:{}s:32:\"7cbbe93e98800105ba187669e9b8d385\";a:0:{}s:32:\"e186fd25eaefa731aec60f681834af1c\";a:0:{}s:32:\"53c3bea6321ebeb42765e33d14cbf799\";N;s:32:\"2f723f531dfef17c65c3d7a78325783b\";a:0:{}s:32:\"c9b7c8a25cf37abbd934342ade9c477b\";a:0:{}s:32:\"4a2e2fe5ef2cdf54918a0294f98a3c0c\";a:0:{}s:32:\"fb0663558305e10c0878336936d7e467\";a:0:{}s:32:\"e5296a200502ef1b7e4371c478bce32d\";a:0:{}s:32:\"1d472a748e4c16df46713717df05d7c2\";a:0:{}s:32:\"824b7c2f5a87beacbf40d0bbc5671375\";a:0:{}s:32:\"983449affc575b707daf1b8d062ce6da\";N;s:32:\"b674bc43f1360a4828b6db6508b452bd\";a:0:{}s:32:\"2ae06aba198d0cb6f82fc1f8558467c1\";a:0:{}s:32:\"c129ebe3a8c99c4b8a285fa01cd9e3ce\";a:0:{}s:32:\"fc9b29e245c36e444c7f3e8c2ea59039\";a:0:{}}', 'no'),
-(1817, '_transient_timeout_wc_admin_report', '1577478854', 'no'),
+(1815, '_transient_timeout_wc_report_sales_by_date', '1577502634', 'no'),
+(1816, '_transient_wc_report_sales_by_date', 'a:24:{s:32:\"2cf14d9e813bddd966e4081e83c11c39\";a:0:{}s:32:\"7cbbe93e98800105ba187669e9b8d385\";a:0:{}s:32:\"e186fd25eaefa731aec60f681834af1c\";a:0:{}s:32:\"53c3bea6321ebeb42765e33d14cbf799\";N;s:32:\"2f723f531dfef17c65c3d7a78325783b\";a:0:{}s:32:\"c9b7c8a25cf37abbd934342ade9c477b\";a:0:{}s:32:\"4a2e2fe5ef2cdf54918a0294f98a3c0c\";a:0:{}s:32:\"fb0663558305e10c0878336936d7e467\";a:0:{}s:32:\"e5296a200502ef1b7e4371c478bce32d\";a:0:{}s:32:\"1d472a748e4c16df46713717df05d7c2\";a:0:{}s:32:\"824b7c2f5a87beacbf40d0bbc5671375\";a:0:{}s:32:\"983449affc575b707daf1b8d062ce6da\";N;s:32:\"b674bc43f1360a4828b6db6508b452bd\";a:0:{}s:32:\"2ae06aba198d0cb6f82fc1f8558467c1\";a:0:{}s:32:\"c129ebe3a8c99c4b8a285fa01cd9e3ce\";a:0:{}s:32:\"fc9b29e245c36e444c7f3e8c2ea59039\";a:0:{}s:32:\"ed5eb1d3f9727101b0d61d5a38b54028\";a:0:{}s:32:\"23ed20162ff7530a4d03f7d9107fc693\";a:0:{}s:32:\"70bc87f8a2bd49cfabe9bac02728d9d3\";a:0:{}s:32:\"1ffd29721468b306d03ba59835c436ca\";N;s:32:\"68501fb22030e4838fb47a30725cae38\";a:0:{}s:32:\"e354d1a3f7d2954fdb9b9a8b8b9e5ae2\";a:0:{}s:32:\"6bebeb8c2b31b6928dd9941e8545a3cd\";a:0:{}s:32:\"67194184fd8ebc36d769792f07a33565\";a:0:{}}', 'no'),
+(1817, '_transient_timeout_wc_admin_report', '1577502634', 'no'),
 (1818, '_transient_wc_admin_report', 'a:1:{s:32:\"9c4eb9936fb1c637e6a14557adf909c5\";a:0:{}}', 'no'),
-(1820, '_site_transient_timeout_community-events-d41d8cd98f00b204e9800998ecf8427e', '1577428843', 'no'),
+(1820, '_site_transient_timeout_community-events-d41d8cd98f00b204e9800998ecf8427e', '1577459435', 'no'),
 (1821, '_site_transient_community-events-d41d8cd98f00b204e9800998ecf8427e', 'a:3:{s:9:\"sandboxed\";b:0;s:8:\"location\";a:1:{s:2:\"ip\";b:0;}s:6:\"events\";a:1:{i:0;a:8:{s:4:\"type\";s:8:\"wordcamp\";s:5:\"title\";s:13:\"WordCamp Asia\";s:3:\"url\";s:31:\"https://2020.asia.wordcamp.org/\";s:6:\"meetup\";s:0:\"\";s:10:\"meetup_url\";s:0:\"\";s:4:\"date\";s:19:\"2020-02-21 00:00:00\";s:8:\"end_date\";s:19:\"2020-02-23 00:00:00\";s:8:\"location\";a:4:{s:8:\"location\";s:17:\"Bangkok, Thailand\";s:7:\"country\";s:2:\"TH\";s:8:\"latitude\";d:13.7248934;s:9:\"longitude\";d:100.492683;}}}}', 'no'),
 (1822, '_transient_timeout_feed_9bbd59226dc36b9b26cd43f15694c5c3', '1577420841', 'no');
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
@@ -631,21 +614,23 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (2147, '_transient_wc_term_counts', 'a:1:{i:53;s:1:\"9\";}', 'no'),
 (2099, '_transient_timeout_wc_related_6238', '1577474226', 'no'),
 (2100, '_transient_wc_related_6238', 'a:2:{s:52:\"limit=5&exclude_ids%5B0%5D=0&exclude_ids%5B1%5D=6238\";a:6:{i:0;s:4:\"6232\";i:1;s:4:\"6129\";i:2;s:4:\"6237\";i:3;s:4:\"6236\";i:4;s:4:\"6234\";i:5;s:4:\"6235\";}s:52:\"limit=4&exclude_ids%5B0%5D=0&exclude_ids%5B1%5D=6238\";a:8:{i:0;s:4:\"6241\";i:1;s:4:\"6240\";i:2;s:4:\"6232\";i:3;s:4:\"6129\";i:4;s:4:\"6237\";i:5;s:4:\"6236\";i:6;s:4:\"6234\";i:7;s:4:\"6235\";}}', 'no'),
-(2205, '_transient_wc_count_comments', 'O:8:\"stdClass\":7:{s:14:\"total_comments\";i:0;s:3:\"all\";i:0;s:9:\"moderated\";i:0;s:8:\"approved\";i:0;s:4:\"spam\";i:0;s:5:\"trash\";i:0;s:12:\"post-trashed\";i:0;}', 'yes'),
 (2120, '_transient_timeout_wc_related_6241', '1577472082', 'no'),
 (2121, '_transient_wc_related_6241', 'a:1:{s:52:\"limit=5&exclude_ids%5B0%5D=0&exclude_ids%5B1%5D=6241\";a:8:{i:0;s:4:\"6240\";i:1;s:4:\"6232\";i:2;s:4:\"6129\";i:3;s:4:\"6238\";i:4;s:4:\"6237\";i:5;s:4:\"6236\";i:6;s:4:\"6234\";i:7;s:4:\"6235\";}}', 'no'),
 (2216, '_transient_timeout_wc_low_stock_count', '1579984453', 'no'),
-(2109, '_transient_timeout_wc_product_loop_b1b524a29e07d1f143d67bc8f2428df6', '1579984029', 'no'),
-(2110, '_transient_wc_product_loop_b1b524a29e07d1f143d67bc8f2428df6', 'a:2:{s:7:\"version\";s:10:\"1577388629\";s:5:\"value\";O:8:\"stdClass\":5:{s:3:\"ids\";a:8:{i:0;i:6241;i:1;i:6240;i:2;i:6238;i:3;i:6237;i:4;i:6236;i:5;i:6235;i:6;i:6234;i:7;i:6232;}s:5:\"total\";i:9;s:11:\"total_pages\";i:2;s:8:\"per_page\";i:8;s:12:\"current_page\";i:1;}}', 'no'),
-(2112, '_transient_timeout_wc_product_loop_6216ca854d2699eb758b919825389fad', '1579977982', 'no'),
-(2113, '_transient_wc_product_loop_6216ca854d2699eb758b919825389fad', 'a:2:{s:7:\"version\";s:10:\"1577385704\";s:5:\"value\";O:8:\"stdClass\":5:{s:3:\"ids\";a:1:{i:0;i:6129;}s:5:\"total\";i:9;s:11:\"total_pages\";i:2;s:8:\"per_page\";i:8;s:12:\"current_page\";i:2;}}', 'no'),
-(2211, '_transient_timeout__woocommerce_helper_subscriptions', '1577393306', 'no'),
-(2212, '_transient__woocommerce_helper_subscriptions', 'a:0:{}', 'no'),
-(2206, '_transient_as_comment_count', 'O:8:\"stdClass\":7:{s:14:\"total_comments\";i:0;s:3:\"all\";i:0;s:9:\"moderated\";i:0;s:8:\"approved\";i:0;s:4:\"spam\";i:0;s:5:\"trash\";i:0;s:12:\"post-trashed\";i:0;}', 'yes'),
+(2109, '_transient_timeout_wc_product_loop_b1b524a29e07d1f143d67bc8f2428df6', '1580006857', 'no'),
+(2110, '_transient_wc_product_loop_b1b524a29e07d1f143d67bc8f2428df6', 'a:2:{s:7:\"version\";s:10:\"1577412546\";s:5:\"value\";O:8:\"stdClass\":5:{s:3:\"ids\";a:8:{i:0;i:6241;i:1;i:6240;i:2;i:6238;i:3;i:6237;i:4;i:6236;i:5;i:6235;i:6;i:6234;i:7;i:6232;}s:5:\"total\";i:9;s:11:\"total_pages\";i:2;s:8:\"per_page\";i:8;s:12:\"current_page\";i:1;}}', 'no'),
+(2112, '_transient_timeout_wc_product_loop_6216ca854d2699eb758b919825389fad', '1580006867', 'no'),
+(2113, '_transient_wc_product_loop_6216ca854d2699eb758b919825389fad', 'a:2:{s:7:\"version\";s:10:\"1577412546\";s:5:\"value\";O:8:\"stdClass\":5:{s:3:\"ids\";a:1:{i:0;i:6129;}s:5:\"total\";i:9;s:11:\"total_pages\";i:2;s:8:\"per_page\";i:8;s:12:\"current_page\";i:2;}}', 'no'),
+(2246, '_site_transient_timeout_browser_237aa6249591b6a7ad6962bc73492c77', '1578017350', 'no'),
+(2247, '_site_transient_browser_237aa6249591b6a7ad6962bc73492c77', 'a:10:{s:4:\"name\";s:6:\"Chrome\";s:7:\"version\";s:12:\"79.0.3945.88\";s:8:\"platform\";s:7:\"Windows\";s:10:\"update_url\";s:29:\"https://www.google.com/chrome\";s:7:\"img_src\";s:43:\"http://s.w.org/images/browsers/chrome.png?1\";s:11:\"img_src_ssl\";s:44:\"https://s.w.org/images/browsers/chrome.png?1\";s:15:\"current_version\";s:2:\"18\";s:7:\"upgrade\";b:0;s:8:\"insecure\";b:0;s:6:\"mobile\";b:0;}', 'no'),
 (2217, '_transient_wc_low_stock_count', '4', 'no'),
 (2218, '_transient_timeout_wc_outofstock_count', '1579984453', 'no'),
 (2219, '_transient_wc_outofstock_count', '0', 'no'),
-(2220, '_transient_health-check-site-status-result', '{\"good\":\"23\",\"recommended\":\"5\",\"critical\":\"0\"}', 'yes');
+(2220, '_transient_health-check-site-status-result', '{\"good\":\"23\",\"recommended\":\"5\",\"critical\":\"0\"}', 'yes'),
+(2268, '_transient_wc_count_comments', 'O:8:\"stdClass\":7:{s:14:\"total_comments\";i:0;s:3:\"all\";i:0;s:9:\"moderated\";i:0;s:8:\"approved\";i:0;s:4:\"spam\";i:0;s:5:\"trash\";i:0;s:12:\"post-trashed\";i:0;}', 'yes'),
+(2269, '_transient_as_comment_count', 'O:8:\"stdClass\":7:{s:14:\"total_comments\";i:0;s:3:\"all\";i:0;s:9:\"moderated\";i:0;s:8:\"approved\";i:0;s:4:\"spam\";i:0;s:5:\"trash\";i:0;s:12:\"post-trashed\";i:0;}', 'yes'),
+(2248, '_site_transient_timeout_php_check_7ddb89c02f1abf791c6717dc46cef1eb', '1578017351', 'no'),
+(2249, '_site_transient_php_check_7ddb89c02f1abf791c6717dc46cef1eb', 'a:5:{s:19:\"recommended_version\";s:3:\"7.3\";s:15:\"minimum_version\";s:6:\"5.6.20\";s:12:\"is_supported\";b:1;s:9:\"is_secure\";b:1;s:13:\"is_acceptable\";b:1;}', 'no');
 
 -- --------------------------------------------------------
 
@@ -653,16 +638,12 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 -- Estructura de tabla para la tabla `wp_postmeta`
 --
 
-DROP TABLE IF EXISTS `wp_postmeta`;
-CREATE TABLE IF NOT EXISTS `wp_postmeta` (
-  `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `post_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+CREATE TABLE `wp_postmeta` (
+  `meta_id` bigint(20) UNSIGNED NOT NULL,
+  `post_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci,
-  PRIMARY KEY (`meta_id`),
-  KEY `post_id` (`post_id`),
-  KEY `meta_key` (`meta_key`(191))
-) ENGINE=MyISAM AUTO_INCREMENT=2676 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Volcado de datos para la tabla `wp_postmeta`
@@ -1034,7 +1015,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (2118, 6098, '_disable_transparent_header', 'off'),
 (2119, 6098, '_force_transparent_header_color', 'light'),
 (2120, 6098, '_wpb_vc_js_status', 'true'),
-(2122, 6096, 'nectar_blog_post_view_count', '7'),
+(2122, 6096, 'nectar_blog_post_view_count', '14'),
 (2147, 5288, '_nectar_header_bg_overlay_color', ''),
 (2148, 5288, '_force_transparent_header_color', 'light'),
 (2149, 6117, '_vc_post_settings', 'a:1:{s:10:\"vc_grid_id\";a:0:{}}'),
@@ -2136,7 +2117,10 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (2650, 6241, '_backorders', 'no'),
 (2651, 6241, '_low_stock_amount', '5'),
 (2652, 6241, '_sold_individually', 'no'),
-(2653, 6241, '_virtual', 'no');
+(2653, 6241, '_virtual', 'no'),
+(2676, 6248, '_action_manager_schedule', 'O:32:\"ActionScheduler_IntervalSchedule\":2:{s:49:\"\0ActionScheduler_IntervalSchedule\0start_timestamp\";i:1577416146;s:53:\"\0ActionScheduler_IntervalSchedule\0interval_in_seconds\";i:3600;}'),
+(2677, 6249, '_action_manager_schedule', 'O:32:\"ActionScheduler_IntervalSchedule\":2:{s:49:\"\0ActionScheduler_IntervalSchedule\0start_timestamp\";i:1577419749;s:53:\"\0ActionScheduler_IntervalSchedule\0interval_in_seconds\";i:3600;}'),
+(2678, 6094, 'nectar_blog_post_view_count', '0');
 
 -- --------------------------------------------------------
 
@@ -2144,10 +2128,9 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 -- Estructura de tabla para la tabla `wp_posts`
 --
 
-DROP TABLE IF EXISTS `wp_posts`;
-CREATE TABLE IF NOT EXISTS `wp_posts` (
-  `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `post_author` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+CREATE TABLE `wp_posts` (
+  `ID` bigint(20) UNSIGNED NOT NULL,
+  `post_author` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
   `post_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `post_date_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `post_content` longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
@@ -2163,18 +2146,13 @@ CREATE TABLE IF NOT EXISTS `wp_posts` (
   `post_modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `post_modified_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `post_content_filtered` longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `post_parent` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+  `post_parent` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
   `guid` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `menu_order` int(11) NOT NULL DEFAULT '0',
+  `menu_order` int(11) NOT NULL DEFAULT 0,
   `post_type` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'post',
   `post_mime_type` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `comment_count` bigint(20) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`ID`),
-  KEY `post_name` (`post_name`(191)),
-  KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`ID`),
-  KEY `post_parent` (`post_parent`),
-  KEY `post_author` (`post_author`)
-) ENGINE=MyISAM AUTO_INCREMENT=6248 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  `comment_count` bigint(20) NOT NULL DEFAULT 0
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Volcado de datos para la tabla `wp_posts`
@@ -2507,10 +2485,12 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (6241, 1, '2019-12-26 15:35:06', '2019-12-26 18:35:06', '', 'Producto 5', 'Esta es la descripcion del producto?', 'publish', 'closed', 'closed', '', 'producto-5', '', '', '2019-12-26 15:41:14', '2019-12-26 18:41:14', '', 0, 'http://localhost/braunybraun/?post_type=product&#038;p=6241', 0, 'product', '', 0),
 (6242, 1, '2019-12-26 15:36:47', '2019-12-26 18:36:47', '[vc_row type=\"full_width_background\" full_screen_row_position=\"middle\" bg_color=\"#ffffff\" scene_position=\"center\" text_color=\"dark\" text_align=\"left\" top_padding=\"6%\" bottom_padding=\"6%\" overlay_strength=\"0.3\" shape_divider_position=\"bottom\" shape_type=\"\"][vc_column column_padding=\"no-extra-padding\" column_padding_position=\"all\" background_color_opacity=\"1\" background_hover_color_opacity=\"1\" column_link_target=\"_self\" column_shadow=\"none\" column_border_radius=\"none\" el_class=\"columna-producto\" width=\"1/1\" tablet_width_inherit=\"default\" tablet_text_alignment=\"default\" phone_text_alignment=\"default\" column_border_width=\"none\" column_border_style=\"solid\"][tabbed_section style=\"material\" alignment=\"center\" spacing=\"side-45px\" tab_color=\"Accent-Color\" full_width_line=\"true\" icon_size=\"24\"][tab icon_family=\"iconsmind\" title=\"Latest\" id=\"1533724809332-39967-6839\" icon_iconsmind=\"iconsmind-Megaphone\" tab_id=\"1577382862996-5\"][nectar_woo_products product_type=\"all\" category=\"all\" columns=\"4\" orderby=\"date\" order=\"DESC\" pagination=\"1\" per_page=\"8\"][/tab][tab icon_family=\"iconsmind\" title=\"On Sale\" id=\"1533724809384-19967-6839\" icon_iconsmind=\"iconsmind-Tag\" tab_id=\"1577382863029-8\"][nectar_woo_products product_type=\"sale\" category=\"all\" columns=\"4\" orderby=\"date\" order=\"DESC\" per_page=\"8\"][/tab][tab icon_family=\"iconsmind\" title=\"Best Sellers\" id=\"1533724809506-99967-6839\" icon_iconsmind=\"iconsmind-Trophy\" tab_id=\"1577382863060-10\"][nectar_woo_products product_type=\"best_selling\" category=\"all\" columns=\"4\" orderby=\"date\" order=\"DESC\" per_page=\"8\"][/tab][/tabbed_section][/vc_column][/vc_row][vc_row type=\"in_container\" full_screen_row_position=\"middle\" scene_position=\"center\" text_color=\"dark\" text_align=\"left\" top_padding=\"4%\" bottom_padding=\"5%\" overlay_strength=\"0.3\" shape_divider_position=\"bottom\" shape_type=\"straight_section\"][vc_column column_padding=\"no-extra-padding\" column_padding_position=\"all\" background_color_opacity=\"1\" background_hover_color_opacity=\"1\" column_link_target=\"_self\" column_shadow=\"none\" column_border_radius=\"none\" width=\"1/1\" tablet_width_inherit=\"default\" tablet_text_alignment=\"default\" phone_text_alignment=\"default\" column_border_width=\"none\" column_border_style=\"solid\"][nectar_woo_products product_type=\"all\" category=\"all\" columns=\"dynamic\" orderby=\"date\" order=\"DESC\" carousel=\"1\" script=\"flickity\" flickity_controls=\"arrows-and-text\" flickity_heading_tag=\"h2\" item_shadow=\"1\" carousel_script=\"flickity\" per_page=\"8\" flickity_heading_text=\"New Products\" flickity_link_text=\"See All Products\" flickity_link_url=\"#\"][/vc_column][/vc_row]', 'Yome', '', 'inherit', 'closed', 'closed', '', '6117-revision-v1', '', '', '2019-12-26 15:36:47', '2019-12-26 18:36:47', '', 6117, 'http://localhost/braunybraun/6117-revision-v1/', 0, 'revision', '', 0),
 (6243, 0, '2019-12-26 20:30:29', '2019-12-26 20:30:29', '[]', 'wc_admin_unsnooze_admin_notes', '', 'publish', 'closed', 'closed', '', 'scheduled-action-5e05189205e143.80212801-soZsxCT6uRAQ0hj1zREges0oRmytpYT9', '', '', '2019-12-26 17:31:14', '2019-12-26 20:31:14', '', 0, 'http://localhost/braunybraun/?post_type=scheduled-action&#038;p=6243', 0, 'scheduled-action', '', 3),
-(6244, 0, '2019-12-26 21:31:14', '2019-12-26 21:31:14', '[]', 'wc_admin_unsnooze_admin_notes', '', 'pending', 'closed', 'closed', '', '', '', '', '2019-12-26 21:31:14', '2019-12-26 21:31:14', '', 0, 'http://localhost/braunybraun/?post_type=scheduled-action&p=6244', 0, 'scheduled-action', '', 1),
+(6244, 0, '2019-12-26 21:31:14', '2019-12-26 21:31:14', '[]', 'wc_admin_unsnooze_admin_notes', '', 'publish', 'closed', 'closed', '', 'scheduled-action-5e0567c2497023.62364977-gB9hzY7d5GRoStwqwFUejihp3VFgIedP', '', '', '2019-12-26 23:09:06', '2019-12-27 02:09:06', '', 0, 'http://localhost/braunybraun/?post_type=scheduled-action&#038;p=6244', 0, 'scheduled-action', '', 3),
 (6245, 1, '2019-12-26 17:44:35', '2019-12-26 20:44:35', '[vc_row type=\"full_width_background\" full_screen_row_position=\"middle\" bg_color=\"#efefef\" scene_position=\"center\" text_color=\"light\" text_align=\"left\" top_padding=\"7%\" bottom_padding=\"7%\" color_overlay=\"#ffffff\" overlay_strength=\"0.8\" shape_divider_position=\"bottom\" shape_type=\"\"][vc_column column_padding=\"no-extra-padding\" column_padding_position=\"all\" background_color_opacity=\"1\" background_hover_color_opacity=\"1\" column_link_target=\"_self\" column_shadow=\"none\" column_border_radius=\"none\" width=\"1/1\" tablet_width_inherit=\"default\" tablet_text_alignment=\"default\" phone_text_alignment=\"default\" column_border_width=\"none\" column_border_style=\"solid\"][recent_posts style=\"classic_enhanced_alt\" category=\"all\" columns=\"3\" order=\"DESC\" orderby=\"date\" posts_per_page=\"3\"][/vc_column][/vc_row][vc_row type=\"full_width_background\" full_screen_row_position=\"middle\" scene_position=\"center\" text_color=\"dark\" text_align=\"left\" top_padding=\"6%\" bottom_padding=\"6%\" overlay_strength=\"0.3\" shape_divider_position=\"bottom\" shape_type=\"\"][vc_column column_padding=\"no-extra-padding\" column_padding_position=\"all\" background_color_opacity=\"1\" background_hover_color_opacity=\"1\" column_link_target=\"_self\" column_shadow=\"none\" column_border_radius=\"none\" width=\"1/1\" tablet_width_inherit=\"default\" tablet_text_alignment=\"default\" phone_text_alignment=\"default\" column_border_width=\"none\" column_border_style=\"solid\"][vc_row_inner column_margin=\"default\" top_padding=\"80\" text_align=\"left\"][vc_column_inner column_padding=\"no-extra-padding\" column_padding_position=\"all\" centered_text=\"true\" background_color_opacity=\"1\" background_hover_color_opacity=\"1\" column_shadow=\"none\" column_border_radius=\"none\" column_link_target=\"_self\" width=\"1/1\" tablet_width_inherit=\"default\" column_border_width=\"none\" column_border_style=\"solid\"][vc_column_text max_width=\"500\" css=\".vc_custom_1503969123885{margin-bottom: 40px !important;}\"]\r\n<h3>Our Recent Writings</h3>\r\n[/vc_column_text][divider line_type=\"Small Line\" line_alignment=\"default\" line_thickness=\"3\" divider_color=\"extra-color-1\" animate=\"yes\" custom_height=\"30\" custom_line_width=\"120\" delay=\"100\"][/vc_column_inner][/vc_row_inner][nectar_blog layout=\"masonry-blog-fullwidth\" blog_masonry_style=\"auto_meta_overlaid_spaced\" auto_masonry_spacing=\"16px\" category=\"all\" load_in_animation=\"none\" order=\"DESC\" orderby=\"date\"][/vc_column][/vc_row]', 'Novedades', '', 'inherit', 'closed', 'closed', '', '5670-revision-v1', '', '', '2019-12-26 17:44:35', '2019-12-26 20:44:35', '', 5670, 'http://localhost/braunybraun/5670-revision-v1/', 0, 'revision', '', 0),
 (6246, 1, '2019-12-26 17:45:00', '2019-12-26 20:45:00', '[vc_row type=\"full_width_background\" full_screen_row_position=\"middle\" bg_color=\"#ffffff\" scene_position=\"center\" text_color=\"light\" text_align=\"left\" top_padding=\"7%\" bottom_padding=\"7%\" color_overlay=\"#ffffff\" overlay_strength=\"0.8\" shape_divider_position=\"bottom\" shape_type=\"\"][vc_column column_padding=\"no-extra-padding\" column_padding_position=\"all\" background_color_opacity=\"1\" background_hover_color_opacity=\"1\" column_link_target=\"_self\" column_shadow=\"none\" column_border_radius=\"none\" width=\"1/1\" tablet_width_inherit=\"default\" tablet_text_alignment=\"default\" phone_text_alignment=\"default\" column_border_width=\"none\" column_border_style=\"solid\"][recent_posts style=\"classic_enhanced_alt\" category=\"all\" columns=\"3\" order=\"DESC\" orderby=\"date\" posts_per_page=\"3\"][/vc_column][/vc_row][vc_row type=\"full_width_background\" full_screen_row_position=\"middle\" scene_position=\"center\" text_color=\"dark\" text_align=\"left\" top_padding=\"6%\" bottom_padding=\"6%\" overlay_strength=\"0.3\" shape_divider_position=\"bottom\" shape_type=\"\"][vc_column column_padding=\"no-extra-padding\" column_padding_position=\"all\" background_color_opacity=\"1\" background_hover_color_opacity=\"1\" column_link_target=\"_self\" column_shadow=\"none\" column_border_radius=\"none\" width=\"1/1\" tablet_width_inherit=\"default\" tablet_text_alignment=\"default\" phone_text_alignment=\"default\" column_border_width=\"none\" column_border_style=\"solid\"][vc_row_inner column_margin=\"default\" top_padding=\"80\" text_align=\"left\"][vc_column_inner column_padding=\"no-extra-padding\" column_padding_position=\"all\" centered_text=\"true\" background_color_opacity=\"1\" background_hover_color_opacity=\"1\" column_shadow=\"none\" column_border_radius=\"none\" column_link_target=\"_self\" width=\"1/1\" tablet_width_inherit=\"default\" column_border_width=\"none\" column_border_style=\"solid\"][vc_column_text max_width=\"500\" css=\".vc_custom_1503969123885{margin-bottom: 40px !important;}\"]\r\n<h3>Our Recent Writings</h3>\r\n[/vc_column_text][divider line_type=\"Small Line\" line_alignment=\"default\" line_thickness=\"3\" divider_color=\"extra-color-1\" animate=\"yes\" custom_height=\"30\" custom_line_width=\"120\" delay=\"100\"][/vc_column_inner][/vc_row_inner][nectar_blog layout=\"masonry-blog-fullwidth\" blog_masonry_style=\"auto_meta_overlaid_spaced\" auto_masonry_spacing=\"16px\" category=\"all\" load_in_animation=\"none\" order=\"DESC\" orderby=\"date\"][/vc_column][/vc_row]', 'Novedades', '', 'inherit', 'closed', 'closed', '', '5670-revision-v1', '', '', '2019-12-26 17:45:00', '2019-12-26 20:45:00', '', 5670, 'http://localhost/braunybraun/5670-revision-v1/', 0, 'revision', '', 0),
-(6247, 1, '2019-12-26 17:45:49', '2019-12-26 20:45:49', '[vc_row type=\"full_width_background\" full_screen_row_position=\"middle\" bg_color=\"#cccccc\" scene_position=\"center\" text_color=\"light\" text_align=\"left\" top_padding=\"7%\" bottom_padding=\"7%\" color_overlay=\"#ffffff\" overlay_strength=\"0.8\" shape_divider_position=\"bottom\" shape_type=\"\"][vc_column column_padding=\"no-extra-padding\" column_padding_position=\"all\" background_color_opacity=\"1\" background_hover_color_opacity=\"1\" column_link_target=\"_self\" column_shadow=\"none\" column_border_radius=\"none\" width=\"1/1\" tablet_width_inherit=\"default\" tablet_text_alignment=\"default\" phone_text_alignment=\"default\" column_border_width=\"none\" column_border_style=\"solid\"][recent_posts style=\"classic_enhanced_alt\" category=\"all\" columns=\"3\" order=\"DESC\" orderby=\"date\" posts_per_page=\"3\"][/vc_column][/vc_row][vc_row type=\"full_width_background\" full_screen_row_position=\"middle\" scene_position=\"center\" text_color=\"dark\" text_align=\"left\" top_padding=\"6%\" bottom_padding=\"6%\" overlay_strength=\"0.3\" shape_divider_position=\"bottom\" shape_type=\"\"][vc_column column_padding=\"no-extra-padding\" column_padding_position=\"all\" background_color_opacity=\"1\" background_hover_color_opacity=\"1\" column_link_target=\"_self\" column_shadow=\"none\" column_border_radius=\"none\" width=\"1/1\" tablet_width_inherit=\"default\" tablet_text_alignment=\"default\" phone_text_alignment=\"default\" column_border_width=\"none\" column_border_style=\"solid\"][vc_row_inner column_margin=\"default\" top_padding=\"80\" text_align=\"left\"][vc_column_inner column_padding=\"no-extra-padding\" column_padding_position=\"all\" centered_text=\"true\" background_color_opacity=\"1\" background_hover_color_opacity=\"1\" column_shadow=\"none\" column_border_radius=\"none\" column_link_target=\"_self\" width=\"1/1\" tablet_width_inherit=\"default\" column_border_width=\"none\" column_border_style=\"solid\"][vc_column_text max_width=\"500\" css=\".vc_custom_1503969123885{margin-bottom: 40px !important;}\"]\r\n<h3>Our Recent Writings</h3>\r\n[/vc_column_text][divider line_type=\"Small Line\" line_alignment=\"default\" line_thickness=\"3\" divider_color=\"extra-color-1\" animate=\"yes\" custom_height=\"30\" custom_line_width=\"120\" delay=\"100\"][/vc_column_inner][/vc_row_inner][nectar_blog layout=\"masonry-blog-fullwidth\" blog_masonry_style=\"auto_meta_overlaid_spaced\" auto_masonry_spacing=\"16px\" category=\"all\" load_in_animation=\"none\" order=\"DESC\" orderby=\"date\"][/vc_column][/vc_row]', 'Novedades', '', 'inherit', 'closed', 'closed', '', '5670-revision-v1', '', '', '2019-12-26 17:45:49', '2019-12-26 20:45:49', '', 5670, 'http://localhost/braunybraun/5670-revision-v1/', 0, 'revision', '', 0);
+(6247, 1, '2019-12-26 17:45:49', '2019-12-26 20:45:49', '[vc_row type=\"full_width_background\" full_screen_row_position=\"middle\" bg_color=\"#cccccc\" scene_position=\"center\" text_color=\"light\" text_align=\"left\" top_padding=\"7%\" bottom_padding=\"7%\" color_overlay=\"#ffffff\" overlay_strength=\"0.8\" shape_divider_position=\"bottom\" shape_type=\"\"][vc_column column_padding=\"no-extra-padding\" column_padding_position=\"all\" background_color_opacity=\"1\" background_hover_color_opacity=\"1\" column_link_target=\"_self\" column_shadow=\"none\" column_border_radius=\"none\" width=\"1/1\" tablet_width_inherit=\"default\" tablet_text_alignment=\"default\" phone_text_alignment=\"default\" column_border_width=\"none\" column_border_style=\"solid\"][recent_posts style=\"classic_enhanced_alt\" category=\"all\" columns=\"3\" order=\"DESC\" orderby=\"date\" posts_per_page=\"3\"][/vc_column][/vc_row][vc_row type=\"full_width_background\" full_screen_row_position=\"middle\" scene_position=\"center\" text_color=\"dark\" text_align=\"left\" top_padding=\"6%\" bottom_padding=\"6%\" overlay_strength=\"0.3\" shape_divider_position=\"bottom\" shape_type=\"\"][vc_column column_padding=\"no-extra-padding\" column_padding_position=\"all\" background_color_opacity=\"1\" background_hover_color_opacity=\"1\" column_link_target=\"_self\" column_shadow=\"none\" column_border_radius=\"none\" width=\"1/1\" tablet_width_inherit=\"default\" tablet_text_alignment=\"default\" phone_text_alignment=\"default\" column_border_width=\"none\" column_border_style=\"solid\"][vc_row_inner column_margin=\"default\" top_padding=\"80\" text_align=\"left\"][vc_column_inner column_padding=\"no-extra-padding\" column_padding_position=\"all\" centered_text=\"true\" background_color_opacity=\"1\" background_hover_color_opacity=\"1\" column_shadow=\"none\" column_border_radius=\"none\" column_link_target=\"_self\" width=\"1/1\" tablet_width_inherit=\"default\" column_border_width=\"none\" column_border_style=\"solid\"][vc_column_text max_width=\"500\" css=\".vc_custom_1503969123885{margin-bottom: 40px !important;}\"]\r\n<h3>Our Recent Writings</h3>\r\n[/vc_column_text][divider line_type=\"Small Line\" line_alignment=\"default\" line_thickness=\"3\" divider_color=\"extra-color-1\" animate=\"yes\" custom_height=\"30\" custom_line_width=\"120\" delay=\"100\"][/vc_column_inner][/vc_row_inner][nectar_blog layout=\"masonry-blog-fullwidth\" blog_masonry_style=\"auto_meta_overlaid_spaced\" auto_masonry_spacing=\"16px\" category=\"all\" load_in_animation=\"none\" order=\"DESC\" orderby=\"date\"][/vc_column][/vc_row]', 'Novedades', '', 'inherit', 'closed', 'closed', '', '5670-revision-v1', '', '', '2019-12-26 17:45:49', '2019-12-26 20:45:49', '', 5670, 'http://localhost/braunybraun/5670-revision-v1/', 0, 'revision', '', 0),
+(6248, 0, '2019-12-27 03:09:06', '2019-12-27 03:09:06', '[]', 'wc_admin_unsnooze_admin_notes', '', 'publish', 'closed', 'closed', '', 'scheduled-action-5e0575d52b0c42.17539516-9ZXsq9SwXgvZiqDBqnKsyOvdP6O9Tit6', '', '', '2019-12-27 00:09:09', '2019-12-27 03:09:09', '', 0, 'http://localhost/braunybraun/?post_type=scheduled-action&#038;p=6248', 0, 'scheduled-action', '', 3),
+(6249, 0, '2019-12-27 04:09:09', '2019-12-27 04:09:09', '[]', 'wc_admin_unsnooze_admin_notes', '', 'pending', 'closed', 'closed', '', '', '', '', '2019-12-27 04:09:09', '2019-12-27 04:09:09', '', 0, 'http://localhost/braunybraun/?post_type=scheduled-action&p=6249', 0, 'scheduled-action', '', 1);
 
 -- --------------------------------------------------------
 
@@ -2518,16 +2498,12 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 -- Estructura de tabla para la tabla `wp_termmeta`
 --
 
-DROP TABLE IF EXISTS `wp_termmeta`;
-CREATE TABLE IF NOT EXISTS `wp_termmeta` (
-  `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `term_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+CREATE TABLE `wp_termmeta` (
+  `meta_id` bigint(20) UNSIGNED NOT NULL,
+  `term_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci,
-  PRIMARY KEY (`meta_id`),
-  KEY `term_id` (`term_id`),
-  KEY `meta_key` (`meta_key`(191))
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Volcado de datos para la tabla `wp_termmeta`
@@ -2542,16 +2518,12 @@ INSERT INTO `wp_termmeta` (`meta_id`, `term_id`, `meta_key`, `meta_value`) VALUE
 -- Estructura de tabla para la tabla `wp_terms`
 --
 
-DROP TABLE IF EXISTS `wp_terms`;
-CREATE TABLE IF NOT EXISTS `wp_terms` (
-  `term_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_terms` (
+  `term_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `slug` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `term_group` bigint(10) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`term_id`),
-  KEY `slug` (`slug`(191)),
-  KEY `name` (`name`(191))
-) ENGINE=MyISAM AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  `term_group` bigint(10) NOT NULL DEFAULT 0
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Volcado de datos para la tabla `wp_terms`
@@ -2606,13 +2578,10 @@ INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
 -- Estructura de tabla para la tabla `wp_term_relationships`
 --
 
-DROP TABLE IF EXISTS `wp_term_relationships`;
-CREATE TABLE IF NOT EXISTS `wp_term_relationships` (
-  `object_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
-  `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
-  `term_order` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`object_id`,`term_taxonomy_id`),
-  KEY `term_taxonomy_id` (`term_taxonomy_id`)
+CREATE TABLE `wp_term_relationships` (
+  `object_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `term_order` int(11) NOT NULL DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
@@ -2711,7 +2680,9 @@ INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_orde
 (6216, 58, 0),
 (6235, 53, 0),
 (6222, 57, 0),
-(5992, 59, 0);
+(5992, 59, 0),
+(6248, 57, 0),
+(6249, 57, 0);
 
 -- --------------------------------------------------------
 
@@ -2719,18 +2690,14 @@ INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_orde
 -- Estructura de tabla para la tabla `wp_term_taxonomy`
 --
 
-DROP TABLE IF EXISTS `wp_term_taxonomy`;
-CREATE TABLE IF NOT EXISTS `wp_term_taxonomy` (
-  `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `term_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+CREATE TABLE `wp_term_taxonomy` (
+  `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL,
+  `term_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
   `taxonomy` varchar(32) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `description` longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `parent` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
-  `count` bigint(20) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`term_taxonomy_id`),
-  UNIQUE KEY `term_id_taxonomy` (`term_id`,`taxonomy`),
-  KEY `taxonomy` (`taxonomy`)
-) ENGINE=MyISAM AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  `parent` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `count` bigint(20) NOT NULL DEFAULT 0
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Volcado de datos para la tabla `wp_term_taxonomy`
@@ -2777,7 +2744,7 @@ INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `desc
 (54, 54, 'post_format', '', 0, 1),
 (55, 55, 'post_format', '', 0, 5),
 (56, 56, 'action-group', '', 0, 4),
-(57, 57, 'action-group', '', 0, 16);
+(57, 57, 'action-group', '', 0, 18);
 
 -- --------------------------------------------------------
 
@@ -2785,16 +2752,12 @@ INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `desc
 -- Estructura de tabla para la tabla `wp_usermeta`
 --
 
-DROP TABLE IF EXISTS `wp_usermeta`;
-CREATE TABLE IF NOT EXISTS `wp_usermeta` (
-  `umeta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `user_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+CREATE TABLE `wp_usermeta` (
+  `umeta_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci,
-  PRIMARY KEY (`umeta_id`),
-  KEY `user_id` (`user_id`),
-  KEY `meta_key` (`meta_key`(191))
-) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Volcado de datos para la tabla `wp_usermeta`
@@ -2816,15 +2779,15 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 (13, 1, 'wp_user_level', '10'),
 (14, 1, 'dismissed_wp_pointers', 'vc_pointers_backend_editor'),
 (15, 1, 'show_welcome_panel', '1'),
-(16, 1, 'session_tokens', 'a:1:{s:64:\"0c4ed406e18deb1c27513d34aa378dec49d9e280c4f21ec128ff6bb3d5c530ad\";a:4:{s:10:\"expiration\";i:1577550424;s:2:\"ip\";s:3:\"::1\";s:2:\"ua\";s:113:\"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36\";s:5:\"login\";i:1577377624;}}'),
+(16, 1, 'session_tokens', 'a:3:{s:64:\"0c4ed406e18deb1c27513d34aa378dec49d9e280c4f21ec128ff6bb3d5c530ad\";a:4:{s:10:\"expiration\";i:1577550424;s:2:\"ip\";s:3:\"::1\";s:2:\"ua\";s:113:\"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36\";s:5:\"login\";i:1577377624;}s:64:\"74a1696714602e2b95e9f22a32874918df3d15afac6b5c409000a1e6533e2cf4\";a:4:{s:10:\"expiration\";i:1577585349;s:2:\"ip\";s:3:\"::1\";s:2:\"ua\";s:114:\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36\";s:5:\"login\";i:1577412549;}s:64:\"fd543c0f5d04d96ef2dd051ae6d0d481eddc7e6b49197828dbfc33261066ab60\";a:4:{s:10:\"expiration\";i:1577587748;s:2:\"ip\";s:3:\"::1\";s:2:\"ua\";s:114:\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36\";s:5:\"login\";i:1577414948;}}'),
 (42, 1, 'closedpostboxes_product', 'a:0:{}'),
 (43, 1, 'metaboxhidden_product', 'a:2:{i:0;s:10:\"postcustom\";i:1;s:7:\"slugdiv\";}'),
-(44, 1, '_woocommerce_persistent_cart_1', 'a:1:{s:4:\"cart\";a:2:{s:32:\"885cb47f87718a2cd8641ae79113eeea\";a:11:{s:3:\"key\";s:32:\"885cb47f87718a2cd8641ae79113eeea\";s:10:\"product_id\";i:6237;s:12:\"variation_id\";i:0;s:9:\"variation\";a:0:{}s:8:\"quantity\";i:1;s:9:\"data_hash\";s:32:\"b5c1d5ca8bae6d4896cf1807cdf763f0\";s:13:\"line_tax_data\";a:2:{s:8:\"subtotal\";a:0:{}s:5:\"total\";a:0:{}}s:13:\"line_subtotal\";d:400;s:17:\"line_subtotal_tax\";i:0;s:10:\"line_total\";d:400;s:8:\"line_tax\";i:0;}s:32:\"1fc30b9d4319760b04fab735fbfed9a9\";a:6:{s:3:\"key\";s:32:\"1fc30b9d4319760b04fab735fbfed9a9\";s:10:\"product_id\";i:6238;s:12:\"variation_id\";i:0;s:9:\"variation\";a:0:{}s:8:\"quantity\";i:1;s:9:\"data_hash\";s:32:\"b5c1d5ca8bae6d4896cf1807cdf763f0\";}}}'),
+(44, 1, '_woocommerce_persistent_cart_1', 'a:1:{s:4:\"cart\";a:0:{}}'),
 (17, 1, 'wp_user-settings', 'libraryContent=browse&edit_element_vcUIPanelWidth=650&edit_element_vcUIPanelLeft=960px&edit_element_vcUIPanelTop=74px&hidetb=1&editor=tinymce&panel_vcUIPanelWidth=650&panel_vcUIPanelLeft=959px&panel_vcUIPanelTop=75px&template_window_vcUIPanelWidth=1536&template_window_vcUIPanelLeft=192px&template_window_vcUIPanelTop=74px&editor_expand=on'),
 (18, 1, 'wp_user-settings-time', '1576509103'),
 (19, 1, 'wp_dashboard_quick_press_last_post_id', '6169'),
 (20, 1, 'wp_r_tru_u_x', 'a:2:{s:2:\"id\";i:0;s:7:\"expires\";i:1576269901;}'),
-(21, 1, 'wc_last_active', '1577318400'),
+(21, 1, 'wc_last_active', '1577404800'),
 (22, 1, 'nav_menu_recently_edited', '36'),
 (23, 1, 'managenav-menuscolumnshidden', 'a:5:{i:0;s:11:\"link-target\";i:1;s:11:\"css-classes\";i:2;s:3:\"xfn\";i:3;s:11:\"description\";i:4;s:15:\"title-attribute\";}'),
 (24, 1, 'metaboxhidden_nav-menus', 'a:9:{i:0;s:21:\"add-post-type-product\";i:1;s:25:\"add-post-type-home_slider\";i:2;s:23:\"add-post-type-portfolio\";i:3;s:12:\"add-post_tag\";i:4;s:15:\"add-post_format\";i:5;s:16:\"add-project-type\";i:6;s:22:\"add-project-attributes\";i:7;s:15:\"add-product_cat\";i:8;s:15:\"add-product_tag\";}'),
@@ -2842,9 +2805,8 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 -- Estructura de tabla para la tabla `wp_users`
 --
 
-DROP TABLE IF EXISTS `wp_users`;
-CREATE TABLE IF NOT EXISTS `wp_users` (
-  `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_users` (
+  `ID` bigint(20) UNSIGNED NOT NULL,
   `user_login` varchar(60) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `user_pass` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `user_nicename` varchar(50) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
@@ -2852,13 +2814,9 @@ CREATE TABLE IF NOT EXISTS `wp_users` (
   `user_url` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `user_registered` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `user_activation_key` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `user_status` int(11) NOT NULL DEFAULT '0',
-  `display_name` varchar(250) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`ID`),
-  KEY `user_login_key` (`user_login`),
-  KEY `user_nicename` (`user_nicename`),
-  KEY `user_email` (`user_email`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  `user_status` int(11) NOT NULL DEFAULT 0,
+  `display_name` varchar(250) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Volcado de datos para la tabla `wp_users`
@@ -2873,23 +2831,21 @@ INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_
 -- Estructura de tabla para la tabla `wp_wc_admin_notes`
 --
 
-DROP TABLE IF EXISTS `wp_wc_admin_notes`;
-CREATE TABLE IF NOT EXISTS `wp_wc_admin_notes` (
-  `note_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_wc_admin_notes` (
+  `note_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `type` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `locale` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `title` longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `content` longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `icon` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `content_data` longtext COLLATE utf8mb4_unicode_520_ci,
+  `content_data` longtext COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `status` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `source` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `date_created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `date_reminder` datetime DEFAULT NULL,
-  `is_snoozable` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`note_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  `is_snoozable` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Volcado de datos para la tabla `wp_wc_admin_notes`
@@ -2910,18 +2866,15 @@ INSERT INTO `wp_wc_admin_notes` (`note_id`, `name`, `type`, `locale`, `title`, `
 -- Estructura de tabla para la tabla `wp_wc_admin_note_actions`
 --
 
-DROP TABLE IF EXISTS `wp_wc_admin_note_actions`;
-CREATE TABLE IF NOT EXISTS `wp_wc_admin_note_actions` (
-  `action_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_wc_admin_note_actions` (
+  `action_id` bigint(20) UNSIGNED NOT NULL,
   `note_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `label` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `query` longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `is_primary` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`action_id`),
-  KEY `note_id` (`note_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  `is_primary` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Volcado de datos para la tabla `wp_wc_admin_note_actions`
@@ -2944,11 +2897,9 @@ INSERT INTO `wp_wc_admin_note_actions` (`action_id`, `note_id`, `name`, `label`,
 -- Estructura de tabla para la tabla `wp_wc_category_lookup`
 --
 
-DROP TABLE IF EXISTS `wp_wc_category_lookup`;
-CREATE TABLE IF NOT EXISTS `wp_wc_category_lookup` (
+CREATE TABLE `wp_wc_category_lookup` (
   `category_tree_id` bigint(20) UNSIGNED NOT NULL,
-  `category_id` bigint(20) UNSIGNED NOT NULL,
-  PRIMARY KEY (`category_tree_id`,`category_id`)
+  `category_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
@@ -2964,9 +2915,8 @@ INSERT INTO `wp_wc_category_lookup` (`category_tree_id`, `category_id`) VALUES
 -- Estructura de tabla para la tabla `wp_wc_customer_lookup`
 --
 
-DROP TABLE IF EXISTS `wp_wc_customer_lookup`;
-CREATE TABLE IF NOT EXISTS `wp_wc_customer_lookup` (
-  `customer_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_wc_customer_lookup` (
+  `customer_id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `username` varchar(60) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `first_name` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
@@ -2977,10 +2927,7 @@ CREATE TABLE IF NOT EXISTS `wp_wc_customer_lookup` (
   `country` char(2) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `postcode` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `city` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `state` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`customer_id`),
-  UNIQUE KEY `user_id` (`user_id`),
-  KEY `email` (`email`)
+  `state` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT ''
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -2989,16 +2936,12 @@ CREATE TABLE IF NOT EXISTS `wp_wc_customer_lookup` (
 -- Estructura de tabla para la tabla `wp_wc_download_log`
 --
 
-DROP TABLE IF EXISTS `wp_wc_download_log`;
-CREATE TABLE IF NOT EXISTS `wp_wc_download_log` (
-  `download_log_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_wc_download_log` (
+  `download_log_id` bigint(20) UNSIGNED NOT NULL,
   `timestamp` datetime NOT NULL,
   `permission_id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `user_ip_address` varchar(100) COLLATE utf8mb4_unicode_520_ci DEFAULT '',
-  PRIMARY KEY (`download_log_id`),
-  KEY `permission_id` (`permission_id`),
-  KEY `timestamp` (`timestamp`)
+  `user_ip_address` varchar(100) COLLATE utf8mb4_unicode_520_ci DEFAULT ''
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -3007,15 +2950,11 @@ CREATE TABLE IF NOT EXISTS `wp_wc_download_log` (
 -- Estructura de tabla para la tabla `wp_wc_order_coupon_lookup`
 --
 
-DROP TABLE IF EXISTS `wp_wc_order_coupon_lookup`;
-CREATE TABLE IF NOT EXISTS `wp_wc_order_coupon_lookup` (
+CREATE TABLE `wp_wc_order_coupon_lookup` (
   `order_id` bigint(20) UNSIGNED NOT NULL,
   `coupon_id` bigint(20) UNSIGNED NOT NULL,
   `date_created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `discount_amount` double NOT NULL DEFAULT '0',
-  PRIMARY KEY (`order_id`,`coupon_id`),
-  KEY `coupon_id` (`coupon_id`),
-  KEY `date_created` (`date_created`)
+  `discount_amount` double NOT NULL DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -3024,8 +2963,7 @@ CREATE TABLE IF NOT EXISTS `wp_wc_order_coupon_lookup` (
 -- Estructura de tabla para la tabla `wp_wc_order_product_lookup`
 --
 
-DROP TABLE IF EXISTS `wp_wc_order_product_lookup`;
-CREATE TABLE IF NOT EXISTS `wp_wc_order_product_lookup` (
+CREATE TABLE `wp_wc_order_product_lookup` (
   `order_item_id` bigint(20) UNSIGNED NOT NULL,
   `order_id` bigint(20) UNSIGNED NOT NULL,
   `product_id` bigint(20) UNSIGNED NOT NULL,
@@ -3033,17 +2971,12 @@ CREATE TABLE IF NOT EXISTS `wp_wc_order_product_lookup` (
   `customer_id` bigint(20) UNSIGNED DEFAULT NULL,
   `date_created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `product_qty` int(11) NOT NULL,
-  `product_net_revenue` double NOT NULL DEFAULT '0',
-  `product_gross_revenue` double NOT NULL DEFAULT '0',
-  `coupon_amount` double NOT NULL DEFAULT '0',
-  `tax_amount` double NOT NULL DEFAULT '0',
-  `shipping_amount` double NOT NULL DEFAULT '0',
-  `shipping_tax_amount` double NOT NULL DEFAULT '0',
-  PRIMARY KEY (`order_item_id`),
-  KEY `order_id` (`order_id`),
-  KEY `product_id` (`product_id`),
-  KEY `customer_id` (`customer_id`),
-  KEY `date_created` (`date_created`)
+  `product_net_revenue` double NOT NULL DEFAULT 0,
+  `product_gross_revenue` double NOT NULL DEFAULT 0,
+  `coupon_amount` double NOT NULL DEFAULT 0,
+  `tax_amount` double NOT NULL DEFAULT 0,
+  `shipping_amount` double NOT NULL DEFAULT 0,
+  `shipping_tax_amount` double NOT NULL DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -3052,24 +2985,19 @@ CREATE TABLE IF NOT EXISTS `wp_wc_order_product_lookup` (
 -- Estructura de tabla para la tabla `wp_wc_order_stats`
 --
 
-DROP TABLE IF EXISTS `wp_wc_order_stats`;
-CREATE TABLE IF NOT EXISTS `wp_wc_order_stats` (
+CREATE TABLE `wp_wc_order_stats` (
   `order_id` bigint(20) UNSIGNED NOT NULL,
-  `parent_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+  `parent_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
   `date_created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `date_created_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `num_items_sold` int(11) NOT NULL DEFAULT '0',
-  `tax_total` double NOT NULL DEFAULT '0',
-  `shipping_total` double NOT NULL DEFAULT '0',
-  `net_total` double NOT NULL DEFAULT '0',
+  `num_items_sold` int(11) NOT NULL DEFAULT 0,
+  `tax_total` double NOT NULL DEFAULT 0,
+  `shipping_total` double NOT NULL DEFAULT 0,
+  `net_total` double NOT NULL DEFAULT 0,
   `returning_customer` tinyint(1) DEFAULT NULL,
   `status` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `customer_id` bigint(20) UNSIGNED NOT NULL,
-  `total_sales` double NOT NULL DEFAULT '0',
-  PRIMARY KEY (`order_id`),
-  KEY `date_created` (`date_created`),
-  KEY `customer_id` (`customer_id`),
-  KEY `status` (`status`(191))
+  `total_sales` double NOT NULL DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -3078,17 +3006,13 @@ CREATE TABLE IF NOT EXISTS `wp_wc_order_stats` (
 -- Estructura de tabla para la tabla `wp_wc_order_tax_lookup`
 --
 
-DROP TABLE IF EXISTS `wp_wc_order_tax_lookup`;
-CREATE TABLE IF NOT EXISTS `wp_wc_order_tax_lookup` (
+CREATE TABLE `wp_wc_order_tax_lookup` (
   `order_id` bigint(20) UNSIGNED NOT NULL,
   `tax_rate_id` bigint(20) UNSIGNED NOT NULL,
   `date_created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `shipping_tax` double NOT NULL DEFAULT '0',
-  `order_tax` double NOT NULL DEFAULT '0',
-  `total_tax` double NOT NULL DEFAULT '0',
-  PRIMARY KEY (`order_id`,`tax_rate_id`),
-  KEY `tax_rate_id` (`tax_rate_id`),
-  KEY `date_created` (`date_created`)
+  `shipping_tax` double NOT NULL DEFAULT 0,
+  `order_tax` double NOT NULL DEFAULT 0,
+  `total_tax` double NOT NULL DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -3097,27 +3021,19 @@ CREATE TABLE IF NOT EXISTS `wp_wc_order_tax_lookup` (
 -- Estructura de tabla para la tabla `wp_wc_product_meta_lookup`
 --
 
-DROP TABLE IF EXISTS `wp_wc_product_meta_lookup`;
-CREATE TABLE IF NOT EXISTS `wp_wc_product_meta_lookup` (
+CREATE TABLE `wp_wc_product_meta_lookup` (
   `product_id` bigint(20) NOT NULL,
   `sku` varchar(100) COLLATE utf8mb4_unicode_520_ci DEFAULT '',
-  `virtual` tinyint(1) DEFAULT '0',
-  `downloadable` tinyint(1) DEFAULT '0',
+  `virtual` tinyint(1) DEFAULT 0,
+  `downloadable` tinyint(1) DEFAULT 0,
   `min_price` decimal(10,2) DEFAULT NULL,
   `max_price` decimal(10,2) DEFAULT NULL,
-  `onsale` tinyint(1) DEFAULT '0',
+  `onsale` tinyint(1) DEFAULT 0,
   `stock_quantity` double DEFAULT NULL,
   `stock_status` varchar(100) COLLATE utf8mb4_unicode_520_ci DEFAULT 'instock',
-  `rating_count` bigint(20) DEFAULT '0',
-  `average_rating` decimal(3,2) DEFAULT '0.00',
-  `total_sales` bigint(20) DEFAULT '0',
-  PRIMARY KEY (`product_id`),
-  KEY `virtual` (`virtual`),
-  KEY `downloadable` (`downloadable`),
-  KEY `stock_status` (`stock_status`),
-  KEY `stock_quantity` (`stock_quantity`),
-  KEY `onsale` (`onsale`),
-  KEY `min_max_price` (`min_price`,`max_price`)
+  `rating_count` bigint(20) DEFAULT 0,
+  `average_rating` decimal(3,2) DEFAULT 0.00,
+  `total_sales` bigint(20) DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
@@ -3141,14 +3057,11 @@ INSERT INTO `wp_wc_product_meta_lookup` (`product_id`, `sku`, `virtual`, `downlo
 -- Estructura de tabla para la tabla `wp_wc_tax_rate_classes`
 --
 
-DROP TABLE IF EXISTS `wp_wc_tax_rate_classes`;
-CREATE TABLE IF NOT EXISTS `wp_wc_tax_rate_classes` (
-  `tax_rate_class_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_wc_tax_rate_classes` (
+  `tax_rate_class_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `slug` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`tax_rate_class_id`),
-  UNIQUE KEY `slug` (`slug`(191))
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  `slug` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Volcado de datos para la tabla `wp_wc_tax_rate_classes`
@@ -3164,9 +3077,8 @@ INSERT INTO `wp_wc_tax_rate_classes` (`tax_rate_class_id`, `name`, `slug`) VALUE
 -- Estructura de tabla para la tabla `wp_wc_webhooks`
 --
 
-DROP TABLE IF EXISTS `wp_wc_webhooks`;
-CREATE TABLE IF NOT EXISTS `wp_wc_webhooks` (
-  `webhook_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_wc_webhooks` (
+  `webhook_id` bigint(20) UNSIGNED NOT NULL,
   `status` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `name` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
@@ -3178,10 +3090,8 @@ CREATE TABLE IF NOT EXISTS `wp_wc_webhooks` (
   `date_modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `date_modified_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `api_version` smallint(4) NOT NULL,
-  `failure_count` smallint(10) NOT NULL DEFAULT '0',
-  `pending_delivery` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`webhook_id`),
-  KEY `user_id` (`user_id`)
+  `failure_count` smallint(10) NOT NULL DEFAULT 0,
+  `pending_delivery` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -3190,20 +3100,16 @@ CREATE TABLE IF NOT EXISTS `wp_wc_webhooks` (
 -- Estructura de tabla para la tabla `wp_woocommerce_api_keys`
 --
 
-DROP TABLE IF EXISTS `wp_woocommerce_api_keys`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_api_keys` (
-  `key_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_woocommerce_api_keys` (
+  `key_id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `description` varchar(200) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `permissions` varchar(10) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `consumer_key` char(64) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `consumer_secret` char(43) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `nonces` longtext COLLATE utf8mb4_unicode_520_ci,
+  `nonces` longtext COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `truncated_key` char(7) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `last_access` datetime DEFAULT NULL,
-  PRIMARY KEY (`key_id`),
-  KEY `consumer_key` (`consumer_key`),
-  KEY `consumer_secret` (`consumer_secret`)
+  `last_access` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -3212,16 +3118,13 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_api_keys` (
 -- Estructura de tabla para la tabla `wp_woocommerce_attribute_taxonomies`
 --
 
-DROP TABLE IF EXISTS `wp_woocommerce_attribute_taxonomies`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_attribute_taxonomies` (
-  `attribute_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_woocommerce_attribute_taxonomies` (
+  `attribute_id` bigint(20) UNSIGNED NOT NULL,
   `attribute_name` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `attribute_label` varchar(200) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `attribute_type` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `attribute_orderby` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `attribute_public` int(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`attribute_id`),
-  KEY `attribute_name` (`attribute_name`(20))
+  `attribute_public` int(1) NOT NULL DEFAULT 1
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -3230,24 +3133,18 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_attribute_taxonomies` (
 -- Estructura de tabla para la tabla `wp_woocommerce_downloadable_product_permissions`
 --
 
-DROP TABLE IF EXISTS `wp_woocommerce_downloadable_product_permissions`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_downloadable_product_permissions` (
-  `permission_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_woocommerce_downloadable_product_permissions` (
+  `permission_id` bigint(20) UNSIGNED NOT NULL,
   `download_id` varchar(36) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `product_id` bigint(20) UNSIGNED NOT NULL,
-  `order_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+  `order_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
   `order_key` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `user_email` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `downloads_remaining` varchar(9) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `access_granted` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `access_expires` datetime DEFAULT NULL,
-  `download_count` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
-  PRIMARY KEY (`permission_id`),
-  KEY `download_order_key_product` (`product_id`,`order_id`,`order_key`(16),`download_id`),
-  KEY `download_order_product` (`download_id`,`order_id`,`product_id`),
-  KEY `order_id` (`order_id`),
-  KEY `user_order_remaining_expires` (`user_id`,`order_id`,`downloads_remaining`,`access_expires`)
+  `download_count` bigint(20) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -3256,16 +3153,13 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_downloadable_product_permissions` (
 -- Estructura de tabla para la tabla `wp_woocommerce_log`
 --
 
-DROP TABLE IF EXISTS `wp_woocommerce_log`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_log` (
-  `log_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_woocommerce_log` (
+  `log_id` bigint(20) UNSIGNED NOT NULL,
   `timestamp` datetime NOT NULL,
   `level` smallint(4) NOT NULL,
   `source` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `message` longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `context` longtext COLLATE utf8mb4_unicode_520_ci,
-  PRIMARY KEY (`log_id`),
-  KEY `level` (`level`)
+  `context` longtext COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -3274,15 +3168,11 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_log` (
 -- Estructura de tabla para la tabla `wp_woocommerce_order_itemmeta`
 --
 
-DROP TABLE IF EXISTS `wp_woocommerce_order_itemmeta`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_order_itemmeta` (
-  `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_woocommerce_order_itemmeta` (
+  `meta_id` bigint(20) UNSIGNED NOT NULL,
   `order_item_id` bigint(20) UNSIGNED NOT NULL,
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci,
-  PRIMARY KEY (`meta_id`),
-  KEY `order_item_id` (`order_item_id`),
-  KEY `meta_key` (`meta_key`(32))
+  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -3291,14 +3181,11 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_order_itemmeta` (
 -- Estructura de tabla para la tabla `wp_woocommerce_order_items`
 --
 
-DROP TABLE IF EXISTS `wp_woocommerce_order_items`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_order_items` (
-  `order_item_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_woocommerce_order_items` (
+  `order_item_id` bigint(20) UNSIGNED NOT NULL,
   `order_item_name` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `order_item_type` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `order_id` bigint(20) UNSIGNED NOT NULL,
-  PRIMARY KEY (`order_item_id`),
-  KEY `order_id` (`order_id`)
+  `order_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -3307,15 +3194,11 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_order_items` (
 -- Estructura de tabla para la tabla `wp_woocommerce_payment_tokenmeta`
 --
 
-DROP TABLE IF EXISTS `wp_woocommerce_payment_tokenmeta`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_payment_tokenmeta` (
-  `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_woocommerce_payment_tokenmeta` (
+  `meta_id` bigint(20) UNSIGNED NOT NULL,
   `payment_token_id` bigint(20) UNSIGNED NOT NULL,
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci,
-  PRIMARY KEY (`meta_id`),
-  KEY `payment_token_id` (`payment_token_id`),
-  KEY `meta_key` (`meta_key`(32))
+  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -3324,16 +3207,13 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_payment_tokenmeta` (
 -- Estructura de tabla para la tabla `wp_woocommerce_payment_tokens`
 --
 
-DROP TABLE IF EXISTS `wp_woocommerce_payment_tokens`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_payment_tokens` (
-  `token_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_woocommerce_payment_tokens` (
+  `token_id` bigint(20) UNSIGNED NOT NULL,
   `gateway_id` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `token` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `user_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+  `user_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
   `type` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `is_default` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`token_id`),
-  KEY `user_id` (`user_id`)
+  `is_default` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -3342,22 +3222,52 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_payment_tokens` (
 -- Estructura de tabla para la tabla `wp_woocommerce_sessions`
 --
 
-DROP TABLE IF EXISTS `wp_woocommerce_sessions`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_sessions` (
-  `session_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_woocommerce_sessions` (
+  `session_id` bigint(20) UNSIGNED NOT NULL,
   `session_key` char(32) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `session_value` longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `session_expiry` bigint(20) UNSIGNED NOT NULL,
-  PRIMARY KEY (`session_id`),
-  UNIQUE KEY `session_key` (`session_key`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  `session_expiry` bigint(20) UNSIGNED NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Volcado de datos para la tabla `wp_woocommerce_sessions`
 --
 
 INSERT INTO `wp_woocommerce_sessions` (`session_id`, `session_key`, `session_value`, `session_expiry`) VALUES
-(5, '1', 'a:10:{s:22:\"mailchimp_landing_site\";s:132:\"http://localhost/braunybraun/braunybraun/wp-admin/admin-ajax.php?action=dashboard-widgets&widget=dashboard_primary&pagenow=dashboard\";s:4:\"cart\";s:822:\"a:2:{s:32:\"885cb47f87718a2cd8641ae79113eeea\";a:11:{s:3:\"key\";s:32:\"885cb47f87718a2cd8641ae79113eeea\";s:10:\"product_id\";i:6237;s:12:\"variation_id\";i:0;s:9:\"variation\";a:0:{}s:8:\"quantity\";i:1;s:9:\"data_hash\";s:32:\"b5c1d5ca8bae6d4896cf1807cdf763f0\";s:13:\"line_tax_data\";a:2:{s:8:\"subtotal\";a:0:{}s:5:\"total\";a:0:{}}s:13:\"line_subtotal\";d:400;s:17:\"line_subtotal_tax\";i:0;s:10:\"line_total\";d:400;s:8:\"line_tax\";i:0;}s:32:\"1fc30b9d4319760b04fab735fbfed9a9\";a:11:{s:3:\"key\";s:32:\"1fc30b9d4319760b04fab735fbfed9a9\";s:10:\"product_id\";i:6238;s:12:\"variation_id\";i:0;s:9:\"variation\";a:0:{}s:8:\"quantity\";i:1;s:9:\"data_hash\";s:32:\"b5c1d5ca8bae6d4896cf1807cdf763f0\";s:13:\"line_tax_data\";a:2:{s:8:\"subtotal\";a:0:{}s:5:\"total\";a:0:{}}s:13:\"line_subtotal\";d:500;s:17:\"line_subtotal_tax\";i:0;s:10:\"line_total\";d:500;s:8:\"line_tax\";i:0;}}\";s:11:\"cart_totals\";s:408:\"a:15:{s:8:\"subtotal\";s:6:\"900.00\";s:12:\"subtotal_tax\";d:0;s:14:\"shipping_total\";s:4:\"0.00\";s:12:\"shipping_tax\";d:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";d:0;s:12:\"discount_tax\";d:0;s:19:\"cart_contents_total\";s:6:\"900.00\";s:17:\"cart_contents_tax\";d:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";s:4:\"0.00\";s:7:\"fee_tax\";d:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";s:6:\"900.00\";s:9:\"total_tax\";d:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:414:\"a:1:{s:32:\"acc21473c4525b922286130ffbfe00b5\";a:11:{s:3:\"key\";s:32:\"acc21473c4525b922286130ffbfe00b5\";s:10:\"product_id\";i:6129;s:12:\"variation_id\";i:0;s:9:\"variation\";a:0:{}s:8:\"quantity\";i:1;s:9:\"data_hash\";s:32:\"b5c1d5ca8bae6d4896cf1807cdf763f0\";s:13:\"line_tax_data\";a:2:{s:8:\"subtotal\";a:0:{}s:5:\"total\";a:0:{}}s:13:\"line_subtotal\";d:200;s:17:\"line_subtotal_tax\";i:0;s:10:\"line_total\";d:200;s:8:\"line_tax\";i:0;}}\";s:8:\"customer\";s:712:\"a:26:{s:2:\"id\";s:1:\"1\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:22:\"lucas.scazza@gmail.com\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";s:21:\"chosen_payment_method\";s:0:\"\";s:10:\"wc_notices\";N;}', 1577556163);
+(5, '1', 'a:10:{s:22:\"mailchimp_landing_site\";s:132:\"http://localhost/braunybraun/braunybraun/wp-admin/admin-ajax.php?action=dashboard-widgets&widget=dashboard_primary&pagenow=dashboard\";s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:1638:\"a:4:{s:32:\"acc21473c4525b922286130ffbfe00b5\";a:11:{s:3:\"key\";s:32:\"acc21473c4525b922286130ffbfe00b5\";s:10:\"product_id\";i:6129;s:12:\"variation_id\";i:0;s:9:\"variation\";a:0:{}s:8:\"quantity\";i:1;s:9:\"data_hash\";s:32:\"b5c1d5ca8bae6d4896cf1807cdf763f0\";s:13:\"line_tax_data\";a:2:{s:8:\"subtotal\";a:0:{}s:5:\"total\";a:0:{}}s:13:\"line_subtotal\";d:200;s:17:\"line_subtotal_tax\";i:0;s:10:\"line_total\";d:200;s:8:\"line_tax\";i:0;}s:32:\"885cb47f87718a2cd8641ae79113eeea\";a:11:{s:3:\"key\";s:32:\"885cb47f87718a2cd8641ae79113eeea\";s:10:\"product_id\";i:6237;s:12:\"variation_id\";i:0;s:9:\"variation\";a:0:{}s:8:\"quantity\";i:1;s:9:\"data_hash\";s:32:\"b5c1d5ca8bae6d4896cf1807cdf763f0\";s:13:\"line_tax_data\";a:2:{s:8:\"subtotal\";a:0:{}s:5:\"total\";a:0:{}}s:13:\"line_subtotal\";d:400;s:17:\"line_subtotal_tax\";i:0;s:10:\"line_total\";d:400;s:8:\"line_tax\";i:0;}s:32:\"1fc30b9d4319760b04fab735fbfed9a9\";a:11:{s:3:\"key\";s:32:\"1fc30b9d4319760b04fab735fbfed9a9\";s:10:\"product_id\";i:6238;s:12:\"variation_id\";i:0;s:9:\"variation\";a:0:{}s:8:\"quantity\";i:1;s:9:\"data_hash\";s:32:\"b5c1d5ca8bae6d4896cf1807cdf763f0\";s:13:\"line_tax_data\";a:2:{s:8:\"subtotal\";a:0:{}s:5:\"total\";a:0:{}}s:13:\"line_subtotal\";d:500;s:17:\"line_subtotal_tax\";i:0;s:10:\"line_total\";d:500;s:8:\"line_tax\";i:0;}s:32:\"405075699f065e43581f27d67bb68478\";a:11:{s:3:\"key\";s:32:\"405075699f065e43581f27d67bb68478\";s:10:\"product_id\";i:6240;s:12:\"variation_id\";i:0;s:9:\"variation\";a:0:{}s:8:\"quantity\";i:1;s:9:\"data_hash\";s:32:\"b5c1d5ca8bae6d4896cf1807cdf763f0\";s:13:\"line_tax_data\";a:2:{s:8:\"subtotal\";a:0:{}s:5:\"total\";a:0:{}}s:13:\"line_subtotal\";d:400;s:17:\"line_subtotal_tax\";i:0;s:10:\"line_total\";d:400;s:8:\"line_tax\";i:0;}}\";s:8:\"customer\";s:712:\"a:26:{s:2:\"id\";s:1:\"1\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:22:\"lucas.scazza@gmail.com\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";s:21:\"chosen_payment_method\";s:0:\"\";s:10:\"wc_notices\";N;}', 1577587751),
+(6, '817977f82f39cd651f420ab5c4ab5182', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587514),
+(7, 'b2ed1519c00d28dd7db18b85431ac331', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587515),
+(8, '3dd56df5c5c25ad1cf0c3e2e11174792', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587516),
+(9, '93981e54ded31237f040cfa139516509', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587516),
+(10, 'e6592da2f8876039db21a7db833121ae', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587520),
+(11, 'edd15ff27061bec43398c2103dacb948', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587521),
+(12, '5f9ba365753b31c0ef23421c721ee580', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587525),
+(13, 'a76698765ccb29a5fcf27e75d4809f04', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587526),
+(14, '6279925f62eb413f11f2f73d722032ce', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587544),
+(15, 'fb9d480f43acb2cf71e36923b64b242d', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587544),
+(16, '48bb0cc37cbcbb2d3186a743058e878d', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587548),
+(17, '9e9942fb978492d122ccc90c35b8bba9', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587548),
+(18, '1d77f2688d03ebb8c0d3e9b8938e6850', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587652),
+(19, 'e4938d9459c18b1b4080adc93c63e2e4', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587653),
+(20, 'dd0929f50f9000f56e52b38faf1f758f', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587656),
+(21, '08f299bd8db0289232c59e1961aef1f8', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587656),
+(22, 'f7316a5c47b142a714d052ea9d33d909', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587656),
+(23, 'c7e656bfdd29ba58d40daae7efc11182', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587658),
+(24, 'da882259c4d766c172ce0dadffcdd91f', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587667),
+(25, '7cd924a4c25e736250571659c40f687f', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587670),
+(26, '79d1c76204061b60cab7d577ef2b9975', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587679),
+(27, 'da036eebe68f0210f0e7eee6cd4a81d2', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587679),
+(28, '9e27444ea35bc04d71725dc0050d444d', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587681),
+(29, 'b17ee89f9e1e3e61d6ffb3981d543eb6', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587681),
+(30, '33c98055beeb9353ceb82efe94aa2409', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587682),
+(31, 'af81c8593aa5eea67bf35eb4561d0607', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587715),
+(32, 'd7bb3f992476871078dc115e3eb08fd2', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587716),
+(33, '8895f6855a0137beaea8b4e9d985d357', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587733),
+(34, '082d312ec7c5711917a711ec4fccdf6f', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587734),
+(35, '339981776381e2db32fd24a530026879', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587734);
+INSERT INTO `wp_woocommerce_sessions` (`session_id`, `session_key`, `session_value`, `session_expiry`) VALUES
+(36, 'bcf13de462d085f8d47c75b9ed17a3e1', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587745),
+(37, 'cd22bc92f76ce0587809b12c3d6e1d93', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:689:\"a:26:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:4:\"city\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:5:\"state\";s:1:\"B\";s:7:\"country\";s:2:\"AR\";s:17:\"shipping_postcode\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:14:\"shipping_state\";s:1:\"B\";s:16:\"shipping_country\";s:2:\"AR\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";}\";}', 1577587747);
 
 -- --------------------------------------------------------
 
@@ -3365,12 +3275,10 @@ INSERT INTO `wp_woocommerce_sessions` (`session_id`, `session_key`, `session_val
 -- Estructura de tabla para la tabla `wp_woocommerce_shipping_zones`
 --
 
-DROP TABLE IF EXISTS `wp_woocommerce_shipping_zones`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_shipping_zones` (
-  `zone_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_woocommerce_shipping_zones` (
+  `zone_id` bigint(20) UNSIGNED NOT NULL,
   `zone_name` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `zone_order` bigint(20) UNSIGNED NOT NULL,
-  PRIMARY KEY (`zone_id`)
+  `zone_order` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -3379,15 +3287,11 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_shipping_zones` (
 -- Estructura de tabla para la tabla `wp_woocommerce_shipping_zone_locations`
 --
 
-DROP TABLE IF EXISTS `wp_woocommerce_shipping_zone_locations`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_shipping_zone_locations` (
-  `location_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_woocommerce_shipping_zone_locations` (
+  `location_id` bigint(20) UNSIGNED NOT NULL,
   `zone_id` bigint(20) UNSIGNED NOT NULL,
   `location_code` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `location_type` varchar(40) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  PRIMARY KEY (`location_id`),
-  KEY `location_id` (`location_id`),
-  KEY `location_type_code` (`location_type`(10),`location_code`(20))
+  `location_type` varchar(40) COLLATE utf8mb4_unicode_520_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -3396,14 +3300,12 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_shipping_zone_locations` (
 -- Estructura de tabla para la tabla `wp_woocommerce_shipping_zone_methods`
 --
 
-DROP TABLE IF EXISTS `wp_woocommerce_shipping_zone_methods`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_shipping_zone_methods` (
+CREATE TABLE `wp_woocommerce_shipping_zone_methods` (
   `zone_id` bigint(20) UNSIGNED NOT NULL,
-  `instance_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `instance_id` bigint(20) UNSIGNED NOT NULL,
   `method_id` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `method_order` bigint(20) UNSIGNED NOT NULL,
-  `is_enabled` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`instance_id`)
+  `is_enabled` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -3412,23 +3314,17 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_shipping_zone_methods` (
 -- Estructura de tabla para la tabla `wp_woocommerce_tax_rates`
 --
 
-DROP TABLE IF EXISTS `wp_woocommerce_tax_rates`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_tax_rates` (
-  `tax_rate_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_woocommerce_tax_rates` (
+  `tax_rate_id` bigint(20) UNSIGNED NOT NULL,
   `tax_rate_country` varchar(2) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `tax_rate_state` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `tax_rate` varchar(8) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `tax_rate_name` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `tax_rate_priority` bigint(20) UNSIGNED NOT NULL,
-  `tax_rate_compound` int(1) NOT NULL DEFAULT '0',
-  `tax_rate_shipping` int(1) NOT NULL DEFAULT '1',
+  `tax_rate_compound` int(1) NOT NULL DEFAULT 0,
+  `tax_rate_shipping` int(1) NOT NULL DEFAULT 1,
   `tax_rate_order` bigint(20) UNSIGNED NOT NULL,
-  `tax_rate_class` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`tax_rate_id`),
-  KEY `tax_rate_country` (`tax_rate_country`),
-  KEY `tax_rate_state` (`tax_rate_state`(2)),
-  KEY `tax_rate_class` (`tax_rate_class`(10)),
-  KEY `tax_rate_priority` (`tax_rate_priority`)
+  `tax_rate_class` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT ''
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -3437,16 +3333,528 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_tax_rates` (
 -- Estructura de tabla para la tabla `wp_woocommerce_tax_rate_locations`
 --
 
-DROP TABLE IF EXISTS `wp_woocommerce_tax_rate_locations`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_tax_rate_locations` (
-  `location_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `wp_woocommerce_tax_rate_locations` (
+  `location_id` bigint(20) UNSIGNED NOT NULL,
   `location_code` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `tax_rate_id` bigint(20) UNSIGNED NOT NULL,
-  `location_type` varchar(40) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  PRIMARY KEY (`location_id`),
-  KEY `tax_rate_id` (`tax_rate_id`),
-  KEY `location_type_code` (`location_type`(10),`location_code`(20))
+  `location_type` varchar(40) COLLATE utf8mb4_unicode_520_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `wp_commentmeta`
+--
+ALTER TABLE `wp_commentmeta`
+  ADD PRIMARY KEY (`meta_id`),
+  ADD KEY `comment_id` (`comment_id`),
+  ADD KEY `meta_key` (`meta_key`(191));
+
+--
+-- Indices de la tabla `wp_comments`
+--
+ALTER TABLE `wp_comments`
+  ADD PRIMARY KEY (`comment_ID`),
+  ADD KEY `comment_post_ID` (`comment_post_ID`),
+  ADD KEY `comment_approved_date_gmt` (`comment_approved`,`comment_date_gmt`),
+  ADD KEY `comment_date_gmt` (`comment_date_gmt`),
+  ADD KEY `comment_parent` (`comment_parent`),
+  ADD KEY `comment_author_email` (`comment_author_email`(10)),
+  ADD KEY `woo_idx_comment_type` (`comment_type`);
+
+--
+-- Indices de la tabla `wp_links`
+--
+ALTER TABLE `wp_links`
+  ADD PRIMARY KEY (`link_id`),
+  ADD KEY `link_visible` (`link_visible`);
+
+--
+-- Indices de la tabla `wp_mailchimp_carts`
+--
+ALTER TABLE `wp_mailchimp_carts`
+  ADD PRIMARY KEY (`email`);
+
+--
+-- Indices de la tabla `wp_mailchimp_jobs`
+--
+ALTER TABLE `wp_mailchimp_jobs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `wp_options`
+--
+ALTER TABLE `wp_options`
+  ADD PRIMARY KEY (`option_id`),
+  ADD UNIQUE KEY `option_name` (`option_name`),
+  ADD KEY `autoload` (`autoload`);
+
+--
+-- Indices de la tabla `wp_postmeta`
+--
+ALTER TABLE `wp_postmeta`
+  ADD PRIMARY KEY (`meta_id`),
+  ADD KEY `post_id` (`post_id`),
+  ADD KEY `meta_key` (`meta_key`(191));
+
+--
+-- Indices de la tabla `wp_posts`
+--
+ALTER TABLE `wp_posts`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `post_name` (`post_name`(191)),
+  ADD KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`ID`),
+  ADD KEY `post_parent` (`post_parent`),
+  ADD KEY `post_author` (`post_author`);
+
+--
+-- Indices de la tabla `wp_termmeta`
+--
+ALTER TABLE `wp_termmeta`
+  ADD PRIMARY KEY (`meta_id`),
+  ADD KEY `term_id` (`term_id`),
+  ADD KEY `meta_key` (`meta_key`(191));
+
+--
+-- Indices de la tabla `wp_terms`
+--
+ALTER TABLE `wp_terms`
+  ADD PRIMARY KEY (`term_id`),
+  ADD KEY `slug` (`slug`(191)),
+  ADD KEY `name` (`name`(191));
+
+--
+-- Indices de la tabla `wp_term_relationships`
+--
+ALTER TABLE `wp_term_relationships`
+  ADD PRIMARY KEY (`object_id`,`term_taxonomy_id`),
+  ADD KEY `term_taxonomy_id` (`term_taxonomy_id`);
+
+--
+-- Indices de la tabla `wp_term_taxonomy`
+--
+ALTER TABLE `wp_term_taxonomy`
+  ADD PRIMARY KEY (`term_taxonomy_id`),
+  ADD UNIQUE KEY `term_id_taxonomy` (`term_id`,`taxonomy`),
+  ADD KEY `taxonomy` (`taxonomy`);
+
+--
+-- Indices de la tabla `wp_usermeta`
+--
+ALTER TABLE `wp_usermeta`
+  ADD PRIMARY KEY (`umeta_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `meta_key` (`meta_key`(191));
+
+--
+-- Indices de la tabla `wp_users`
+--
+ALTER TABLE `wp_users`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `user_login_key` (`user_login`),
+  ADD KEY `user_nicename` (`user_nicename`),
+  ADD KEY `user_email` (`user_email`);
+
+--
+-- Indices de la tabla `wp_wc_admin_notes`
+--
+ALTER TABLE `wp_wc_admin_notes`
+  ADD PRIMARY KEY (`note_id`);
+
+--
+-- Indices de la tabla `wp_wc_admin_note_actions`
+--
+ALTER TABLE `wp_wc_admin_note_actions`
+  ADD PRIMARY KEY (`action_id`),
+  ADD KEY `note_id` (`note_id`);
+
+--
+-- Indices de la tabla `wp_wc_category_lookup`
+--
+ALTER TABLE `wp_wc_category_lookup`
+  ADD PRIMARY KEY (`category_tree_id`,`category_id`);
+
+--
+-- Indices de la tabla `wp_wc_customer_lookup`
+--
+ALTER TABLE `wp_wc_customer_lookup`
+  ADD PRIMARY KEY (`customer_id`),
+  ADD UNIQUE KEY `user_id` (`user_id`),
+  ADD KEY `email` (`email`);
+
+--
+-- Indices de la tabla `wp_wc_download_log`
+--
+ALTER TABLE `wp_wc_download_log`
+  ADD PRIMARY KEY (`download_log_id`),
+  ADD KEY `permission_id` (`permission_id`),
+  ADD KEY `timestamp` (`timestamp`);
+
+--
+-- Indices de la tabla `wp_wc_order_coupon_lookup`
+--
+ALTER TABLE `wp_wc_order_coupon_lookup`
+  ADD PRIMARY KEY (`order_id`,`coupon_id`),
+  ADD KEY `coupon_id` (`coupon_id`),
+  ADD KEY `date_created` (`date_created`);
+
+--
+-- Indices de la tabla `wp_wc_order_product_lookup`
+--
+ALTER TABLE `wp_wc_order_product_lookup`
+  ADD PRIMARY KEY (`order_item_id`),
+  ADD KEY `order_id` (`order_id`),
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `customer_id` (`customer_id`),
+  ADD KEY `date_created` (`date_created`);
+
+--
+-- Indices de la tabla `wp_wc_order_stats`
+--
+ALTER TABLE `wp_wc_order_stats`
+  ADD PRIMARY KEY (`order_id`),
+  ADD KEY `date_created` (`date_created`),
+  ADD KEY `customer_id` (`customer_id`),
+  ADD KEY `status` (`status`(191));
+
+--
+-- Indices de la tabla `wp_wc_order_tax_lookup`
+--
+ALTER TABLE `wp_wc_order_tax_lookup`
+  ADD PRIMARY KEY (`order_id`,`tax_rate_id`),
+  ADD KEY `tax_rate_id` (`tax_rate_id`),
+  ADD KEY `date_created` (`date_created`);
+
+--
+-- Indices de la tabla `wp_wc_product_meta_lookup`
+--
+ALTER TABLE `wp_wc_product_meta_lookup`
+  ADD PRIMARY KEY (`product_id`),
+  ADD KEY `virtual` (`virtual`),
+  ADD KEY `downloadable` (`downloadable`),
+  ADD KEY `stock_status` (`stock_status`),
+  ADD KEY `stock_quantity` (`stock_quantity`),
+  ADD KEY `onsale` (`onsale`),
+  ADD KEY `min_max_price` (`min_price`,`max_price`);
+
+--
+-- Indices de la tabla `wp_wc_tax_rate_classes`
+--
+ALTER TABLE `wp_wc_tax_rate_classes`
+  ADD PRIMARY KEY (`tax_rate_class_id`),
+  ADD UNIQUE KEY `slug` (`slug`(191));
+
+--
+-- Indices de la tabla `wp_wc_webhooks`
+--
+ALTER TABLE `wp_wc_webhooks`
+  ADD PRIMARY KEY (`webhook_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indices de la tabla `wp_woocommerce_api_keys`
+--
+ALTER TABLE `wp_woocommerce_api_keys`
+  ADD PRIMARY KEY (`key_id`),
+  ADD KEY `consumer_key` (`consumer_key`),
+  ADD KEY `consumer_secret` (`consumer_secret`);
+
+--
+-- Indices de la tabla `wp_woocommerce_attribute_taxonomies`
+--
+ALTER TABLE `wp_woocommerce_attribute_taxonomies`
+  ADD PRIMARY KEY (`attribute_id`),
+  ADD KEY `attribute_name` (`attribute_name`(20));
+
+--
+-- Indices de la tabla `wp_woocommerce_downloadable_product_permissions`
+--
+ALTER TABLE `wp_woocommerce_downloadable_product_permissions`
+  ADD PRIMARY KEY (`permission_id`),
+  ADD KEY `download_order_key_product` (`product_id`,`order_id`,`order_key`(16),`download_id`),
+  ADD KEY `download_order_product` (`download_id`,`order_id`,`product_id`),
+  ADD KEY `order_id` (`order_id`),
+  ADD KEY `user_order_remaining_expires` (`user_id`,`order_id`,`downloads_remaining`,`access_expires`);
+
+--
+-- Indices de la tabla `wp_woocommerce_log`
+--
+ALTER TABLE `wp_woocommerce_log`
+  ADD PRIMARY KEY (`log_id`),
+  ADD KEY `level` (`level`);
+
+--
+-- Indices de la tabla `wp_woocommerce_order_itemmeta`
+--
+ALTER TABLE `wp_woocommerce_order_itemmeta`
+  ADD PRIMARY KEY (`meta_id`),
+  ADD KEY `order_item_id` (`order_item_id`),
+  ADD KEY `meta_key` (`meta_key`(32));
+
+--
+-- Indices de la tabla `wp_woocommerce_order_items`
+--
+ALTER TABLE `wp_woocommerce_order_items`
+  ADD PRIMARY KEY (`order_item_id`),
+  ADD KEY `order_id` (`order_id`);
+
+--
+-- Indices de la tabla `wp_woocommerce_payment_tokenmeta`
+--
+ALTER TABLE `wp_woocommerce_payment_tokenmeta`
+  ADD PRIMARY KEY (`meta_id`),
+  ADD KEY `payment_token_id` (`payment_token_id`),
+  ADD KEY `meta_key` (`meta_key`(32));
+
+--
+-- Indices de la tabla `wp_woocommerce_payment_tokens`
+--
+ALTER TABLE `wp_woocommerce_payment_tokens`
+  ADD PRIMARY KEY (`token_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indices de la tabla `wp_woocommerce_sessions`
+--
+ALTER TABLE `wp_woocommerce_sessions`
+  ADD PRIMARY KEY (`session_id`),
+  ADD UNIQUE KEY `session_key` (`session_key`);
+
+--
+-- Indices de la tabla `wp_woocommerce_shipping_zones`
+--
+ALTER TABLE `wp_woocommerce_shipping_zones`
+  ADD PRIMARY KEY (`zone_id`);
+
+--
+-- Indices de la tabla `wp_woocommerce_shipping_zone_locations`
+--
+ALTER TABLE `wp_woocommerce_shipping_zone_locations`
+  ADD PRIMARY KEY (`location_id`),
+  ADD KEY `location_id` (`location_id`),
+  ADD KEY `location_type_code` (`location_type`(10),`location_code`(20));
+
+--
+-- Indices de la tabla `wp_woocommerce_shipping_zone_methods`
+--
+ALTER TABLE `wp_woocommerce_shipping_zone_methods`
+  ADD PRIMARY KEY (`instance_id`);
+
+--
+-- Indices de la tabla `wp_woocommerce_tax_rates`
+--
+ALTER TABLE `wp_woocommerce_tax_rates`
+  ADD PRIMARY KEY (`tax_rate_id`),
+  ADD KEY `tax_rate_country` (`tax_rate_country`),
+  ADD KEY `tax_rate_state` (`tax_rate_state`(2)),
+  ADD KEY `tax_rate_class` (`tax_rate_class`(10)),
+  ADD KEY `tax_rate_priority` (`tax_rate_priority`);
+
+--
+-- Indices de la tabla `wp_woocommerce_tax_rate_locations`
+--
+ALTER TABLE `wp_woocommerce_tax_rate_locations`
+  ADD PRIMARY KEY (`location_id`),
+  ADD KEY `tax_rate_id` (`tax_rate_id`),
+  ADD KEY `location_type_code` (`location_type`(10),`location_code`(20));
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `wp_commentmeta`
+--
+ALTER TABLE `wp_commentmeta`
+  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_comments`
+--
+ALTER TABLE `wp_comments`
+  MODIFY `comment_ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_links`
+--
+ALTER TABLE `wp_links`
+  MODIFY `link_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_mailchimp_jobs`
+--
+ALTER TABLE `wp_mailchimp_jobs`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_options`
+--
+ALTER TABLE `wp_options`
+  MODIFY `option_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2275;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_postmeta`
+--
+ALTER TABLE `wp_postmeta`
+  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2679;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_posts`
+--
+ALTER TABLE `wp_posts`
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6250;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_termmeta`
+--
+ALTER TABLE `wp_termmeta`
+  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_terms`
+--
+ALTER TABLE `wp_terms`
+  MODIFY `term_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_term_taxonomy`
+--
+ALTER TABLE `wp_term_taxonomy`
+  MODIFY `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_usermeta`
+--
+ALTER TABLE `wp_usermeta`
+  MODIFY `umeta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_users`
+--
+ALTER TABLE `wp_users`
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_wc_admin_notes`
+--
+ALTER TABLE `wp_wc_admin_notes`
+  MODIFY `note_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_wc_admin_note_actions`
+--
+ALTER TABLE `wp_wc_admin_note_actions`
+  MODIFY `action_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_wc_customer_lookup`
+--
+ALTER TABLE `wp_wc_customer_lookup`
+  MODIFY `customer_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_wc_download_log`
+--
+ALTER TABLE `wp_wc_download_log`
+  MODIFY `download_log_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_wc_tax_rate_classes`
+--
+ALTER TABLE `wp_wc_tax_rate_classes`
+  MODIFY `tax_rate_class_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_wc_webhooks`
+--
+ALTER TABLE `wp_wc_webhooks`
+  MODIFY `webhook_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_woocommerce_api_keys`
+--
+ALTER TABLE `wp_woocommerce_api_keys`
+  MODIFY `key_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_woocommerce_attribute_taxonomies`
+--
+ALTER TABLE `wp_woocommerce_attribute_taxonomies`
+  MODIFY `attribute_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_woocommerce_downloadable_product_permissions`
+--
+ALTER TABLE `wp_woocommerce_downloadable_product_permissions`
+  MODIFY `permission_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_woocommerce_log`
+--
+ALTER TABLE `wp_woocommerce_log`
+  MODIFY `log_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_woocommerce_order_itemmeta`
+--
+ALTER TABLE `wp_woocommerce_order_itemmeta`
+  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_woocommerce_order_items`
+--
+ALTER TABLE `wp_woocommerce_order_items`
+  MODIFY `order_item_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_woocommerce_payment_tokenmeta`
+--
+ALTER TABLE `wp_woocommerce_payment_tokenmeta`
+  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_woocommerce_payment_tokens`
+--
+ALTER TABLE `wp_woocommerce_payment_tokens`
+  MODIFY `token_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_woocommerce_sessions`
+--
+ALTER TABLE `wp_woocommerce_sessions`
+  MODIFY `session_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_woocommerce_shipping_zones`
+--
+ALTER TABLE `wp_woocommerce_shipping_zones`
+  MODIFY `zone_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_woocommerce_shipping_zone_locations`
+--
+ALTER TABLE `wp_woocommerce_shipping_zone_locations`
+  MODIFY `location_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_woocommerce_shipping_zone_methods`
+--
+ALTER TABLE `wp_woocommerce_shipping_zone_methods`
+  MODIFY `instance_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_woocommerce_tax_rates`
+--
+ALTER TABLE `wp_woocommerce_tax_rates`
+  MODIFY `tax_rate_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `wp_woocommerce_tax_rate_locations`
+--
+ALTER TABLE `wp_woocommerce_tax_rate_locations`
+  MODIFY `location_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
