@@ -37,7 +37,7 @@ class Nectar_Woo_Quickview {
     if($get_product->is_type( 'grouped' ) || $get_product->is_type( 'external' ) ) { return; }
     
     echo '<a class="nectar_quick_view no-ajaxy '.$button_class.'" data-product-id="'.$post->ID.'"> '.$button_icon.'
-    <span>' . __('Quick View', 'salient') . '</span></a>';
+    <span>' . __('Ver producto', 'salient') . '</span></a>';
     
 	}
   

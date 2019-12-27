@@ -140,6 +140,9 @@ body.material #header-outer[data-header-resize="1"]:not([data-format="left-heade
 
 /* HEADERS PAGES */
 
+.mt-40{
+    margin-top: 40px;
+}
 .mt-60{
     margin-top: 60px;
 }

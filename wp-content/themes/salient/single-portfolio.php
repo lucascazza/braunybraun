@@ -50,7 +50,7 @@ $project_social_style = (!empty($options['portfolio_social_style'])) ? $options[
 		
 	<div class="container-wrap" data-nav-pos="<?php echo $single_nav_pos; ?>">
 		
-		<div class="container main-content"> 
+		<div class="container main-content mt-60"> 
 			
 			<?php 
 
