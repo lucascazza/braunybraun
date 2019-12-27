@@ -81,7 +81,7 @@ p, h1, h2, h3, h4, h5, h6, a, label{
 
 /* MENU IZQUIERDO */
 
-div>#slide-out-widget-area.slide-out-from-right-hover,
+div#slide-out-widget-area.slide-out-from-right-hover,
 .admin-bar #slide-out-widget-area.slide-out-from-right-hover{
     padding-top: 100px;
     padding: 25px;
@@ -116,14 +116,14 @@ body.material #header-outer[data-header-resize="1"]:not([data-format="left-heade
 }
 
 @media screen and (min-width: 576px) {
-    div>#slide-out-widget-area.slide-out-from-right-hover,
+    div#slide-out-widget-area.slide-out-from-right-hover,
     .admin-bar #slide-out-widget-area.slide-out-from-right-hover{
         width: 300px;
     }
 }
 
 @media screen and (min-width: 768px) {
-    div>#slide-out-widget-area.slide-out-from-right-hover,
+    div#slide-out-widget-area.slide-out-from-right-hover,
     .admin-bar #slide-out-widget-area.slide-out-from-right-hover{
         width: 335px;
         z-index: 9999;
