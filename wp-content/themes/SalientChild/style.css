@@ -67,7 +67,7 @@ p, h1, h2, h3, h4, h5, h6, a, label{
 
 @media screen and (min-width: 992px) {
     .titulo-seccion {
-        padding-top: 50rem;
+        padding-top: 50px;
     }
 }
 
@@ -285,28 +285,31 @@ html body .row .col.section-title h1{
     display: block !important;
 }
 
-.woocommerce ul.products li.product .info-producto a {
-    text-decoration: none;
-    padding: 10px 10px 10px 20px !important;
-    font-size: 10px !important;
-    text-align: left;
-}
-
-.woocommerce ul.products li.product .info-producto a:hover i {
-    background-color: #fff !important;
-    color: #d90e21 !important;
-}
-
-.woocommerce ul.products li.product .info-producto a i {
-    margin-right: 0.5rem;
-    transition: .5s;
-    border: 1px solid #d90e21 !important;
-    color: #fff !important;
-}
-
-.woocommerce ul.products li.product .info-producto{
+.info-producto .nectar_quick_view{
+    background-color: #333;
+    padding: 10px;
     display: inline-flex;
-    flex-direction: column;
+    border-radius: .25rem;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.info-producto .nectar_quick_view>i{
+    top: 0;
+    margin-right: .5rem;
+    border: 1px solid #d90e21;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-producto .nectar_quick_view:hover{
+    background-color: #d90e21;
+}
+
+.info-producto .nectar_quick_view:hover>i{
+    border: 1px solid #fff;
 }
 
 .woocommerce .woocommerce-error.custom{
@@ -318,4 +321,14 @@ html body .row .col.section-title h1{
 .woocommerce-error.custom li,
 .woocommerce-error.custom li>strong{
     color: #3c3c3b !important;
+}
+
+
+.flip-box-back h3,
+.flip-box-front h3{
+    color: #fff !important;
+}
+
+.fila-iconos-about .nectar_icon_wrap{
+    margin-bottom: 0px !important;
 }
