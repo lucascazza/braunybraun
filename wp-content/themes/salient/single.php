@@ -97,8 +97,8 @@ endwhile; endif;
 
 
 
-<div class="container-wrap <?php echo ($fullscreen_header == true) ? 'fullscreen-blog-header': null; ?> <?php if($blog_type == 'std-blog-fullwidth' || $hide_sidebar == '1') echo 'no-sidebar'; ?>" data-midnight="dark">
-	<div class="container main-content">
+<div class="container-wrap pt-0 <?php echo ($fullscreen_header == true) ? 'fullscreen-blog-header': null; ?> <?php if($blog_type == 'std-blog-fullwidth' || $hide_sidebar == '1') echo 'no-sidebar'; ?>" data-midnight="dark">
+	<div class="container main-content padding-top-single">
 		
 		<?php if(get_post_format() != 'quote' && get_post_format() != 'status' && get_post_format() != 'aside') { ?>
 			
@@ -106,7 +106,7 @@ endwhile; endif;
 			
 			    if((empty($bg) && empty($bg_color)) && $fullscreen_header != true) { ?>
 
-					<div class="row heading-title hentry" data-header-style="<?php echo $blog_header_type; ?>">
+					<div class="row heading-title hentry pt-0" data-header-style="<?php echo $blog_header_type; ?>">
 						<div class="col span_12 section-title blog-title">
 							<?php if($blog_header_type == 'default_minimal' && 'post' == get_post_type() ) { ?> 
 							<span class="meta-category">

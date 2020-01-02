@@ -39,6 +39,10 @@ p, h1, h2, h3, h4, h5, h6, a, label{
     font-family: futuraBook !important;
 }
 
+.pt-0{
+    padding-top: 0 !important;
+}
+
 .d-none {
     display: none !important;
 }
@@ -113,6 +117,17 @@ body.material #slide-out-widget-area[class*="slide-out-from-right"] .off-canvas-
 
 body.material #header-outer[data-header-resize="1"]:not([data-format="left-header"]):not(.small-nav) {
     /* box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2) !important; */
+}
+
+#header-space ~ #header-outer.header-customizado .cart-menu .cart-icon-wrap .icon-salient-cart,
+#header-space ~ #header-outer #social-in-menu i{
+    color: #000 !important;
+}
+
+#header-space ~ #header-outer.transparent:not(.directional-nav-effect) > header#top nav ul .slide-out-widget-area-toggle a i.lines:before,
+#header-space ~ #header-outer.transparent:not(.directional-nav-effect) > header#top nav ul .slide-out-widget-area-toggle a i.lines:after,
+#header-space ~ #header-outer.transparent:not(.directional-nav-effect) > header#top nav ul .slide-out-widget-area-toggle[data-icon-animation="simple-transform"] .lines-button:after{
+    background-color: #000 !important;
 }
 
 @media screen and (min-width: 576px) {
@@ -243,6 +258,15 @@ html body .row .col.section-title h1{
 #portfolio-nav #next-link a i,
 #portfolio-nav #prev-link a i{
     font-weight: 700 !important;
+}
+
+.padding-top-single{
+    padding-top: 96px !important;
+}
+
+#header-space ~ #ajax-content-wrap #full_width_portfolio .padding-top-single,
+#header-space ~ #ajax-content-wrap .container-wrap .padding-top-single{
+    padding-top: 0px !important;
 }
 
 @media screen and (min-width: 576px){

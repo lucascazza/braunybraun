@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WooCommerce - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-12-26 15:14:45+0000\n"
+"PO-Revision-Date: 2020-01-01 00:41:41+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -3120,7 +3120,7 @@ msgstr "Se enviará una contraseña a tu dirección de correo electrónico."
 #. translators: %s opening and closing link tags respectively
 #: templates/single-product-reviews.php:120
 msgid "You must be %1$slogged in%2$s to post a review."
-msgstr "Debes %1$sacceder%2$s para publicar una reseña."
+msgstr "Debes %1$siniciar sesión%2$s para publicar una reseña."
 
 #. translators: %1$s: Order number. %2$s: Customer full name
 #. translators: %1$s: Order number, %2$s: Customer full name.
@@ -15943,7 +15943,7 @@ msgstr "¿Perdiste tu contraseña? Por favor, ingresá tu nombre de usuario o co
 
 #: templates/myaccount/form-login.php:70 templates/myaccount/form-login.php:107
 msgid "Register"
-msgstr "Registrarse"
+msgstr "Registrarme"
 
 #: templates/myaccount/form-edit-address.php:46
 msgid "Save address"
@@ -16015,7 +16015,7 @@ msgstr "¿Olvidaste la contraseña?"
 
 #: templates/global/form-login.php:47 templates/myaccount/form-login.php:51
 msgid "Remember me"
-msgstr "Recuérdame"
+msgstr "Recordarme"
 
 #: templates/global/form-login.php:34
 #: templates/myaccount/form-lost-password.php:28
@@ -16099,7 +16099,7 @@ msgstr "Si ya eres cliente, por favor, rellena tus datos a continuación. Si ere
 
 #: templates/checkout/form-login.php:26
 msgid "Click here to login"
-msgstr "Hacé clic aquí para acceder"
+msgstr "Hacé clic aquí para iniciar sesión"
 
 #: templates/checkout/form-login.php:26
 msgid "Returning customer?"
@@ -16217,7 +16217,7 @@ msgstr "Nombre de usuario o correo electrónico"
 #. translators: %1$s: app name, %2$s: URL
 #: templates/auth/form-login.php:34
 msgid "To connect to %1$s you need to be logged in. Log in to your store below, or <a href=\"%2$s\">cancel and return to %1$s</a>"
-msgstr "Para conectarte a %1$s tenés que acceder. Inicia sesión en tu tienda a continuación o <a href=\"%2$s\">cancela y vuelve a %1$s</a>"
+msgstr "Para conectarte a %1$s tenés que iniciar sesión. Iniciá sesión en la tienda a continuación o <a href=\"%2$s\">cancelá y volvé a %1$s</a>"
 
 #: templates/auth/form-grant-access.php:57
 msgid "Deny"
@@ -16784,7 +16784,7 @@ msgstr "Ingresá un usuario o correo electrónico."
 
 #: templates/myaccount/form-login.php:54
 msgid "Log in"
-msgstr "Acceder"
+msgstr "Iniciar sesión"
 
 #: includes/shortcodes/class-wc-shortcode-checkout.php:282
 msgid "The order totals have been updated. Please confirm your order by pressing the \"Place order\" button at the bottom of the page."
@@ -18238,12 +18238,12 @@ msgstr "Inicia sesión para descargar archivos"
 #: templates/global/form-login.php:51 templates/auth/form-login.php:49
 #: templates/myaccount/form-login.php:32
 msgid "Login"
-msgstr "Acceder"
+msgstr "Iniciar sesión"
 
 #: includes/class-wc-download-handler.php:161
 #: includes/class-wc-download-handler.php:164
 msgid "You must be logged in to download files."
-msgstr "Debes acceder para descargar archivos."
+msgstr "Tenés que iniciar sesión para descargar archivos."
 
 #: includes/class-wc-download-handler.php:148
 msgid "Sorry, this download has expired"
@@ -22710,7 +22710,7 @@ msgstr "Instala WooCommerce Admin"
 
 #: packages/woocommerce-rest-api/src/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:159
 msgid "This tool will reset the admin, customer and shop_manager roles to default. Use this if your users cannot access all of the WooCommerce admin pages."
-msgstr "Esta herramienta restablecerá los perfiles de admin, cliente y shop_manager a su estado original. Utiliza esto si tus usuarios no pueden acceder a todas las páginas de administración de WooCommerce."
+msgstr "Esta herramienta restablecerá los perfiles de admin, cliente y shop_manager a su estado original. Usá ésto si tus usuarios no pueden acceder a todas las páginas de administración de WooCommerce."
 
 #: packages/woocommerce-rest-api/src/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:158
 msgid "Reset capabilities"
@@ -23710,7 +23710,7 @@ msgstr "Precios"
 
 #: includes/admin/class-wc-admin-pointers.php:125
 msgid "If purchasing this product gives a customer access to a downloadable file, e.g. software, check this box."
-msgstr "Si la comprá de este producto permite al cliente acceder a un archivo descargable, por ejemplo, software, marca esta casilla."
+msgstr "Si la compra de este producto permite al cliente acceder a un archivo descargable como por ejemplo software, marcá esta casilla."
 
 #: includes/admin/class-wc-admin-pointers.php:109
 msgid "Check the \"Virtual\" box if this is a non-physical item, for example a service, which does not need shipping."

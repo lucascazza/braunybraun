@@ -76,6 +76,7 @@ if($sideWidgetClass == 'slide-out-from-right-hover') $sideWidgetIconAnimation = 
 $fullWidthHeader = (!empty($options['header-fullwidth']) && $options['header-fullwidth'] == '1') ? 'true' : 'false';
 $headerSearch = (!empty($options['header-disable-search']) && $options['header-disable-search'] == '1') ? 'false' : 'true';
 $userAccountBtn = (!empty($options['header-account-button']) && $options['header-account-button'] == '1') ? 'true' : 'false';
+$userAccountBtn = (!empty($options['header-account-button']) && $options['header-account-button'] == '1') ? 'true' : 'false';
 $userAccountBtnURL = (!empty($options['header-account-button-url'])) ? $options['header-account-button-url'] : '';
 $mobile_fixed = (!empty($options['header-mobile-fixed'])) ? $options['header-mobile-fixed'] : 'false';
 $mobile_breakpoint = (!empty($options['header-menu-mobile-breakpoint'])) ? $options['header-menu-mobile-breakpoint'] : 1000; 
