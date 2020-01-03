@@ -175,7 +175,7 @@ class Nectar_Woo_Quickview {
  	                                <div class="summary-content">   
                                        <?php
                                        
-                                       echo '<div class="nectar-full-product-link"><a href="'.get_permalink().'"><span>'. __('More Information', 'salient') .'</span></a></div>';
+                                       echo '<div class="nectar-full-product-link"><a href="'.get_permalink().'"><span>'. __('Más información', 'salient') .'</span></a></div>';
                                        
                                        do_action('nectar_quick_view_summary_content');
       
