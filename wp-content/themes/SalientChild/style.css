@@ -71,6 +71,17 @@ label {
     padding-top: 100px;
 }
 
+.color-blanco,
+.color-blanco h1,
+.color-blanco h2,
+.color-blanco h3,
+.color-blanco h4,
+.color-blanco h5,
+.color-blanco h6,
+.color-blanco p{
+    color: #fff !important;
+}
+
 @media screen and (min-width: 768px) {
     .titulo-seccion {
         padding-top: 60px;
