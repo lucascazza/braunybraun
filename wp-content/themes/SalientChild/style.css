@@ -78,7 +78,7 @@ label {
 .color-blanco h4,
 .color-blanco h5,
 .color-blanco h6,
-.color-blanco p{
+.color-blanco p {
     color: #fff !important;
 }
 
@@ -101,7 +101,7 @@ label {
 }
 
 
-.full-width-content.vc_row-fluid .vc_col-sm-12.separador-home{
+.full-width-content.vc_row-fluid .vc_col-sm-12.separador-home {
     height: 80px !important;
 }
 
@@ -291,7 +291,7 @@ body #page-header-bg .span_6 span.subheader {
     }
 }
 
-.nectar-flickity[data-controls="material_pagination"] .flickity-page-dots{
+.nectar-flickity[data-controls="material_pagination"] .flickity-page-dots {
     bottom: -50px !important;
 }
 
@@ -335,6 +335,10 @@ html body .row .col.section-title h1 {
 
 /* NOVEDADES */
 
+.recent-post-novedades .blog-recent .article-content-wrap .title{
+    color: #fff !important;
+}
+
 .blog-recent .post-meta {
     display: none !important;
 }
@@ -350,6 +354,16 @@ html body .row .col.section-title h1 {
 
 
 /* YOME Y ECOMMERCE */
+
+.form-row.place-order button.button.alt{
+    max-width: 300px;
+    margin-top: 20px;
+
+}
+
+.woocommerce ul.products li.product span.onsale{
+    background-color: #d90e21 !important;
+}
 
 .woocommerce ul.products li.product .woocommerce-loop-product__title {
     display: none;
@@ -405,4 +419,72 @@ html body .row .col.section-title h1 {
 
 .fila-iconos-about .nectar_icon_wrap {
     margin-bottom: 0px !important;
+}
+
+
+
+/* Quienes somos */
+
+.row-carousel-flip .owl-carousel .owl-item .inner {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.card-flip-info {
+    line-height: 22px;
+}
+
+.card-flip-rounded .flip-box-front,
+.card-flip-rounded .flip-box-back {
+    border-radius: 50%;
+    overflow: hidden;
+    min-height: initial !important;
+    min-width: initial !important;
+    width: 320px !important;
+    height: 320px !important;
+    margin: auto;
+}
+
+.card-flip-rounded .nectar-flip-box .flip-box-back{
+    left: auto !important;
+}
+
+.card-flip-rounded .nectar-flip-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lista-items-somos .nectar-icon-list-item .list-icon-holder{
+    background-color: transparent !important;
+}
+
+@media screen and (max-width: 767px){
+    .lista-items-somos .nectar-icon-list.completed{
+        padding-right: 15px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .card-flip-info {
+        line-height: 26px;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+
+    .card-flip-rounded .flip-box-front,
+    .card-flip-rounded .flip-box-back {
+        width: 310px !important;
+        height: 310px !important;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+
+    .card-flip-rounded .flip-box-front,
+    .card-flip-rounded .flip-box-back {
+        width: 400px !important;
+        height: 400px !important;
+    }
 }
