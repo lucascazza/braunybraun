@@ -459,6 +459,11 @@ html body .row .col.section-title h1 {
     background-color: transparent !important;
 }
 
+.imagen-legales{
+    height: 100px !important;
+    width: auto !important;
+}
+
 @media screen and (max-width: 767px){
     .lista-items-somos .nectar-icon-list.completed{
         padding-right: 15px;
