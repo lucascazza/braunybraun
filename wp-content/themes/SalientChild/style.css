@@ -469,6 +469,10 @@ html body .row .col.section-title h1 {
     .card-flip-info {
         line-height: 26px;
     }
+
+    .texto-circulo-flip{
+        font-size: 1.1rem;
+    }
 }
 
 @media screen and (min-width: 1000px) {
