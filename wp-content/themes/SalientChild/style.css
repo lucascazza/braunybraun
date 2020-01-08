@@ -82,15 +82,30 @@ label {
     color: #fff !important;
 }
 
+.title-portfolio-news{
+    font-size: 1.5rem !important;
+    line-height: 26px !important;
+    margin-top: 20px;
+}
+
 @media screen and (min-width: 768px) {
     .titulo-seccion {
         padding-top: 60px;
+    }
+    .title-portfolio-news{
+        font-size: 2rem !important;
+        margin-top: 0px;
     }
 }
 
 @media screen and (min-width: 992px) {
     .titulo-seccion {
         padding-top: 20px;
+    }
+
+    .title-portfolio-news{
+        font-size: 2.5rem !important;
+        margin-top: 0px;
     }
 }
 
@@ -464,6 +479,10 @@ html body .row .col.section-title h1 {
     width: auto !important;
 }
 
+.imagen-legales.center-img{
+    height: 135px !important;
+}
+
 @media screen and (max-width: 767px){
     .lista-items-somos .nectar-icon-list.completed{
         padding-right: 15px;
@@ -484,12 +503,21 @@ html body .row .col.section-title h1 {
 
     .card-flip-rounded .flip-box-front,
     .card-flip-rounded .flip-box-back {
-        width: 310px !important;
-        height: 310px !important;
+        width: 260px !important;
+        height: 260px !important;
     }
 }
 
 @media screen and (min-width: 1200px) {
+
+    .card-flip-rounded .flip-box-front,
+    .card-flip-rounded .flip-box-back {
+        width: 300px !important;
+        height: 300px !important;
+    }
+}
+
+@media screen and (min-width: 1400px) {
 
     .card-flip-rounded .flip-box-front,
     .card-flip-rounded .flip-box-back {
