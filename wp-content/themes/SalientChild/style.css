@@ -88,6 +88,10 @@ label {
     margin-top: 20px;
 }
 
+.oculta-mobile{
+    display: none;
+}
+
 @media screen and (min-width: 768px) {
     .titulo-seccion {
         padding-top: 60px;
@@ -106,6 +110,15 @@ label {
     .title-portfolio-news{
         font-size: 2.5rem !important;
         margin-top: 0px;
+    }
+}
+
+@media screen and (min-width: 1000px){
+    .oculta-mobile{
+        display: block;
+    }
+    .oculta-desktop{
+        display: none;
     }
 }
 
