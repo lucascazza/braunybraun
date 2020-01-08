@@ -313,6 +313,10 @@ body #page-header-bg .span_6 span.subheader {
     margin: 60px 0 60px 0;
 }
 
+.nectar-flickity:not(.masonry) .flickity-slider .cell{
+    border-radius: .5rem !important;
+}
+
 @media screen and (min-width: 768px) {
     .nectar-flickity[data-controls="material_pagination"]:not(.masonry) .flickity-viewport {
         margin: 80px 0 130px 0;
