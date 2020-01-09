@@ -317,11 +317,11 @@ body #page-header-bg .span_6 span.subheader {
     border-radius: .5rem !important;
 }
 
-.span_12.light .nectar-flickity[data-controls="material_pagination"] .flickity-page-dots .dot.is-selected:before{
+.nectar-flickity[data-controls="material_pagination"] .flickity-page-dots .dot.is-selected:before{
     box-shadow: inset 0 0 0 1px #d90e21 !important;
 }
 
-.span_12.light .nectar-flickity[data-controls="material_pagination"] .flickity-page-dots .dot:before{
+.nectar-flickity[data-controls="material_pagination"] .flickity-page-dots .dot:before{
     box-shadow: inset 0 0 0 5px #d90e21 !important;
 }
 
