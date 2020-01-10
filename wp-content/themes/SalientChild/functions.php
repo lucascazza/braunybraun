@@ -19,4 +19,6 @@ $parent_style = 'parent-style';
 	}
 add_action( 'wp_enqueue_scripts', 'SalientChild_enqueue_child_styles' );
 
+add_filter('mc4wp_use_sslverify', '__return_false');
+
 /*Write here your own functions */
