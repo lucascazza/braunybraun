@@ -1,0 +1,1 @@
+2020-01-10T17:27:32+00:00 ERROR admin@validatePostApiKey :: 500 :: CURL error :: SSL certificate problem: unable to get local issuer certificate on 1634 in C:\wamp64\www\braunybraun\wp-content\plugins\mailchimp-for-woocommerce\includes\api\class-mailchimp-api.php
