@@ -35,6 +35,10 @@ Text Domain:  SalientChild
     src: url(./fonts/FuturaStd-Medium.otf);
 }
 
+.fancybox-bg{
+    background-color: rgba(0, 0, 0, .7) !important;
+}
+
 p,
 h1,
 h2,
