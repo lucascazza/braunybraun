@@ -52,7 +52,7 @@ class TRP_Translate_Press{
         define( 'TRP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
         define( 'TRP_PLUGIN_BASE', plugin_basename( __DIR__ . '/index.php' ) );
         define( 'TRP_PLUGIN_SLUG', 'translatepress-multilingual' );
-        define( 'TRP_PLUGIN_VERSION', '1.6.3' );
+        define( 'TRP_PLUGIN_VERSION', '1.6.4' );
 
 	    wp_cache_add_non_persistent_groups(array('trp'));
 
@@ -104,6 +104,10 @@ class TRP_Translate_Press{
         require_once TRP_PLUGIN_DIR . 'assets/lib/simplehtmldom/simple_html_dom.php';
         require_once TRP_PLUGIN_DIR . 'includes/shortcodes.php';
         require_once TRP_PLUGIN_DIR . 'includes/class-machine-translation-tab.php';
+
+        if ( did_action( 'elementor/loaded' ) )
+            require_once TRP_PLUGIN_DIR . 'includes/class-elementor-language-for-blocks.php';
+
     }
 
     /**

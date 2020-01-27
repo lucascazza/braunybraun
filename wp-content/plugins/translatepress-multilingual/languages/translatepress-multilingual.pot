@@ -1,4 +1,4 @@
-# Copyright (C) 2019 TranslatePress Multilingual
+# Copyright (C) 2020 TranslatePress Multilingual
 # This file is distributed under the same license as the TranslatePress Multilingual package.
 msgid ""
 msgstr ""
@@ -637,7 +637,7 @@ msgstr ""
 msgid "click here"
 msgstr ""
 
-#: ../translatepress/includes/compatibility-functions.php:44
+#: ../translatepress/includes/compatibility-functions.php:28
 msgid "<strong>TranslatePress</strong> requires <strong><a href=\"http://php.net/manual/en/book.mbstring.php\">Multibyte String PHP library</a></strong>. Please contact your server administrator to install it on your server."
 msgstr ""
 

@@ -3,22 +3,6 @@
 /** Compatibility functions with WP core and various themes and plugins*/
 
 /**
- * Do not redirect when elementor preview is present
- *
- * @param $allow_redirect
- *
- * @return bool
- */
-function trp_elementor_compatibility( $allow_redirect ){
-    // compatibility with Elementor preview. Do not redirect to subdir language when elementor preview is present.
-    if ( isset( $_GET['elementor-preview'] ) ) {
-        return false;
-    }
-    return $allow_redirect;
-}
-add_filter( 'trp_allow_language_redirect', 'trp_elementor_compatibility' );
-
-/**
  * Remove '?fl_builder' query param from edit translation url (when clicking the admin bar button to enter the translation Editor)
  *
  * Otherwise after publishing out of BB and clicking TP admin bar button, it’s still showing the BB interface

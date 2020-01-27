@@ -84,7 +84,7 @@ function TRP_Translator(){
                 var nodeInfo = nodesInfo[j];
                 var translation_found = false;
                 var initial_value = nodeInfo.original;
-                for( var i in response ) {
+                for( var i = 0; i <  response.length; i++ ) {
                     var response_string = response[i].translationsArray[language_to_query];
                     if (response[i].original.trim() == nodeInfo.original.trim()) {
                         // The nodeInfo can contain duplicates and response cannot. We need duplicates to refer to different jQuery objects where the same string appears in different places on the page.

@@ -3,9 +3,9 @@ Contributors: cozmoslabs, razvan.mo, madalin.ungureanu, cristophor
 Donate link: https://www.translatepress.com/
 Tags: translate, translation, multilingual, automatic translation, bilingual, front-end translation, google translate, language
 Requires at least: 3.1.0
-Tested up to: 5.3.1
+Tested up to: 5.3.2
 Requires PHP: 5.6.20
-Stable tag: 1.6.3
+Stable tag: 1.6.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -143,6 +143,12 @@ For more information please check out [TranslatePress - Multilingual plugin docu
 
 
 == Changelog ==
+= 1.6.4 =
+* Added a conditional Elementor block for language.
+* Fixed Google Translate breaking some characters such as & #8220;
+* Improvements to error handling
+* Fixed a js error
+
 = 1.6.3 =
 * Fixed bug not being able to disable block crawlers option
 * Improved UI on settings navigation tab

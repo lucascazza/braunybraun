@@ -938,7 +938,7 @@ class TRP_Translation_Manager{
 	 * @return mixed
 	 */
 	static function strip_gettext_tags( $string ){
-		if( strpos( $string, ' data-trpgettextoriginal=' ) !== false ) {
+		if( is_string($string) && strpos( $string, ' data-trpgettextoriginal=' ) !== false ) {
 			$string = preg_replace('/ data-trpgettextoriginal=\d+#!trpen#/', '', $string);
 			$string = str_replace('#!trpst#trp-gettext', '', $string);
 			$string = str_replace('#!trpst#/trp-gettext', '', $string);
