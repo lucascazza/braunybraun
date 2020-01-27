@@ -508,6 +508,35 @@ html body .row .col.section-title h1 {
     height: 135px !important;
 }
 
+.position-relative{
+    position: relative !important;
+}
+
+#bloque-estrategia{
+    cursor: pointer;
+}
+
+#afectado{
+    transition: .25s ease;
+    opacity: 0;
+    position: absolute !important;
+    bottom: 0px;
+    right: 0px;
+    pointer-events: none;
+    padding: 10px;
+    background: #fafafa;
+    border-radius: 0.25rem;
+    border: solid 1px #ccc;
+}
+
+#afectado.afectado{
+    opacity: 1;
+}
+
+#afectado img{
+    width: 220px;
+}
+
 @media screen and (max-width: 767px){
     .lista-items-somos .nectar-icon-list.completed{
         padding-right: 15px;

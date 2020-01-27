@@ -16593,8 +16593,6 @@ if(navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('C
 })(jQuery);	
 	
 	
-	
-	
 });
 
 
@@ -16614,7 +16612,14 @@ function resizeIframe() {
 	
 }
 
-
+var bloqueEstrategia = document.getElementById("bloque-estrategia");
+var afectado = document.getElementById("afectado");
+bloqueEstrategia.addEventListener("mouseover", () => {
+  afectado.className = "afectado";
+}, false)
+bloqueEstrategia.addEventListener("mouseout", () => {
+  afectado.className = "";
+}, false)
 
 /*!
  * hoverIntent v1.9.0 // 2017.09.01 // jQuery v1.7.0+
