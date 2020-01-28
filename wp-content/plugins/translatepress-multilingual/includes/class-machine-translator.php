@@ -139,7 +139,7 @@ class TRP_Machine_Translator {
     private function get_placeholders( $count ){
 	    $placeholders = array();
 	    for( $i = 1 ; $i <= $count; $i++ ){
-            $placeholders[] = '1TP' . $i;
+            $placeholders[] = '1TP' . $i . 'T';
         }
 	    return $placeholders;
     }

@@ -793,7 +793,8 @@ class TRP_Plugin_Updater{
                     $license_data = json_decode( wp_remote_retrieve_body( $response ) );
 
                     // $license_data->license will be either "deactivated" or "failed"
-                    if( $license_data->license == 'deactivated' ) {
+                    // regardless, we delete the record in the client website. Otherwise, if he tries to add a new license, he can't.
+                    if( $license_data->license == 'deactivated' || $license_data->license == 'failed') {
                         delete_option( 'trp_license_status' );
                     }
 

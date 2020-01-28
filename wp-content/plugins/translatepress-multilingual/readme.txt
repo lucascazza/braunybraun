@@ -5,7 +5,7 @@ Tags: translate, translation, multilingual, automatic translation, bilingual, fr
 Requires at least: 3.1.0
 Tested up to: 5.3.2
 Requires PHP: 5.6.20
-Stable tag: 1.6.4
+Stable tag: 1.6.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -143,6 +143,12 @@ For more information please check out [TranslatePress - Multilingual plugin docu
 
 
 == Changelog ==
+= 1.6.5 =
+* Fixed Exclude words from automatic translation when many excluded words are added
+* Compatibility with WooCommerce Fondy payment gateway
+* Added filter to allow disabling of error manager
+* Fixed a bug where you couldn't deactivate a license to add a new one
+
 = 1.6.4 =
 * Added a conditional Elementor block for language.
 * Fixed Google Translate breaking some characters such as & #8220;

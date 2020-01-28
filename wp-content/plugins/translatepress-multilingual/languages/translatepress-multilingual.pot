@@ -169,15 +169,15 @@ msgstr ""
 msgid "Others"
 msgstr ""
 
-#: ../translatepress/includes/class-error-manager.php:42
+#: ../translatepress/includes/class-error-manager.php:50
 msgid "<strong>TranslatePress</strong> encountered SQL errors. <a href=\"%s\" title=\"View TranslatePress SQL Errors\">Check out the errors</a>."
 msgstr ""
 
-#: ../translatepress/includes/class-error-manager.php:51
+#: ../translatepress/includes/class-error-manager.php:59
 msgid "Automatic translation has been disabled."
 msgstr ""
 
-#: ../translatepress/includes/class-error-manager.php:118, ../translatepress/includes/class-plugin-notices.php:340, ../translatepress/includes/class-plugin-notices.php:371, ../translatepress/includes/class-plugin-notices.php:390, ../translatepress/includes/class-plugin-notices.php:404, ../translatepress/includes/class-plugin-notices.php:429
+#: ../translatepress/includes/class-error-manager.php:129, ../translatepress/includes/class-plugin-notices.php:340, ../translatepress/includes/class-plugin-notices.php:371, ../translatepress/includes/class-plugin-notices.php:390, ../translatepress/includes/class-plugin-notices.php:404, ../translatepress/includes/class-plugin-notices.php:429
 msgid "Dismiss this notice."
 msgstr ""
 

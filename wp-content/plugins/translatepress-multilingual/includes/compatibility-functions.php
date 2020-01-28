@@ -505,3 +505,20 @@ function trp_woo_checkout_exclude_strings( $return, $translation, $text, $domain
     }
     return $return;
 }
+
+/**
+ * Compatibility with WooCommerce Fondy Payment gateway
+ */
+add_action('init', 'trp_woo_fondy_payment_gateway_add_gettext_filter');
+function trp_woo_fondy_payment_gateway_add_gettext_filter(){
+    if ( class_exists( 'WC_fondy' ) ){
+        add_filter('gettext', 'trp_woo_fondy_payment_gateway_exclude_gettext_strings', 1000, 3 );
+    }
+}
+
+function trp_woo_fondy_payment_gateway_exclude_gettext_strings($translation, $text, $domain){
+    if ( $domain == 'fondy-woocommerce-payment-gateway' && $text == 'Order: ' ){
+        return TRP_Translation_Manager::strip_gettext_tags( $translation );
+    }
+    return $translation;
+}

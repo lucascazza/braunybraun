@@ -12,6 +12,10 @@ class TRP_Error_Manager{
         $this->settings = $settings;
     }
 
+    public function is_error_manager_disabled(){
+        return apply_filters( 'trp_disable_error_manager', false );
+    }
+
     /**
      * Record specified error in trp_db_errors option
      *
@@ -21,6 +25,10 @@ class TRP_Error_Manager{
     'disable_automatic_translations' => bool
      */
     public function record_error( $error_details ){
+        if ( $this->is_error_manager_disabled() ){
+            return;
+        }
+
         $option = get_option('trp_db_errors', array(
             'notifications' => array(),
             'errors' => array()
@@ -106,6 +114,9 @@ class TRP_Error_Manager{
      * Hooked to admin_init
      */
     public function show_notification_about_errors(){
+        if ( $this->is_error_manager_disabled() ){
+            return;
+        }
         $option = get_option( 'trp_db_errors', false );
         if ( $option !== false ) {
             foreach( $option['notifications'] as $logged_notification ) {
