@@ -525,9 +525,7 @@ html body .row .col.section-title h1 {
     cursor: pointer;
 }
 
-#afectado{
-    transition: .25s ease;
-    opacity: 0;
+img.afectado{
     position: absolute !important;
     bottom: 0px;
     right: 0px;
@@ -538,11 +536,15 @@ html body .row .col.section-title h1 {
     border: solid 1px #ccc;
 }
 
-.bloque-estrategia:hover~div.wpb_raw_code.wpb_content_element.wpb_raw_html>div.wpb_wrapper>#afectado{
-    opacity: 1;
+.bloque-estrategia~div.img-with-aniamtion-wrap{
+    display: none !important;
 }
 
-#afectado img{
+.bloque-estrategia:hover~div.img-with-aniamtion-wrap{
+    display: block !important;
+}
+
+img.afectado{
     width: 270px;
 }
 
