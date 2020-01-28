@@ -516,7 +516,12 @@ html body .row .col.section-title h1 {
     position: relative !important;
 }
 
-#bloque-estrategia{
+.bloque-estrategia{
+    width: fit-content;
+    margin: auto;
+}
+
+.bloque-estrategia h4{
     cursor: pointer;
 }
 
@@ -533,7 +538,7 @@ html body .row .col.section-title h1 {
     border: solid 1px #ccc;
 }
 
-#afectado.afectado{
+.bloque-estrategia:hover~div.wpb_raw_code.wpb_content_element.wpb_raw_html>div.wpb_wrapper>#afectado{
     opacity: 1;
 }
 
