@@ -155,6 +155,12 @@ label {
     }
 }
 
+/* MAP */
+
+#maps .wpb_wrapper p{
+    display: flex !important;
+}
+
 /* MENU IZQUIERDO */
 
 div#slide-out-widget-area.slide-out-from-right-hover,
