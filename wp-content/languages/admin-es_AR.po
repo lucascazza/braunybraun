@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.3.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-12-09 17:05:30+0000\n"
+"PO-Revision-Date: 2020-02-06 05:52:53+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2463,12 +2463,12 @@ msgstr "Noto Serif"
 #. translators: First post content. %s: Site link.
 #: wp-admin/includes/upgrade.php:212
 msgid "Welcome to WordPress. This is your first post. Edit or delete it, then start writing!"
-msgstr "Bienvenido a WordPress. Esta es tu primera entrada. Editala o borrala, y después empezá a escribir!"
+msgstr "Bienvenido a WordPress. Esta es tu primera entrada. Editala o borrala, y después ¡empezá a escribir!"
 
 #. translators: First page content. %s: Site admin URL.
 #: wp-admin/includes/upgrade.php:302
 msgid "As a new WordPress user, you should go to <a href=\"%s\">your dashboard</a> to delete this page and create new pages for your content. Have fun!"
-msgstr "Como nuevo usuario de WordPress, deberías dirigirte a <a href=\"%s\">tu escritorio</a> para borrar esta página y crear nuevas páginas para tu contenido. Divertite!"
+msgstr "Como nuevo usuario de WordPress, deberías dirigirte a <a href=\"%s\">tu escritorio</a> para borrar esta página y crear nuevas páginas para tu contenido. ¡Divertite!"
 
 #. translators: First page content.
 #: wp-admin/includes/upgrade.php:296
@@ -2577,7 +2577,7 @@ msgstr "%s (Borrador)"
 
 #: wp-admin/options-privacy.php:25
 msgid "Privacy Policy page updated successfully."
-msgstr "Página de política de privacidad actualizada correctamente."
+msgstr "La página \"Política de Privacidad\" se actualizó correctamente."
 
 #. translators: %s: admin_init
 #: wp-admin/includes/plugin.php:2263
@@ -2608,7 +2608,7 @@ msgstr "O:"
 
 #: wp-admin/options-privacy.php:133
 msgid "After your Privacy Policy page is set, we suggest that you edit it."
-msgstr "Después de configurar tu página de política de privacidad, te sugerimos que la edites."
+msgstr "Después de configurar tu página \"Política de privacidad\", te sugerimos que la edites."
 
 #. translators: 1: Privacy Policy guide URL, 2: Additional link attributes, 3:
 #. Accessibility text.
@@ -4969,7 +4969,7 @@ msgstr "Conexión con la base de datos conseguida"
 
 #: wp-admin/setup-config.php:210
 msgid "Set up your database connection"
-msgstr "Establecer la conexión con tu base de datos"
+msgstr "Configurá la conexión con tu base de datos"
 
 #: wp-admin/setup-config.php:161
 msgid "Before getting started"
@@ -4986,7 +4986,7 @@ msgstr "Comprobar la claves secretas"
 #. translators: %s: Nav menu title.
 #: wp-admin/includes/nav-menu.php:1228
 msgid "%s has been updated."
-msgstr "%s se ha actualizado."
+msgstr "%s se actualizó."
 
 #. translators: %s: Walker class name.
 #: wp-admin/includes/nav-menu.php:1050
