@@ -64,6 +64,11 @@ class TRP_Upgrade {
             if ( version_compare($stored_database_version, '1.6.1', '<=')) {
                 $this->upgrade_machine_translation_settings();
             }
+            if ( version_compare( $stored_database_version, '1.6.5', '<=' ) ) {
+                $this->trp_query->check_for_original_id_column();
+                $this->trp_query->check_original_table();
+                $this->trp_query->check_original_meta_table();
+            }
         }
 
         // don't update the db version unless they are different. Otherwise the query is run on every page load.
@@ -101,7 +106,31 @@ class TRP_Upgrade {
 					'option_name'       => 'trp_updated_database_gettext_empty_rows_145',
 					'callback'          => array( $this,'trp_updated_database_gettext_empty_rows_145'),
 					'batch_size'        => 20000
-				)
+				),
+                'original_id_insert_166' => array(
+                    'version'           => '1.6.6',
+                    'option_name'       => 'trp_updated_database_original_id_insert_166',
+                    'callback'          => array( $this,'trp_updated_database_original_id_insert_166'),
+                    'batch_size'        => 1000,
+                    'message_processing'=> __('Inserting original strings for language %s...', 'translatepress-multilingual' )
+                ),
+                    'original_id_cleanup_166' => array(
+                    'version'           => '1.6.6',
+                    'option_name'       => 'trp_updated_database_original_id_cleanup_166',
+                    'callback'          => array( $this,'trp_updated_database_original_id_cleanup_166'),
+                    'progress_message'  => 'clean',
+                    'batch_size'        => 1000,
+                    'message_initial'   => '',
+                    'message_processing'=> __('Cleaning original strings table for language %s...', 'translatepress-multilingual' )
+                ),
+                'original_id_update_166' => array(
+                    'version'           => '1.6.6',
+                    'option_name'       => 'trp_updated_database_original_id_update_166',
+                    'callback'          => array( $this,'trp_updated_database_original_id_update_166'),
+                    'batch_size'        => 5000,
+                    'message_initial'   => '',
+                    'message_processing'=> __('Updating original string ids for language %s...', 'translatepress-multilingual' )
+                )
 			)
 		);
 	}
@@ -181,8 +210,17 @@ class TRP_Upgrade {
 			}else{
 				$_REQUEST['trp_updb_lang'] = $this->settings['translation-languages'][0];
 				$_REQUEST['trp_updb_batch'] = 0;
-				$request['progress_message'] .= '<p>' . sprintf(__('Updating database to version %s+', 'translatepress-multilingual' ),  $updates_needed[ $_REQUEST['trp_updb_action'] ]['version'] ). '</p>';
-				$request['progress_message'] .= sprintf(__('Processing table for language %s...', 'translatepress-multilingual' ),  $_REQUEST['trp_updb_lang'] );
+
+                $update_message_initial = isset( $updates_needed[$_REQUEST['trp_updb_action']]['message_initial'] ) ?
+                                            $updates_needed[$_REQUEST['trp_updb_action']]['message_initial']
+                                            : __('Updating database to version %s+', 'translatepress-multilingual' );
+
+                $update_message_processing = isset( $updates_needed[$_REQUEST['trp_updb_action']]['message_processing'] ) ?
+                                                $updates_needed[$_REQUEST['trp_updb_action']]['message_processing']
+                                                : __('Processing table for language %s...', 'translatepress-multilingual' );
+
+				$request['progress_message'] .= '<p>' . sprintf( $update_message_initial,  $updates_needed[ $_REQUEST['trp_updb_action'] ]['version'] ) . '</p>';
+				$request['progress_message'] .= sprintf( $update_message_processing, $_REQUEST['trp_updb_lang'] );
 			}
 		}else{
 			if ( !isset( $updates_needed[ $_REQUEST['trp_updb_action'] ] ) ){
@@ -226,7 +264,7 @@ class TRP_Upgrade {
 			$duration = $stop_time - $start_time;
 		}
 		if ( ! $finished_with_language ) {
-			$request['trp_updb_batch'] = $get_batch + 1;
+			$request['trp_updb_batch'] = $get_batch;
 		}
 
 
@@ -237,7 +275,10 @@ class TRP_Upgrade {
 				// next language code in array
 				$request['trp_updb_lang'] = $this->settings['translation-languages'][ $index + 1 ];
 				$request['progress_message'] .= __(' done.', 'translatepress-multilingual' ) . '</br>';
-				$request['progress_message'] .= '</br>' . sprintf(__('Processing table for language %s...', 'translatepress-multilingual' ),  $request['trp_updb_lang'] );
+                $update_message_processing = isset( $updates_needed[$_REQUEST['trp_updb_action']]['message_processing'] ) ?
+                                                $updates_needed[$_REQUEST['trp_updb_action']]['message_processing']
+                                                : __('Processing table for language %s...', 'translatepress-multilingual' );
+				$request['progress_message'] .= '</br>' . sprintf( $update_message_processing,  $request['trp_updb_lang'] );
 			} else {
 				// finish action due to completing all the translation languages
 				$request['progress_message'] .= __(' done.', 'translatepress-multilingual' ) . '</br>';
@@ -327,6 +368,68 @@ class TRP_Upgrade {
 			return true;
 		}
 	}
+
+	/**
+     * Normalize original ids for all dictionary entries
+     *
+     * @param string $language_code     Language code of the table
+     * @param int $inferior_limit       Omit first X rows
+     * @param int $batch_size           How many rows to query
+     *
+     * @return bool
+     */
+    public function trp_updated_database_original_id_insert_166( $language_code, $inferior_limit, $batch_size ){
+        if ( ! $this->trp_query ) {
+            $trp = TRP_Translate_Press::get_trp_instance();
+            /* @var TRP_Query */
+            $this->trp_query = $trp->get_component( 'query' );
+        }
+
+        $rows_inserted = $this->trp_query->original_ids_insert( $language_code, $inferior_limit, $batch_size );
+
+        if ( $rows_inserted > 0 ){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public function trp_updated_database_original_id_cleanup_166( $language_code, $inferior_limit, $batch_size ){
+    if ( ! $this->trp_query ) {
+        $trp = TRP_Translate_Press::get_trp_instance();
+        /* @var TRP_Query */
+        $this->trp_query = $trp->get_component( 'query' );
+    }
+
+    $this->trp_query->original_ids_cleanup();
+
+    return true;
+}
+
+    /**
+ * Normalize original ids for all dictionary entries
+ *
+ * @param string $language_code     Language code of the table
+ * @param int $inferior_limit       Omit first X rows
+ * @param int $batch_size           How many rows to query
+ *
+ * @return bool
+ */
+    public function trp_updated_database_original_id_update_166( $language_code, $inferior_limit, $batch_size ){
+        if ( ! $this->trp_query ) {
+            $trp = TRP_Translate_Press::get_trp_instance();
+            /* @var TRP_Query */
+            $this->trp_query = $trp->get_component( 'query' );
+        }
+
+        $rows_updated = $this->trp_query->original_ids_reindex( $language_code, $inferior_limit, $batch_size );
+
+        if ( $rows_updated > 0 ){
+            return false;
+        }else {
+            return true;
+        }
+    }
 
 	/**
 	 * Remove duplicate rows from DB for trp_dictionary tables.

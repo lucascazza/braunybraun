@@ -803,8 +803,13 @@ class TRP_Translation_Manager{
                     $new_strings[] = $trp_gettext_string_for_machine_translation['original'];
                 }
 
-                // Gettext strings are always in the English language
-                $machine_strings = $this->machine_translator->translate( $new_strings, $TRP_LANGUAGE, 'en_US' );
+                // Gettext strings are considered by default to be in the English language
+                $source_language = apply_filters( 'trp_gettext_source_language', 'en_US', $TRP_LANGUAGE, $new_strings, $trp_gettext_strings_for_machine_translation );
+                if ( apply_filters( 'trp_gettext_allow_machine_translation', true, $source_language, $TRP_LANGUAGE, $new_strings, $trp_gettext_strings_for_machine_translation ) ){
+                     $machine_strings = $this->machine_translator->translate( $new_strings, $TRP_LANGUAGE, $source_language );
+                }else{
+                    $machine_strings = apply_filters( 'trp_gettext_machine_translate_strings', array(), $new_strings, $TRP_LANGUAGE, $trp_gettext_strings_for_machine_translation );
+                }
 
                 if( !empty( $machine_strings ) ){
                     foreach( $machine_strings as $key => $machine_string ){

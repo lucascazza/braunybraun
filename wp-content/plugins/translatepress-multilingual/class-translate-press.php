@@ -27,6 +27,7 @@ class TRP_Translate_Press{
     protected $translation_memory;
     protected $machine_translation_tab;
     protected $error_manager;
+    protected $search;
 
     public $active_pro_addons = array();
     public static $translate_press = null;
@@ -52,7 +53,7 @@ class TRP_Translate_Press{
         define( 'TRP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
         define( 'TRP_PLUGIN_BASE', plugin_basename( __DIR__ . '/index.php' ) );
         define( 'TRP_PLUGIN_SLUG', 'translatepress-multilingual' );
-        define( 'TRP_PLUGIN_VERSION', '1.6.5' );
+        define( 'TRP_PLUGIN_VERSION', '1.6.9' );
 
 	    wp_cache_add_non_persistent_groups(array('trp'));
 
@@ -104,10 +105,9 @@ class TRP_Translate_Press{
         require_once TRP_PLUGIN_DIR . 'assets/lib/simplehtmldom/simple_html_dom.php';
         require_once TRP_PLUGIN_DIR . 'includes/shortcodes.php';
         require_once TRP_PLUGIN_DIR . 'includes/class-machine-translation-tab.php';
-
+        require_once TRP_PLUGIN_DIR . 'includes/class-search.php';
         if ( did_action( 'elementor/loaded' ) )
             require_once TRP_PLUGIN_DIR . 'includes/class-elementor-language-for-blocks.php';
-
     }
 
     /**
@@ -138,6 +138,7 @@ class TRP_Translate_Press{
         $this->license_page               = new TRP_LICENSE_PAGE();
         $this->translation_memory         = new TRP_Translation_Memory( $this->settings->get_settings() );
         $this->error_manager              = new TRP_Error_Manager( $this->settings->get_settings() );
+        $this->search                     = new TRP_Search( $this->settings->get_settings() );
     }
 
     /**
@@ -184,6 +185,7 @@ class TRP_Translate_Press{
 	    $this->loader->add_action( 'trp_settings_tabs', $this->advanced_tab, 'add_advanced_tab_to_settings', 10, 1 );
 	    $this->loader->add_action( 'admin_menu', $this->advanced_tab, 'add_submenu_page_advanced' );
 	    $this->loader->add_action( 'trp_output_advanced_settings_options', $this->advanced_tab, 'output_advanced_options' );
+	    $this->loader->add_action( 'trp_before_output_advanced_settings_options', $this->advanced_tab, 'trp_advanced_settings_content_table' );
 	    $this->loader->add_action( 'admin_init', $this->advanced_tab, 'register_setting' );
 	    $this->loader->add_action( 'admin_notices', $this->advanced_tab, 'admin_notices' );
 
@@ -201,6 +203,7 @@ class TRP_Translate_Press{
         $this->loader->add_action( 'admin_menu', $this->error_manager, 'register_submenu_errors_page', 10 );
         $this->loader->add_action( 'trp_dismiss_notification', $this->error_manager, 'clear_notification_from_db', 10, 2 );
         $this->loader->add_filter( 'trp_machine_translation_sanitize_settings', $this->error_manager, 'clear_disable_machine_translation_notification_from_db', 10, 1 );
+        $this->loader->add_filter( 'trp_error_manager_page_output', $this->error_manager, 'show_instructions_on_how_to_fix', 7, 1 );
         $this->loader->add_filter( 'trp_error_manager_page_output', $this->error_manager, 'output_db_errors', 10, 1 );
 
         $this->loader->add_action( 'wp_ajax_nopriv_trp_get_translations_regular', $this->editor_api_regular_strings, 'get_translations' );
@@ -265,6 +268,10 @@ class TRP_Translate_Press{
         $this->loader->add_action( "trp_set_translation_for_attribute", $this->translation_render, 'translate_image_srcset_attributes', 10, 3 );
         $this->loader->add_action( "trp_allow_machine_translation_for_string", $this->translation_render, 'allow_machine_translation_for_string', 10, 4 );
         $this->loader->add_action( "init", $this->translation_render, 'add_callbacks_for_translating_rest_api', 10, 4 );
+
+        /* add custom containers for post content and pots title so we can identify string that are part of them */
+        $this->loader->add_filter( "the_content", $this->translation_render, 'wrap_with_post_id', 1000 );
+        $this->loader->add_filter( "the_title", $this->translation_render, 'wrap_with_post_id', 1000, 2 );
 
 
 
@@ -343,6 +350,10 @@ class TRP_Translate_Press{
 
         // machine translation
         $this->loader->add_action( 'plugins_loaded', $this, 'init_machine_translation', 10 );
+
+        //search
+        $this->loader->add_filter( 'pre_get_posts', $this->search, 'trp_search_filter', 10 );
+        $this->loader->add_filter( 'get_search_query', $this->search, 'trp_search_query', 10 );
     }
 
     /**

@@ -5,7 +5,7 @@ Tags: translate, translation, multilingual, automatic translation, bilingual, fr
 Requires at least: 3.1.0
 Tested up to: 5.3.2
 Requires PHP: 5.6.20
-Stable tag: 1.6.5
+Stable tag: 1.6.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -143,6 +143,41 @@ For more information please check out [TranslatePress - Multilingual plugin docu
 
 
 == Changelog ==
+= 1.6.9 =
+* Fixed a conflict with Contact Form 7 plugin
+* Fixed some broken html issues caused by a custom trp wrap. Some Revolution Slider plugin issues are fixed by this.
+* Optimized some queries regarding search indexing to fix some performance problems. It should help with some Revolution Slider plugin performance issues.
+* Fixed an issue with textarea in Advanced Options
+* Exclude links from "Force language in custom links" by adding their selector in Settings -> Advanced -> Exclude selectors from translation
+* Fixed force custom links in default language when add-subdirectory is set to yes and default language is not first language
+* Better handling of href links with spaces
+
+= 1.6.8 =
+* Added support for All In One SEO
+* Added compatibility with Peepso double slashing translated links
+* Add option in Advanced tab to disable translated links in sitemap
+* Add options to disable post container tags in Advanced Tab.
+* Organize Advanced Tabs by categories.
+* Fix an error regarding the settings class in class-languages.php
+* Fixed a filter in the trp_curpageurl() function
+* Fix fatal error thrown when trying to access the global while it's null in some cases
+* Fixed x-default from advanced not working as expected
+
+= 1.6.7 =
+* Improved the database update queries
+* Fixed an error in mysql regarding post_parent_id meta insert if no id was found
+* Added Rank Math support
+* Added SEO Press support
+* We now remove the trp-post-container before displaying the site
+* Removed Get add-on from add-ons page
+* Refactor support for SEO sitemaps so we don't add the language to their URL's
+
+= 1.6.6 =
+* Implemented Search functionality in translated languages
+* Added support for WooCommerce product search in translated languages
+* Skip dynamic strings detection of ad links
+* Added filters for adjusting gettext machine translation
+
 = 1.6.5 =
 * Fixed Exclude words from automatic translation when many excluded words are added
 * Compatibility with WooCommerce Fondy payment gateway

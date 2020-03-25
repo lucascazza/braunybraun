@@ -251,6 +251,10 @@ class TRP_Settings{
             $this->trp_query->check_gettext_table( $language_code );
         }
 
+        //in version 1.6.6 we normalized the original strings and created new tables
+        $this->trp_query->check_original_table();
+        $this->trp_query->check_original_meta_table();
+
         // regenerate permalinks in case something changed
         flush_rewrite_rules();
 

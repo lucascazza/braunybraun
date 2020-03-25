@@ -39,7 +39,9 @@ class TRP_Translation_Render{
         else {
             mb_http_output("UTF-8");
             if ( $TRP_LANGUAGE == $this->settings['default-language'] && !trp_is_translation_editor() ) {
-                ob_start(array($this, 'clear_trp_tags'), 4096);//on default language when we are not in editor we just need to clear any trp tags that could still be present
+                // on default language when we are not in editor we just need to clear any trp tags that could still be present and handle links for special situation
+                $chunk_size = ($this->handle_custom_links_for_default_language() ) ? null : 4096;
+                ob_start(array( $this, 'render_default_language' ), $chunk_size);
             } else {
                 ob_start(array($this, 'translate_page'));//everywhere else translate the page
             }
@@ -320,10 +322,18 @@ class TRP_Translation_Render{
             $this->url_converter = $trp->get_component('url_converter');
         }
 
+
         /* make sure we only translate on the rest_prepare_$post_type filter in REST requests and not the whole json */
-        if( strpos( $this->url_converter->cur_page_url(), get_rest_url() ) !== false && strpos( current_filter(), 'rest_prepare_' ) !== 0){
-            $trpremoved = $this->remove_trp_html_tags( $output );
-	        return $trpremoved;
+
+        /* in certain cases $wp_rewrite is null, so it trows a fatal error. This is just a quick fix. The actual issue is probably in WordPress core
+         * see taskid #2pjped
+         */
+        global $wp_rewrite;
+        if( is_object($wp_rewrite) ) {
+            if( strpos( $this->url_converter->cur_page_url(), get_rest_url() ) !== false && strpos( current_filter(), 'rest_prepare_' ) !== 0){
+                $trpremoved = $this->remove_trp_html_tags( $output );
+                return $trpremoved;
+            }
         }
 
         global $TRP_LANGUAGE;
@@ -572,8 +582,11 @@ class TRP_Translation_Render{
                 && !preg_match('/^\d+%$/',$trimmed_string)
                 && !$this->has_ancestor_attribute( $row, $no_translate_attribute ) )
             {
-                array_push( $translateable_strings, $trimmed_string );
+                $string_count = array_push( $translateable_strings, $trimmed_string );
                 array_push( $nodes, array('node' => $row, 'type' => 'block'));
+
+                //add data-trp-post-id attribute if needed
+                $nodes = $this->maybe_add_post_id_in_node( $nodes, $row, $string_count );
             }
         }
 
@@ -592,7 +605,7 @@ class TRP_Translation_Render{
                 && !$this->has_ancestor_class( $row, 'translation-block') )
             {
                 // $translateable_strings array needs to be in sync in $nodes array
-                array_push( $translateable_strings, $trimmed_string );
+                $string_count = array_push( $translateable_strings, $trimmed_string );
                 if( $parent->tag == 'button') {
                     array_push($nodes, array('node' => $row, 'type' => 'button'));
                 }
@@ -603,12 +616,13 @@ class TRP_Translation_Render{
                         array_push( $nodes, array( 'node' => $row, 'type' => 'text' ) );
                     }
                 }
+
+                //add data-trp-post-id attribute if needed
+                $nodes = $this->maybe_add_post_id_in_node( $nodes, $row, $string_count );
             }
         }
 	    //set up general links variables
 	    $home_url = home_url();
-	    $admin_url = admin_url();
-	    $wp_login_url = wp_login_url();
 
 	    $node_accessors = $this->get_node_accessors();
 	    foreach( $node_accessors as $node_accessor_key => $node_accessor ){
@@ -649,6 +663,41 @@ class TRP_Translation_Render{
         $translated_strings = $this->process_strings( $translateable_strings, $language_code, null, $skip_machine_translating_strings );
 
         do_action('trp_translateable_information', $translateable_information, $translated_strings, $language_code);
+
+        //check for post_id meta on original strings, and insert for non existing
+        /*
+         * - get only strings that have the post_id in the nodes from $translateable_information
+         * - get the original id's for these string from the original table
+         * - see which of these id's have the meta with the current post_id value and insert into the meta table the ones that don't
+         *
+         */
+
+        if( !empty($translateable_information['nodes']) ){
+            $strings_in_post_content = array();
+            foreach ( $translateable_information['nodes'] as $i => $node ){
+                if( !empty( $node['post_id'] ) ){
+                    $strings_in_post_content['strings'][] = $translateable_information['translateable_strings'][$i];
+                    $strings_in_post_content['post_ids'][] = $node['post_id'];
+                }
+            }
+            if( !empty( $strings_in_post_content ) ){
+
+                //try to do this only once a day to decrease query load
+                $current_permalink = get_permalink();
+                $set_meta_for_this_url = get_transient('processed_original_string_meta_post_id_for_' . hash('md4', $current_permalink));
+                if( $set_meta_for_this_url === false ){
+
+                    $original_string_ids = $this->trp_query->get_original_string_ids($strings_in_post_content['strings']);
+
+                    if( !empty( $original_string_ids ) ){
+                        //there is a correlation between the two arrays
+                        $this->trp_query->set_original_string_meta_post_id( $original_string_ids, $strings_in_post_content['post_ids'] );
+                    }
+
+                    set_transient('processed_original_string_meta_post_id_for_' . hash('md4', $current_permalink), 'done', 60*60*24 );
+                }
+            }
+        }
 
         if ( $preview_mode ) {
             $translated_string_ids = $this->trp_query->get_string_ids($translateable_strings, $language_code);
@@ -710,23 +759,58 @@ class TRP_Translation_Render{
             }
         }
 
+        $html = $this->handle_custom_links_and_forms( $html );
+
+	    // Append an html table containing the errors
+	    $trp_editor_notices = apply_filters( 'trp_editor_notices', $trp_editor_notices );
+	    if ( trp_is_translation_editor('preview') && $trp_editor_notices != '' ){
+		    $body = $html->find('body', 0 );
+		    $body->innertext = '<div data-no-translation class="trp-editor-notices">' . $trp_editor_notices . "</div>" . $body->innertext;
+	    }
+	    $final_html = $html->save();
+
+        /* perform preg replace on the remaining trp-gettext tags */
+        $final_html = $this->remove_trp_html_tags( $final_html );
+
+	    return apply_filters( 'trp_translated_html', $final_html, $TRP_LANGUAGE, $language_code, $preview_mode );
+    }
+
+    public function handle_custom_links_and_forms( $html ){
+        global $TRP_LANGUAGE;
+        $preview_mode = isset( $_REQUEST['trp-edit-translation'] ) && $_REQUEST['trp-edit-translation'] == 'preview';
+        $home_url = home_url();
+        $admin_url = admin_url();
+        $wp_login_url = wp_login_url();
+	    $no_translate_attribute = 'data-no-translation';
+        if ( ! $this->url_converter ) {
+            $trp = TRP_Translate_Press::get_trp_instance();
+            $this->url_converter = $trp->get_component('url_converter');
+        }
 
         // force custom links to have the correct language
         foreach( $html->find('a[href!="#"]') as $a_href)  {
             $a_href->href = apply_filters( 'trp_href_from_translated_page', $a_href->href, $this->settings['default-language'] );
 
-            $url = $a_href->href;
+            $url = trim($a_href->href);
 
             $url = $this->maybe_is_local_url($url, $home_url);
 
             $is_external_link = $this->is_external_link( $url, $home_url );
             $is_admin_link = $this->is_admin_link($url, $admin_url, $wp_login_url);
 
-	        if( $preview_mode && ! $is_external_link ){
-				$a_href->setAttribute( 'data-trp-original-href', $url );
-	        }
+            if( $preview_mode && ! $is_external_link ){
+                $a_href->setAttribute( 'data-trp-original-href', $url );
+            }
 
-            if ( $TRP_LANGUAGE != $this->settings['default-language'] && $this->settings['force-language-to-custom-links'] == 'yes' && !$is_external_link && $this->url_converter->get_lang_from_url_string( $url ) == null && !$is_admin_link && strpos($url, '#TRPLINKPROCESSED') === false ){
+            if (
+            	( $TRP_LANGUAGE != $this->settings['default-language'] || $this->settings['add-subdirectory-to-default-language'] == 'yes' ) &&
+                $this->settings['force-language-to-custom-links'] == 'yes' &&
+	            !$is_external_link &&
+                $this->url_converter->get_lang_from_url_string( $url ) == null &&
+	            !$is_admin_link &&
+                strpos($url, '#TRPLINKPROCESSED') === false &&
+	            !$this->has_ancestor_attribute( $a_href, $no_translate_attribute )
+            ){
                 $a_href->href = apply_filters( 'trp_force_custom_links', $this->url_converter->get_url_for_language( $TRP_LANGUAGE, $url ), $url, $TRP_LANGUAGE, $a_href );
                 $url = $a_href->href;
             }
@@ -762,19 +846,14 @@ class TRP_Translation_Render{
         foreach ( $html->find('link') as $link ){
             $link->href = str_replace('#TRPLINKPROCESSED', '', $link->href);
         }
+        return $html;
+    }
 
-	    // Append an html table containing the errors
-	    $trp_editor_notices = apply_filters( 'trp_editor_notices', $trp_editor_notices );
-	    if ( trp_is_translation_editor('preview') && $trp_editor_notices != '' ){
-		    $body = $html->find('body', 0 );
-		    $body->innertext = '<div data-no-translation class="trp-editor-notices">' . $trp_editor_notices . "</div>" . $body->innertext;
-	    }
-	    $final_html = $html->save();
-
-        /* perform preg replace on the remaining trp-gettext tags */
-        $final_html = $this->remove_trp_html_tags( $final_html );
-
-	    return apply_filters( 'trp_translated_html', $final_html, $TRP_LANGUAGE, $language_code, $preview_mode );
+    public function is_first_language_not_default_language(){
+        return ( isset( $this->settings['add-subdirectory-to-default-language'] ) &&
+            $this->settings['add-subdirectory-to-default-language'] == 'yes' &&
+            isset( $this->settings['publish-languages'][0] ) &&
+            $this->settings['default-language'] != $this->settings['publish-languages'][0] );
     }
 
     /*
@@ -793,6 +872,14 @@ class TRP_Translation_Render{
 		    }
 	    }
 	    return $translatable_string;
+    }
+
+    public function maybe_add_post_id_in_node( $nodes, $row, $string_count ){
+        $post_container_node = $this->has_ancestor_attribute( $row, 'data-trp-post-id' );
+        if( $post_container_node && $post_container_node->attr['data-trp-post-id'] ) {
+            $nodes[$string_count - 1]['post_id'] = $post_container_node->attr['data-trp-post-id'];
+        }
+        return $nodes;
     }
 
     /*
@@ -863,6 +950,11 @@ class TRP_Translation_Render{
             $string = preg_replace('/(<|&lt;)trp-wrap (.*?)(>|&gt;)/', '', $string);
             $string = preg_replace('/(<|&lt;)(\\\\)*\/trp-wrap(>|&gt;)/', '', $string);
         }
+
+        //remove post containers before outputting
+        $string = preg_replace( '/(<|&lt;)trp-post-container (.*?)(>|&gt;)/', '', $string );
+        $string = preg_replace( '/(<|&lt;)(\\\\)*\/trp-post-container(>|&gt;)/', '', $string );
+
         return $string;
     }
 
@@ -882,13 +974,25 @@ class TRP_Translation_Render{
         }
     }
 
+    public function handle_custom_links_for_default_language(){
+        return ( $this->settings['force-language-to-custom-links'] == 'yes' &&
+            $this->is_first_language_not_default_language() &&
+            apply_filters('trp_handle_custom_links_and_forms_in_default_language', true ) );
+    }
+
     /**
      * Function that should be called only on the default language and when we are not in the editor mode and it is designed as a fallback to clear
      * any trp gettext tags that we added and for some reason show up  although they should not
      * @param $output
      * @return mixed
      */
-    function clear_trp_tags( $output ){
+    public function render_default_language( $output ){
+        if ( $this->handle_custom_links_for_default_language() ) {
+            $html = TranslatePress\str_get_html( $output, true, true, TRP_DEFAULT_TARGET_CHARSET, false, TRP_DEFAULT_BR_TEXT, TRP_DEFAULT_SPAN_TEXT );
+            $html = $this->handle_custom_links_and_forms($html);
+            $output = $html->save();
+        }
+
         return TRP_Translation_Manager::strip_gettext_tags($output);
     }
 
@@ -1119,16 +1223,16 @@ class TRP_Translation_Render{
      *
      * @param object $node          Html Node.
      * @param string $attribute     Attribute to search for.
-     * @return bool                 Whether given node has ancestor with given attribute.
+     * @return mixed                Whether given node has ancestor with given attribute.
      */
     public function has_ancestor_attribute($node,$attribute) {
         $currentNode = $node;
         if ( isset( $node->$attribute ) ){
-            return true;
+            return $node;
         }
         while($currentNode->parent() && $currentNode->parent()->tag!="html") {
             if(isset($currentNode->parent()->$attribute))
-                return true;
+                return $currentNode->parent();
             else
                 $currentNode = $currentNode->parent();
         }
@@ -1253,19 +1357,20 @@ class TRP_Translation_Render{
 		$language_to_query = ( count ( $this->settings['translation-languages'] ) < 2 ) ? '' : $language_to_query;
 
 		return array(
-			'trp_custom_ajax_url'                   => apply_filters('trp_custom_ajax_url', TRP_PLUGIN_URL . 'includes/trp-ajax.php' ),
-			'trp_wp_ajax_url'                       => apply_filters('trp_wp_ajax_url', admin_url('admin-ajax.php')),
-			'trp_language_to_query'                 => $language_to_query,
-			'trp_original_language'                 => $this->settings['default-language'],
-			'trp_current_language'                  => $TRP_LANGUAGE,
-			'trp_skip_selectors'                    => apply_filters( 'trp_skip_selectors_from_dynamic_translation', array( '[data-no-translation]', '[data-no-dynamic-translation]', '[data-trp-translate-id-innertext]', 'script', 'style', 'head', 'trp-span', 'translate-press' ), $TRP_LANGUAGE, $this->settings ), // data-trp-translate-id-innertext refers to translation block and it shouldn't be detected
-			'trp_base_selectors'                    => $this->get_base_attribute_selectors(),
-			'trp_attributes_selectors'              => $this->get_node_accessors(),
-			'trp_attributes_accessors'              => $this->get_accessors_array(),
-			'gettranslationsnonceregular'           => $nonces['gettranslationsnonceregular'],
-			'showdynamiccontentbeforetranslation'   => apply_filters( 'trp_show_dynamic_content_before_translation', false ),
-			'skip_strings_from_dynamic_translation' => apply_filters( 'trp_skip_strings_from_dynamic_translation', array() ),
-			'duplicate_detections_allowed'          => apply_filters( 'trp_duplicate_detections_allowed', 20 )
+            'trp_custom_ajax_url'                                  => apply_filters( 'trp_custom_ajax_url', TRP_PLUGIN_URL . 'includes/trp-ajax.php' ),
+            'trp_wp_ajax_url'                                      => apply_filters( 'trp_wp_ajax_url', admin_url( 'admin-ajax.php' ) ),
+            'trp_language_to_query'                                => $language_to_query,
+            'trp_original_language'                                => $this->settings['default-language'],
+            'trp_current_language'                                 => $TRP_LANGUAGE,
+            'trp_skip_selectors'                                   => apply_filters( 'trp_skip_selectors_from_dynamic_translation', array( '[data-no-translation]', '[data-no-dynamic-translation]', '[data-trp-translate-id-innertext]', 'script', 'style', 'head', 'trp-span', 'translate-press' ), $TRP_LANGUAGE, $this->settings ), // data-trp-translate-id-innertext refers to translation block and it shouldn't be detected
+            'trp_base_selectors'                                   => $this->get_base_attribute_selectors(),
+            'trp_attributes_selectors'                             => $this->get_node_accessors(),
+            'trp_attributes_accessors'                             => $this->get_accessors_array(),
+            'gettranslationsnonceregular'                          => $nonces['gettranslationsnonceregular'],
+            'showdynamiccontentbeforetranslation'                  => apply_filters( 'trp_show_dynamic_content_before_translation', false ),
+            'skip_strings_from_dynamic_translation'                => apply_filters( 'trp_skip_strings_from_dynamic_translation', array() ),
+            'skip_strings_from_dynamic_translation_for_substrings' => apply_filters( 'trp_skip_strings_from_dynamic_translation_for_substrings', array( 'href' => array('amazon-adsystem', 'googleads', 'g.doubleclick') ) ),
+            'duplicate_detections_allowed'                         => apply_filters( 'trp_duplicate_detections_allowed', 100 )
 		);
 	}
 
@@ -1488,5 +1593,36 @@ class TRP_Translation_Render{
         }
 
         return $translated;
+    }
+
+    /**
+     * Function that wraps the post title and the post content in a custom trp wrap trp-post-container so we can know in
+     * the function translate_page() if a string is part of the content of a post so we can store a meta that gives the string context
+     * @param $content
+     * @param null $id
+     * @return string
+     */
+    function wrap_with_post_id( $content, $id = null ){
+        global $post, $TRP_LANGUAGE, $wp_query;
+
+        if( empty($post->ID) )
+            return $content;
+
+        //we try to wrap only the actual content of the post and not when the filters are executed in SEO plugins for example
+        if( !$wp_query->in_the_loop || !is_main_query() )
+            return $content;
+
+        //for the_tile filter we have an $id and we can compare it with the post we are on ..to avoid wrapping titles in menus for example
+        if( !is_null( $id ) && $id !== $post->ID ){
+            return $content;
+        }
+
+        if ( $TRP_LANGUAGE !== $this->settings['default-language'] ) {
+            if ( is_singular() && !empty($post->ID)) {
+                $content = "<trp-post-container data-trp-post-id='" . $post->ID . "'>" . $content . "</trp-post-container>";//changed " to ' to not break cases when the filter is applied inside an html attribute (title for example)
+            }
+        }
+
+        return $content;
     }
 }

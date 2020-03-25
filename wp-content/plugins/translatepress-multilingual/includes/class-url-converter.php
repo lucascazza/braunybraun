@@ -98,19 +98,27 @@ class TRP_Url_Converter {
      * @param $path the path that is passed inside home_url
      * @return bool
      */
-    public function is_sitemap_link( $path ) {
+    public function is_sitemap_link( $path = '' ) {
+        global $wp_current_filter;
 
-        //we first check in the $path
-        if( !empty( $path ) ){
-            if( strpos($path, 'sitemap') !== false && strpos($path, '.xml') !== false )
-                return true;
-            else
-                return false;
+        if( empty( $path ) || $path === '/' ){
+            $path = $_SERVER['REQUEST_URI'];
         }
-        else { //if the path is empty check the request URI
-            global $wp_current_filter;
-            if (strpos( $_SERVER['REQUEST_URI'], 'sitemap') !== false && strpos( $_SERVER['REQUEST_URI'], '.xml') !== false && !in_array( 'wpseo_sitemap_url', $wp_current_filter ) )
-                return true;
+
+        //check if sitemap and .xml
+        if( strpos($path, 'sitemap') !== false &&
+            strpos($path, '.xml') !== false &&
+            !in_array( 'wpseo_sitemap_url', $wp_current_filter ) &&
+            !in_array( 'seopress_sitemaps_url', $wp_current_filter ) &&
+            !in_array( 'rank_math/sitemap/url', $wp_current_filter )&&
+            !in_array( 'aiosp_sitemap_data', $wp_current_filter )
+        ){
+            return true;
+        }
+
+        // check if it's a stylesheet for xml. SEO Press uses it.
+        if (strpos( $path, 'sitemap') !== false && strpos( $path, '.xsl') !== false ){
+            return true;
         }
 
         return false;
@@ -133,8 +141,8 @@ class TRP_Url_Converter {
             echo '<link rel="alternate" hreflang="' . esc_attr( $hreflang ). '" href="' . esc_url( $this->get_url_for_language( $language ) ) . '"/>' . "\n";
         }
 
-        if( isset($this->settings['advanced_settings']['enable_hreflang_xdefault']) && $this->settings['advanced_settings']['enable_hreflang_xdefault'] != 'disabled' ){
-            $default_lang = $this->settings['advanced_settings']['enable_hreflang_xdefault'];
+        if( isset($this->settings['trp_advanced_settings']['enable_hreflang_xdefault']) && $this->settings['trp_advanced_settings']['enable_hreflang_xdefault'] != 'disabled' ){
+            $default_lang = $this->settings['trp_advanced_settings']['enable_hreflang_xdefault'];
             echo '<link rel="alternate" hreflang="x-default" href="' . esc_url( $this->get_url_for_language( $default_lang ) ) . '"/>' . "\n";
         }
     }
@@ -201,6 +209,13 @@ class TRP_Url_Converter {
         }
 
         // actual logic of the function
+
+        if ( $this->is_sitemap_link('') ){
+            trp_bulk_debug($debug, array('url' => $url, 'abort' => 'is file'));
+            wp_cache_set('get_url_for_language_' . $hash, $url . $trp_link_is_processed, 'trp');
+            return $url . $trp_link_is_processed; //abort for files
+        }
+
         if ( $this->url_is_file($url) ){
             trp_bulk_debug($debug, array('url' => $url, 'abort' => 'is file'));
             wp_cache_set('get_url_for_language_' . $hash, $url . $trp_link_is_processed, 'trp');
@@ -526,7 +541,7 @@ class TRP_Url_Converter {
         $req_uri = trim($this->get_abs_home(), '/') . '/' . ltrim( $req_uri, '/' );
 
 
-        if ( function_exists('apply_filters') ) $pageURL = apply_filters('trp_curpageurl', $req_uri);
+        if ( function_exists('apply_filters') ) $req_uri = apply_filters('trp_curpageurl', $req_uri);
         wp_cache_set('cur_page_url', $req_uri, 'trp');
         return $req_uri;
     }

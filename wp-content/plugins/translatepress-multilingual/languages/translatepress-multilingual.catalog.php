@@ -41,6 +41,24 @@
 <?php __("<strong>TranslatePress</strong> encountered SQL errors. <a href=\"%s\" title=\"View TranslatePress SQL Errors\">Check out the errors</a>.", "translatepress-multilingual"); ?>
 <?php __("Automatic translation has been disabled.", "translatepress-multilingual"); ?>
 <?php __("Dismiss this notice.", "translatepress-multilingual"); ?>
+<?php __("Logged errors", "translatepress-multilingual"); ?>
+<?php __("These are the most recent 5 errors logged by TranslatePress:", "translatepress-multilingual"); ?>
+<?php __("Why are these errors occuring", "translatepress-multilingual"); ?>
+<?php __("If TranslatePress detects something wrong when executing queries on your database, it may disable the Automatic Translation feature in order to avoid any extra charging by Google/DeepL. Automatic Translation needs to be manually turned on, after you solve the issues.", "translatepress-multilingual"); ?>
+<?php __("The SQL errors detected can occur for various reasons including missing tables, missing permissions for the SQL user to create tables or perform other operations, problems after site migration or changes to SQL server configuration.", "translatepress-multilingual"); ?>
+<?php __("What you can do in this situation", "translatepress-multilingual"); ?>
+<?php __("Plan A.", "translatepress-multilingual"); ?>
+<?php __("Go to Settings -> TranslatePress -> General tab and Save Settings. This will regenerate the tables using your current SQL settings. Check if no more errors occur while browsing your website in a translated language. Look at the timestamps of the errors to make sure you are not seeing the old errors. Only the most recent 5 errors are displayed.", "translatepress-multilingual"); ?>
+<?php __("Plan B.", "translatepress-multilingual"); ?>
+<?php __("If your problem isn't solved, try the following steps:", "translatepress-multilingual"); ?>
+<?php __("Create a backup of your database", "translatepress-multilingual"); ?>
+<?php __("Create a copy of each translation table where you encounter errors. You can copy the table within the same database (trp_dictionary_en_us_es_es_COPY for example) -- perform this step only if you want to keep the current translations", "translatepress-multilingual"); ?>
+<?php __("Remove the trouble tables by executing the DROP function on them", "translatepress-multilingual"); ?>
+<?php __("Go to Settings -> TranslatePress -> General tab and Save Settings. This will regenerate the tables using your current SQL server.", "translatepress-multilingual"); ?>
+<?php __("Copy the relevant content from the duplicated tables (trp_dictionary_en_us_es_es_COPY for example) in the newly generated table (trp_dictionary_en_us_es_es) -- perform this step only if you want to keep the current translations", "translatepress-multilingual"); ?>
+<?php __("Test it to see if everything is working. If something went wrong, you can restore the backup that you've made at the first step. Check if no more errors occur while browsing your website in a translated language. Look at the timestamps of the errors to make sure you are not seeing the old errors. Only the most recent 5 errors are displayed.", "translatepress-multilingual"); ?>
+<?php __("Plan C.", "translatepress-multilingual"); ?>
+<?php __("If your problem still isn't solved, try asking your hosting about your errors. The most common issue is missing permissions for the SQL user, such as the Create Tables permission.", "translatepress-multilingual"); ?>
 <?php __("Automatic Translation", "translatepress-multilingual"); ?>
 <?php __("DeepL", "translatepress-multilingual"); ?>
 <?php __("You are not using a permalink structure! Please <a href=\"%s\">enable</a> one or install our <a href=\"%s\">\"Language by GET parameter\"</a> addon, so that TranslatePress can function properly.", "translatepress-multilingual"); ?>
@@ -136,6 +154,9 @@
 <?php __("Twitter Title", "translatepress-multilingual"); ?>
 <?php __("Twitter Description", "translatepress-multilingual"); ?>
 <?php __("Page Title", "translatepress-multilingual"); ?>
+<?php __("Inserting original strings for language %s...", "translatepress-multilingual"); ?>
+<?php __("Cleaning original strings table for language %s...", "translatepress-multilingual"); ?>
+<?php __("Updating original string ids for language %s...", "translatepress-multilingual"); ?>
 <?php __("TranslatePress data update", "translatepress-multilingual"); ?>
 <?php __("We need to update your translations database to the latest version.", "translatepress-multilingual"); ?>
 <?php __("IMPORTANT: It is strongly recommended to first backup the database!\nAre you sure you want to continue?", "translatepress-multilingual"); ?>
@@ -167,9 +188,6 @@
 <?php __("Create translator accounts for new users or allow existing users <br/>that are not administrators to translate your website.", "translatepress-multilingual"); ?>
 <?php __("Navigate your website just like a particular user role would. <br/>Really useful for dynamic content or hidden content that appears for particular users.", "translatepress-multilingual"); ?>
 <?php __("Configure different menu items for different languages.", "translatepress-multilingual"); ?>
-<?php __("Free Addons", "translatepress-multilingual"); ?>
-<?php __("Extend your translation plugin with these free addons.", "translatepress-multilingual"); ?>
-<?php __("Use GET parameter to encode language in the url, replacing the language directory. </br> Your urls will look like this: www.example.com?lang=en", "translatepress-multilingual"); ?>
 <?php __("TranslatePress Advanced Settings", "translatepress-multilingual"); ?>
 <?php __("Save Changes", "translatepress-multilingual"); ?>
 <?php __("TranslatePress Errors", "translatepress-multilingual"); ?>
@@ -239,6 +257,12 @@
 <?php __("Allow this user to translate the website.", "translatepress-multilingual"); ?>
 <?php __("Disable dynamic translation", "translatepress-multilingual"); ?>
 <?php __("It disables detection of strings displayed dynamically using JavaScript. <br/>Strings loaded via a server side AJAX call will still be translated.", "translatepress-multilingual"); ?>
+<?php __("Exclude translated links from sitemap", "translatepress-multilingual"); ?>
+<?php __("Do not include translated links in sitemaps generated by SEO plugins.<br/>Requires <a href=\"https://translatepress.com/docs/addons/seo-pack/\" title=\"TranslatePress Add-on SEO Pack documentation\" target=\"_blank\"> SEO Pack Add-on</a> to be installed and activated.", "translatepress-multilingual"); ?>
+<?php __("Disable post container tags for post title", "translatepress-multilingual"); ?>
+<?php __("It disables search indexing the post title in translated languages.<br/>Useful when the title of the post doesn't allow HTML thus breaking the page.", "translatepress-multilingual"); ?>
+<?php __("Disable post container tags for post content", "translatepress-multilingual"); ?>
+<?php __("It disables search indexing the post content in translated languages.<br/>Useful when the content of the post doesn't allow HTML thus breaking the page.", "translatepress-multilingual"); ?>
 <?php __("Automatically translate slugs", "translatepress-multilingual"); ?>
 <?php __("Generate automatic translations of slugs for posts, pages and Custom Post Types.<br/>Requires <a href=\"https://translatepress.com/docs/addons/seo-pack/\" title=\"TranslatePress Add-on SEO Pack documentation\" target=\"_blank\"> SEO Pack Add-on</a> to be installed and activated.", "translatepress-multilingual"); ?>
 <?php __("Enable the hreflang x-default tag for language:", "translatepress-multilingual"); ?>
@@ -259,6 +283,10 @@
 <?php __("General attempt to fix broken or missing HTML on translated pages.<br/><strong>Only try this if the \"Fix spaces between html attribute\" did not solve the issue.</strong>", "translatepress-multilingual"); ?>
 <?php __("Fix spaces between HTML attributes", "translatepress-multilingual"); ?>
 <?php __("Fixes attributes without spaces between them because they are not valid HTML.<br> May help fix missing or broken content from the HTML on translated pages.", "translatepress-multilingual"); ?>
+<?php __("Troubleshooting", "translatepress-multilingual"); ?>
+<?php __("Exclude strings", "translatepress-multilingual"); ?>
+<?php __("Debug", "translatepress-multilingual"); ?>
+<?php __("Miscellaneous options", "translatepress-multilingual"); ?>
 <?php __("Fix missing dynamic content", "translatepress-multilingual"); ?>
 <?php __("May help fix missing content inserted using JavaScript. <br> It shows dynamically inserted content in original language for a moment before the translation request is finished.", "translatepress-multilingual"); ?>
 <?php __("Filter Gettext wrapping from post content and title", "translatepress-multilingual"); ?>

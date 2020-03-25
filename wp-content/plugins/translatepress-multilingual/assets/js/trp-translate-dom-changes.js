@@ -231,11 +231,28 @@ function TRP_Translator(){
         return false;
     };
 
+    this.contains_substring_that_needs_skipped = function ( string, attribute ){
+        for (var attribute_to_skip in trp_data.skip_strings_from_dynamic_translation_for_substrings ){
+            if (trp_data.skip_strings_from_dynamic_translation_for_substrings.hasOwnProperty(attribute_to_skip) && attribute === attribute_to_skip) {
+                for ( var i = 0 ; i < trp_data.skip_strings_from_dynamic_translation_for_substrings[attribute_to_skip].length; i++ ){
+                    if ( string.indexOf(trp_data.skip_strings_from_dynamic_translation_for_substrings[attribute_to_skip][i]) !== -1  ){
+                        return true
+                    }
+                }
+            }
+        }
+        return false
+    };
+
     /*
      * Skip string based on original string text
      */
-    this.skip_string_original = function ( string ){
-        return ( ( already_detected[string] > duplicate_detections_allowed ) || _this.in_array( string, trp_data.skip_strings_from_dynamic_translation ) )
+    this.skip_string_original = function ( string, attribute ){
+        return (
+            ( already_detected[string] > duplicate_detections_allowed ) ||
+            _this.in_array( string, trp_data.skip_strings_from_dynamic_translation ) ||
+            _this.contains_substring_that_needs_skipped( string, attribute)
+        )
     }
 
     this.skip_string_attribute = function(node, attribute){
@@ -270,7 +287,7 @@ function TRP_Translator(){
                 // a text without HTML was added
                 if ( _this.trim( direct_string.textContent, except_characters ) != '' ) {
                     var extracted_original = _this.trim(direct_string.textContent, trim_characters);
-                    if ( ! _this.skip_string_original( extracted_original )) {
+                    if ( ! _this.skip_string_original( extracted_original, false )) {
                         nodesInfo.push({node: node, original: extracted_original, attribute: ''});
                         string_originals.push(extracted_original)
 
@@ -295,7 +312,7 @@ function TRP_Translator(){
                 var all_strings_length = all_strings.length;
                 for (var j = 0; j < all_strings_length; j++ ) {
                     if ( _this.trim( all_strings[j].textContent, except_characters ) != '' ) {
-                        if ( ! _this.skip_string_original( all_strings[j].textContent )) {
+                        if ( ! _this.skip_string_original( all_strings[j].textContent, false )) {
                             nodesInfo.push({node: all_strings[j], original: all_strings[j].textContent, attribute: ''});
                             string_originals.push(all_strings[j].textContent)
                             if (trp_data ['showdynamiccontentbeforetranslation'] == false) {
@@ -327,7 +344,7 @@ function TRP_Translator(){
                         }
 
                         var attribute_content = all_nodes[j].getAttribute( attribute_selector_item.accessor )
-                        if ( _this.skip_string_original( attribute_content )){
+                        if ( _this.skip_string_original( attribute_content, attribute_selector_item.accessor )){
                             continue;
                         }
                         if ( attribute_content && _this.trim( attribute_content.trim(), except_characters ) != '' ) {

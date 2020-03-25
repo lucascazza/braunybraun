@@ -162,6 +162,7 @@ class TRP_Query{
                                     translated  longtext,
                                     status int(20) DEFAULT " . $this::NOT_TRANSLATED .",
                                     block_type int(20) DEFAULT " . $this::BLOCK_TYPE_REGULAR_STRING .",
+                                    original_id bigint(20) DEFAULT NULL,
                                     UNIQUE KEY id (id) )
                                      $charset_collate;";
             require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
@@ -185,6 +186,7 @@ class TRP_Query{
             }
         }else{
 	        $this->check_for_block_type_column( $language_code, $default_language );
+	        $this->check_for_original_id_column( $language_code, $default_language );
         }
     }
 
@@ -245,7 +247,7 @@ class TRP_Query{
 		    $destination_table_name = $this->get_table_name( $language_code, $default_language );
 
 		    // get all tb from $source_table_name and copy to $destination_table_name
-		    $sql = 'INSERT INTO `' . $destination_table_name . '` SELECT NULL, original, "", ' . $this::NOT_TRANSLATED . ', block_type FROM `' . $source_table_name . '` WHERE block_type = ' . self::BLOCK_TYPE_ACTIVE . ' OR block_type = ' . self::BLOCK_TYPE_DEPRECATED;
+		    $sql = 'INSERT INTO `' . $destination_table_name . '` (id, original, translated, status, block_type) SELECT NULL, original, "", ' . $this::NOT_TRANSLATED . ', block_type FROM `' . $source_table_name . '` WHERE block_type = ' . self::BLOCK_TYPE_ACTIVE . ' OR block_type = ' . self::BLOCK_TYPE_DEPRECATED;
 		    $this->db->query( $sql );
 	    }
     }
@@ -285,6 +287,243 @@ class TRP_Query{
         }
     }
 
+    /**
+     * Check if the original string table exists
+     *
+     * If the table does not exists it is created.
+     *
+     * @since   1.6.6
+     */
+    public function check_original_table(){
+
+        $table_name = $this->get_table_name_for_original_strings();
+        if ( $this->db->get_var( "SHOW TABLES LIKE '$table_name'" ) != $table_name ) {
+            // table not in database. Create new table
+            $charset_collate = $this->db->get_charset_collate();
+
+            $sql = "CREATE TABLE `" . $table_name . "`(
+                                    id bigint(20) AUTO_INCREMENT NOT NULL PRIMARY KEY,
+                                    original TEXT NOT NULL )
+                                     $charset_collate;";
+            require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+            dbDelta( $sql );
+
+            $sql_index = "CREATE INDEX index_original ON `" . $table_name . "` (original(100));";
+            $this->db->query( $sql_index );
+        }
+    }
+
+    /**
+     * Function that takes care of inserting  original strings from dictionary to original_strings table when updating to version 1.6.6
+     */
+    public function original_ids_insert( $language_code, $inferior_limit, $batch_size ){
+
+        //don't do anything for default language
+        if ( $this->settings['default-language'] === $language_code )
+            return 0;
+
+        if( !$this->error_manager ){
+            $trp = TRP_Translate_Press::get_trp_instance();
+            $this->error_manager = $trp->get_component( 'error_manager' );
+        }
+
+        $originals_table = $this->get_table_name_for_original_strings();
+        $table_name = sanitize_text_field( $this->get_table_name( $language_code, $this->settings['default-language'] ) );
+
+        /*
+        *  select all string that are in the dictionary table and are not in the original tables and insert them in the original
+        */
+        $insert_records = $this->db->query( $this->db->prepare( "INSERT INTO `$originals_table` (original) SELECT DISTINCT ( BINARY t1.original ) FROM `$table_name` t1 LEFT JOIN `$originals_table` t2 on t2.original = BINARY t1.original WHERE t2.original IS NULL AND t1.id > %d AND t1.id <= %d AND LENGTH(t1.original) < 20000", $inferior_limit, ($inferior_limit + $batch_size) ) );
+
+        if (!empty($this->db->last_error)) {
+            $this->error_manager->record_error(array('last_error_insert_original_strings' => $this->db->last_error));
+        }
+
+        return $insert_records;
+
+    }
+
+    /**
+     * Function that makes sure we don't have duplicates in original_strings table when updating to version 1.6.6
+     * It is executed after we inserted all the strings
+     */
+    public function original_ids_cleanup(){
+        if( !$this->error_manager ){
+            $trp = TRP_Translate_Press::get_trp_instance();
+            $this->error_manager = $trp->get_component( 'error_manager' );
+        }
+
+        $originals_table = $this->get_table_name_for_original_strings();
+        $this->db->query( "DELETE t1 FROM `$originals_table` t1 INNER JOIN `$originals_table` t2 WHERE t1.id > t2.id AND t1.original = BINARY t2.original" );
+
+        if (!empty($this->db->last_error)) {
+            $this->error_manager->record_error(array('last_error_cleaning_original_strings' => $this->db->last_error));
+        }
+
+    }
+
+    /**
+     * Function that takes care of synchronizing the dictionaries with the original table by inserting the original ids in the original_id column
+     */
+    public function original_ids_reindex( $language_code, $inferior_limit, $batch_size ){
+
+        //don't do anything for default language
+        if ( $this->settings['default-language'] === $language_code )
+            return 0;
+
+        if( !$this->error_manager ){
+            $trp = TRP_Translate_Press::get_trp_instance();
+            $this->error_manager = $trp->get_component( 'error_manager' );
+        }
+
+        $originals_table = $this->get_table_name_for_original_strings();
+        $table_name = sanitize_text_field( $this->get_table_name( $language_code, $this->settings['default-language'] ) );
+
+        /*
+        *  perform a UPDATE JOIN with the original table https://www.mysqltutorial.org/mysql-update-join/
+        */
+        $update_records = $this->db->query( $this->db->prepare( "UPDATE $table_name, $originals_table SET $table_name.original_id = $originals_table.id WHERE $table_name.original = BINARY $originals_table.original AND $table_name.id > %d AND $table_name.id <= %d", $inferior_limit, ($inferior_limit + $batch_size) ) );
+
+        if (!empty($this->db->last_error)) {
+            $this->error_manager->record_error(array('last_error_reindex_original_ids' => $this->db->last_error));
+        }
+
+        return $update_records;
+    }
+
+    /**
+     * Function that makes sure that when new strings are inserted in dictionaries they are also inserted in original_strings table if they don't exist
+     * @param $language_code
+     * @param $new_strings
+     * @return array|object|null
+     */
+    public function original_strings_sync( $language_code, $new_strings ){
+        if ( $this->settings['default-language'] != $language_code ) {
+
+            $originals_table = $this->get_table_name_for_original_strings();
+
+            $possible_new_strings = array();
+            foreach ( $new_strings as $string ) {
+                $possible_new_strings[] = $this->db->prepare( "%s",  $string );
+            }
+
+            $existing_strings = $this->db->get_results( "SELECT original FROM `$originals_table` WHERE BINARY $originals_table.original IN (".implode( ',', $possible_new_strings ).")", OBJECT_K );
+
+            if( !empty( $existing_strings ) ){
+                $existing_strings = array_keys($existing_strings);
+                $insert_strings = array_diff( $new_strings, $existing_strings );
+            }
+            else{
+                $insert_strings = $new_strings;
+            }
+
+            foreach ( $insert_strings as $k => $string ) {
+                $insert_strings[$k] = $this->db->prepare( "(%s)",  $string );
+            }
+
+            if( !empty( $insert_strings ) ) {
+                //insert the strings that are missing
+                $this->db->query("INSERT INTO `$originals_table` (original) VALUES " . implode(',', $insert_strings));
+            }
+
+            //get the ids for all the new strings (new in dictionary)
+            $new_strings_in_dictionary_with_original_id = $this->db->get_results( "SELECT original,id FROM `$originals_table` WHERE BINARY $originals_table.original IN (".implode( ',', $possible_new_strings ).")", OBJECT_K );
+
+            if( count( $new_strings_in_dictionary_with_original_id ) === count( $new_strings ) ){
+                return $new_strings_in_dictionary_with_original_id;
+            }
+        }
+
+        return array();
+
+    }
+
+    /**
+     * Function that adds post_parent_id meta to  original_meta table
+     * @param $original_string_ids
+     * @param $post_ids
+     */
+    public function set_original_string_meta_post_id( $original_string_ids, $post_ids ){
+
+        //group the strings in a new array by post_id
+        $strings_grouped = array();
+        if( !empty( $post_ids ) ){
+            foreach( $post_ids as $i => $post_id ){
+                $strings_grouped[ $post_id ][] = $original_string_ids[$i];
+            }
+        }
+
+        if( !empty($strings_grouped) ){
+            foreach ( $strings_grouped as $post_id => $original_ids ){
+
+                //remove all empty values from original_ids just in case
+                $original_ids = array_filter($original_ids);
+                if( !empty( $original_ids ) ) {
+
+                    /*
+                     * - select all id's that are in the meta already
+                     * - in php compare our $original_ids with the result and leave just the ones that are not in the db
+                     * - insert all the remaining ones
+                     */
+
+                    $existing_entries = $this->db->get_results($this->db->prepare(
+                        "SELECT original_id FROM " . $this->get_table_name_for_original_meta() . " WHERE meta_key = '" . $this->get_meta_key_for_post_parent_id() . "' AND meta_value = '%1d' AND original_id IN ( %2s )",
+                        $post_id, implode(', ', $original_ids)
+                    ), OBJECT_K);
+
+                    $existing_entries = array_keys($existing_entries);
+                    $insert_this = array_unique(array_diff($original_ids, $existing_entries));
+
+                    if (!empty($insert_this)) {
+                        $insert_values = array();
+                        foreach ($insert_this as $missing_entry) {
+                            $insert_values[] = $this->db->prepare("( %d, %s, %d )", $missing_entry, $this->get_meta_key_for_post_parent_id(), $post_id);
+                        }
+
+                        $this->db->query("INSERT INTO " . $this->get_table_name_for_original_meta() . " ( original_id, meta_key, meta_value ) VALUES " . implode(', ', $insert_values));
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    /**
+     * Check if the original meta table exists
+     *
+     * If the table does not exists it is created.
+     *
+     * @since   1.6.6
+     */
+    public function check_original_meta_table(){
+
+        $table_name = $table_name = $this->db->get_blog_prefix() . 'trp_original_meta';
+        if ( $this->db->get_var( "SHOW TABLES LIKE '$table_name'" ) != $table_name ) {
+            // table not in database. Create new table
+            $charset_collate = $this->db->get_charset_collate();
+
+            $sql = "CREATE TABLE `" . $table_name . "`(
+                                    meta_id bigint(20) AUTO_INCREMENT NOT NULL PRIMARY KEY,
+                                    original_id bigint(20) NOT NULL,
+                                    meta_key varchar(255),
+                                    meta_value longtext,                                    
+                                    UNIQUE KEY meta_id (meta_id) )
+                                     $charset_collate;";
+            require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+            dbDelta( $sql );
+
+            //create indexes
+            $sql_index = "CREATE INDEX index_original_id ON `" . $table_name . "` (original_id);";
+            $this->db->query( $sql_index );
+            $sql_index = "CREATE INDEX meta_key ON `" . $table_name . "`(meta_key);";
+            $this->db->query( $sql_index );
+        }
+    }
+
+
 	/**
 	 * Add block_type column to dictionary tables, if it doesn't exist.
 	 *
@@ -311,6 +550,35 @@ class TRP_Query{
 			    $this->db->query("ALTER TABLE " . $table_name . " ADD block_type INT(20) DEFAULT " . $this::BLOCK_TYPE_REGULAR_STRING );
 		    }
 	    }
+    }
+
+
+    /**
+     * Add original_id column to dictionary tables, if it doesn't exist.
+     *
+     * Affects all existing tables, including deactivated languages
+     *
+     * @param null $language_code
+     * @param null $default_language
+     */
+    public function check_for_original_id_column($language_code = null, $default_language = null ){
+        if ( $default_language == null ){
+            $default_language = $this->settings['default-language'];
+        }
+
+        if ( $language_code ){
+            // check only this language
+            $array_of_table_names = array( $this->get_table_name( $language_code, $default_language ) );
+        }else {
+            // check all languages, including deactivated ones
+            $array_of_table_names = $this->get_all_table_names( $default_language, array() );
+        }
+
+        foreach( $array_of_table_names as $table_name ){
+            if ( ! $this->table_column_exists( $table_name, 'original_id' ) ) {
+                $this->db->query("ALTER TABLE " . $table_name . " ADD original_id BIGINT(20) DEFAULT NULL" );
+            }
+        }
     }
 
 	/**
@@ -403,21 +671,25 @@ class TRP_Query{
 	 * @param int $block_type
 	 */
 	public function insert_strings( $new_strings, $language_code, $block_type = self::BLOCK_TYPE_REGULAR_STRING ) {
+
         if ( $block_type == null ) {
 			$block_type = self::BLOCK_TYPE_REGULAR_STRING;
 		}
 		if ( count( $new_strings ) == 0 ) {
 			return;
 		}
-		$query = "INSERT INTO `" . sanitize_text_field( $this->get_table_name( $language_code ) ) . "` ( original, translated, status, block_type ) VALUES ";
+		$query = "INSERT INTO `" . sanitize_text_field( $this->get_table_name( $language_code ) ) . "` ( original, translated, status, block_type, original_id ) VALUES ";
 
         $values = array();
         $place_holders = array();
         $new_strings = array_unique( $new_strings );
 
+        //make sure we have the same strings in the original table as well
+        $original_inserts = $this->original_strings_sync( $language_code, $new_strings );
+
         foreach ( $new_strings as $string ) {
-            array_push( $values, $string, NULL, self::NOT_TRANSLATED, $block_type );
-            $place_holders[] = "('%s','%s','%d','%d')";
+            array_push( $values, $string, NULL, self::NOT_TRANSLATED, $block_type, $original_inserts[$string]->id );
+            $place_holders[] = "('%s','%s','%d','%d', %d)";
         }
 		$query .= implode( ', ', $place_holders );
 
@@ -426,6 +698,7 @@ class TRP_Query{
         $this->db->query( $this->db->prepare($query . ' ', $values) );
 
         $this->maybe_record_automatic_translation_error(array( 'details' => 'Error running insert_strings()' ) );
+
     }
 
     public function insert_gettext_strings( $new_strings, $language_code ){
@@ -554,6 +827,41 @@ class TRP_Query{
     }
 
     /**
+     * Returns the DB ids of the provided original strings
+     *
+     * @param array $original_strings       Array of original strings to search for.
+     * @return array                       Associative Array of objects with translations where key is original string.
+     */
+    public function get_original_string_ids( $original_strings ){
+        if ( !is_array( $original_strings ) || count ( $original_strings ) == 0 ){
+            return array();
+        }
+        $query = "SELECT original,id FROM `" . $this->get_table_name_for_original_strings() . "` WHERE BINARY original IN ";
+
+        $placeholders = array();
+        $values = array();
+        foreach( $original_strings as $string ){
+            $placeholders[] = '%s';
+            $values[] = $string;
+        }
+
+        $query .= "( " . implode ( ", ", $placeholders ) . " )";
+        $results = $this->db->get_results( $this->db->prepare( $query, $values ), OBJECT_K );
+
+        $results_ids = array();
+        if( !empty( $results ) && !empty( $original_strings ) ){
+            foreach( $original_strings as $string ){
+                if( !empty( $results[$string] ) && !empty($results[$string]->id) )
+                    $results_ids[] = $results[$string]->id;
+                else
+                    $results_ids[] = null; //this should not happen but if it does we need to keep the same number of result ids as original_strings to have a correlation
+            }
+        }
+
+        return $results_ids;
+    }
+
+    /**
      * Returns the entries for the provided strings.
      *
      * Only returns results where there is no translation ( == NOT_TRANSLATED )
@@ -601,6 +909,32 @@ class TRP_Query{
 	    }
 	    $language_code = str_replace($this->db->prefix . 'trp_dictionary_' . strtolower( $default_language ) . '_', '', $table_name );
 	    return $language_code;
+    }
+
+    /**
+     * Return table name for original strings table
+     *
+     * @return string                       Table name.
+     */
+    public function get_table_name_for_original_strings(){
+        return sanitize_text_field( $this->db->prefix . 'trp_original_strings' );
+    }
+
+    /**
+     * Return table name for original meta table
+     *
+     * @return string                       Table name.
+     */
+    public function get_table_name_for_original_meta(){
+        return sanitize_text_field( $this->db->prefix . 'trp_original_meta' );
+    }
+    /**
+     * Return meta_key for post parent id from meta table
+     *
+     * @return string                       key name.
+     */
+    public function get_meta_key_for_post_parent_id(){
+        return 'post_parent_id';
     }
 
     public function get_all_gettext_strings(  $language_code ){

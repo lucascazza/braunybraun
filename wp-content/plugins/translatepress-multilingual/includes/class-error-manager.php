@@ -126,7 +126,7 @@ class TRP_Error_Manager{
 
                 $message = '<p style="padding-right:30px;">' . $logged_notification['message'] . '</p>';
                 //make sure to use the trp_dismiss_admin_notification arg
-                $message .= '<a href="' . add_query_arg(array('trp_dismiss_admin_notification' => $notification_id)) . '" type="button" class="notice-dismiss" style="text-decoration: none;z-index:100;"><span class="screen-reader-text">' . __('Dismiss this notice.', 'translatepress-multilingual') . '</span></a>';
+                $message .= '<a href="' . add_query_arg(array('trp_dismiss_admin_notification' => $notification_id)) . '" type="button" class="notice-dismiss" style="text-decoration: none;z-index:100;"><span class="screen-reader-text">' . esc_html__('Dismiss this notice.', 'translatepress-multilingual') . '</span></a>';
 
                 $notifications->add_notification($notification_id, $message, 'trp-notice trp-narrow notice error is-dismissible', true, array('translate-press'), true);
             }
@@ -144,17 +144,54 @@ class TRP_Error_Manager{
     public function output_db_errors( $html_content ){
         $option = get_option( 'trp_db_errors', false );
         if ( $option !== false && isset($option['errors']) ) {
+            $html_content .= '<h2>' . esc_html__('Logged errors', 'translatepress-multilingual') . '</h2>';
+            $html_content .= '<p>' . esc_html__('These are the most recent 5 errors logged by TranslatePress:', 'translatepress-multilingual' ) . '</p>';
             $html_content .= '<table>';
+            $option['errors'] = array_reverse($option['errors']);
             foreach ($option['errors'] as $count => $error) {
                 $count = ( is_int( $count) ) ? $count + 1 : $count;
                 $html_content .= '<tr><td>' . esc_html($count) . '</td></tr>';
                 foreach( $error as $key => $error_detail ){
+                    $error_detail = ($error_detail === true ) ? esc_html__('Yes', 'translatepress-multilingual') : $error_detail;
                     $html_content .= '<tr><td><strong>' . esc_html($key ) . '</strong></td>' . '<td>' .esc_html( $error_detail ) . '</td></tr>';
                 }
 
             }
             $html_content .= '</table>';
         }
+        return $html_content;
+    }
+
+    /**
+     * Hooked to trp_error_manager_page_output
+     *
+     * @param $html_content
+     * @return string
+     */
+    public function show_instructions_on_how_to_fix( $html_content ){
+        $html_content .= '<h2>' . esc_html__('Why are these errors occuring', 'translatepress-multilingual') . '</h2>';
+        $html_content .= '<p>' . esc_html__('If TranslatePress detects something wrong when executing queries on your database, it may disable the Automatic Translation feature in order to avoid any extra charging by Google/DeepL. Automatic Translation needs to be manually turned on, after you solve the issues.', 'translatepress-multilingual') . '</p>';
+        $html_content .= '<p>' . esc_html__('The SQL errors detected can occur for various reasons including missing tables, missing permissions for the SQL user to create tables or perform other operations, problems after site migration or changes to SQL server configuration.', 'translatepress-multilingual') . '</p>';
+
+        $html_content .= '<h2>' . esc_html__('What you can do in this situation', 'translatepress-multilingual') . '</h2>';
+
+        $html_content .= '<h4>' . esc_html__('Plan A.', 'translatepress-multilingual') . '</h4>';
+        $html_content .= '<p>' . esc_html__('Go to Settings -> TranslatePress -> General tab and Save Settings. This will regenerate the tables using your current SQL settings. Check if no more errors occur while browsing your website in a translated language. Look at the timestamps of the errors to make sure you are not seeing the old errors. Only the most recent 5 errors are displayed.', 'translatepress-multilingual') . '</p>';
+
+        $html_content .= '<h4>' . esc_html__('Plan B.', 'translatepress-multilingual') . '</h4>';
+        $html_content .= '<p>' . esc_html__('If your problem isn\'t solved, try the following steps:', 'translatepress-multilingual') . '</p>';
+        $html_content .= '<ol>';
+        $html_content .= '<li>' . esc_html__('Create a backup of your database', 'translatepress-multilingual') . '</li>';
+        $html_content .= '<li>' . esc_html__('Create a copy of each translation table where you encounter errors. You can copy the table within the same database (trp_dictionary_en_us_es_es_COPY for example) -- perform this step only if you want to keep the current translations', 'translatepress-multilingual') . '</li>';
+        $html_content .= '<li>' . esc_html__('Remove the trouble tables by executing the DROP function on them', 'translatepress-multilingual') . '</li>';
+        $html_content .= '<li>' . esc_html__('Go to Settings -> TranslatePress -> General tab and Save Settings. This will regenerate the tables using your current SQL server.', 'translatepress-multilingual') . '</li>';
+        $html_content .= '<li>' . esc_html__('Copy the relevant content from the duplicated tables (trp_dictionary_en_us_es_es_COPY for example) in the newly generated table (trp_dictionary_en_us_es_es) -- perform this step only if you want to keep the current translations', 'translatepress-multilingual') . '</li>';
+        $html_content .= '<li>' . esc_html__('Test it to see if everything is working. If something went wrong, you can restore the backup that you\'ve made at the first step. Check if no more errors occur while browsing your website in a translated language. Look at the timestamps of the errors to make sure you are not seeing the old errors. Only the most recent 5 errors are displayed.', 'translatepress-multilingual') . '</li>';
+        $html_content .= '</ol>';
+
+        $html_content .= '<h4>' . esc_html__('Plan C.', 'translatepress-multilingual') . '</h4>';
+        $html_content .= '<p>' . esc_html__('If your problem still isn\'t solved, try asking your hosting about your errors. The most common issue is missing permissions for the SQL user, such as the Create Tables permission.', 'translatepress-multilingual') . '</p>';
+
         return $html_content;
     }
 }

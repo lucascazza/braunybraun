@@ -73,18 +73,4 @@
         </div>
     </div>
 
-    <div class="grid feat-header">
-        <div class="grid-cell">
-            <h2><?php _e( 'Free Addons', 'translatepress-multilingual' );?></h2>
-            <p><?php _e( 'Extend your translation plugin with these free addons.', 'translatepress-multilingual' );?></p>
-        </div>
-    </div>
-
-    <div class="grid">
-        <div class="grid-cell" style="overflow:hidden;">
-            <a href="https://translatepress.com/docs/addons/language-get-parameter/" target="_blank"><img src="<?php echo esc_url( plugins_url('../assets/images/get_param_addon.jpg', __FILE__) ) ?>" alt="Language by GET parameter" style="float: left; margin: 0 1.5rem 1.5rem 0;"></a>
-            <h3 id="language-by-get-parameter"><a href=" <?php echo trp_add_affiliate_id_to_link('https://translatepress.com/pricing/?utm_source=wpbackend&utm_medium=clientsite&utm_content=addons_tab&utm_campaign=tpfree') ?> " target="_blank"> Language by GET parameter </a></h3>
-            <p><?php _e( 'Use GET parameter to encode language in the url, replacing the language directory. </br> Your urls will look like this: www.example.com?lang=en', 'translatepress-multilingual' );?></p>
-        </div>
-    </div>
 </div>
