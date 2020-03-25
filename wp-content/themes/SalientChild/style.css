@@ -540,9 +540,9 @@ html body .row .col.section-title h1 {
     margin: auto;
 }
 
-.bloque-estrategia h4 {
+/* .bloque-estrategia h4 {
     cursor: pointer;
-}
+} */
 
 img.afectado {
     position: absolute !important;
@@ -559,9 +559,9 @@ img.afectado {
     display: none !important;
 }
 
-.bloque-estrategia:hover~div.img-with-aniamtion-wrap {
+/* .bloque-estrategia:hover~div.img-with-aniamtion-wrap {
     display: block !important;
-}
+} */
 
 img.afectado {
     width: 270px;

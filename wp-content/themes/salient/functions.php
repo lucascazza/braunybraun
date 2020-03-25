@@ -1539,7 +1539,7 @@ if (class_exists('WPBakeryVisualComposerAbstract') && defined( 'SALIENT_VC_ACTIV
 	}
 
 	function nectar_vc_library_cat_list() {
-		return array( __('All','salient') => 'all', 
+		return array( __('Todos','salient') => 'all', 
 			__('About','salient') => 'about', 
 			__('Blog','salient') => 'blog',  
 			__('Call To Action','salient') => 'cta',
@@ -5339,7 +5339,7 @@ if ( !function_exists( 'nectar_page_header' ) ) {
 									<div class="<?php echo $filters_id;?>" instance="0">
 											<a href="#" data-sortable-label="<?php echo (!empty($options['portfolio-sortable-text'])) ? $options['portfolio-sortable-text'] :'Sort Portfolio'; ?>" id="sort-portfolio"><span><?php echo (!empty($options['portfolio-sortable-text'])) ? $options['portfolio-sortable-text'] : __('Sort Portfolio','salient'); ?></span> <i class="icon-angle-down"></i></a> 
 										<ul>
-										   <li><a href="#" data-filter="*"><?php echo __('All', 'salient'); ?></a></li>
+										   <li><a href="#" data-filter="*"><?php echo __('Todos', 'salient'); ?></a></li>
 						               	   <?php wp_list_categories(array('title_li' => '', 'taxonomy' => 'project-type', 'show_option_none'   => '', 'walker' => new Walker_Portfolio_Filter())); ?>
 										</ul>
 									</div>
@@ -5540,7 +5540,7 @@ if ( !function_exists( 'nectar_page_header' ) ) {
 							<a href="#" data-sortable-label="<?php echo (!empty($options['portfolio-sortable-text'])) ? $options['portfolio-sortable-text'] :'Sort Portfolio'; ?>" id="sort-portfolio"><span><?php echo (!empty($options['portfolio-sortable-text'])) ? $options['portfolio-sortable-text'] : __('Sort Portfolio','salient'); ?></span> <i class="icon-angle-down"></i></a> 
 							
 							<ul>
-							   <li><a href="#" data-filter="*"><?php echo __('All', 'salient'); ?></a></li>
+							   <li><a href="#" data-filter="*"><?php echo __('Todos', 'salient'); ?></a></li>
 			               	   <?php wp_list_categories(array('title_li' => '', 'taxonomy' => 'project-type', 'show_option_none'   => '', 'walker' => new Walker_Portfolio_Filter())); ?>
 							</ul>
 						</div>

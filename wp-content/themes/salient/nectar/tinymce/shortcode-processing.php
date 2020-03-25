@@ -1356,10 +1356,10 @@ function nectar_portfolio_processing($atts, $content = null) {
 	 	?>
 		<div class="<?php echo $filters_id . ' '; echo $filters_width;  if($layout == 'constrained_fullwidth') echo ' fullwidth-constrained '; if($span_num != 'elastic-portfolio-item' || $layout == 'constrained_fullwidth') echo 'non-fw'; ?>" data-alignment="<?php echo $filter_alignment; ?>" data-color-scheme="<?php echo strtolower($filter_color); ?>">
 			<div class="container <?php if($span_num == 'elastic-portfolio-item') { echo 'normal-container'; } ?>">
-				<?php if($filter_alignment != 'center' && $filter_alignment != 'left') { ?> <span id="current-category"><?php echo __('All', 'salient'); ?></span> <?php } ?>
+				<?php if($filter_alignment != 'center' && $filter_alignment != 'left') { ?> <span id="current-category"><?php echo __('Todos', 'salient'); ?></span> <?php } ?>
 				<ul>
 				   <?php if($filter_alignment != 'center' && $filter_alignment != 'left') { ?> <li id="sort-label"><?php echo (!empty($options['portfolio-sortable-text'])) ? $options['portfolio-sortable-text'] : __('Sort Portfolio','salient'); ?>:</li> <?php } ?>
-				   <li><a href="#" data-filter="*"><?php echo __('All', 'salient'); ?></a></li>
+				   <li><a href="#" data-filter="*"><?php echo __('Todos', 'salient'); ?></a></li>
                	   <?php wp_list_categories(array('title_li' => '', 'taxonomy' => 'project-type', 'show_option_none'   => '', 'walker' => new Walker_Portfolio_Filter())); ?>
 				</ul>
 				<div class="clear"></div>
