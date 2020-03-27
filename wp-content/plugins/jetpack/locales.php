@@ -662,8 +662,8 @@ class GP_Locales {
 		$es->facebook_locale = 'es_ES';
 
 		$es_ar = new GP_Locale();
-		$es_ar->english_name = 'Spanish (Argentina)';
-		$es_ar->native_name = 'Español de Argentina';
+		$es_ar->english_name = 'Spanish';
+		$es_ar->native_name = 'Español';
 		$es_ar->lang_code_iso_639_1 = 'es';
 		$es_ar->lang_code_iso_639_2 = 'spa';
 		$es_ar->lang_code_iso_639_3 = 'spa';

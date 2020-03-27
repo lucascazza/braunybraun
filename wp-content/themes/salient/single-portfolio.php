@@ -1,4 +1,4 @@
-<?php get_header(); 
+<?php get_header();
 
 $fwp = get_post_meta($post->ID, '_nectar_portfolio_item_layout', true);
 if(empty($fwp)) $fwp = 'false';
@@ -34,7 +34,7 @@ $project_social_style = (!empty($options['portfolio_social_style'])) ? $options[
 						<div class="title-wrap" style="padding-top: 1rem">
 						<div class="col span_12 section-title <?php if(empty($options['portfolio_social']) || $options['portfolio_social'] == 0 || empty($options['portfolio_date']) || $options['portfolio_date'] == 0 ) echo 'no-date'?>">
 							
-							<!-- <h1><?php //the_title(); ?></h1> -->
+							<h1><?php the_title(); ?></h1>
 							<div class="divider-wrap" data-alignment="default"><div style="margin: auto; margin-top: 15px; width: 120px; height: 3px; margin-bottom: 15px;" data-width="120" data-animate="yes" data-animation-delay="100" data-color="extra-color-1" class="divider-small-border"></div></div>
 							<?php if(!empty($subtitle)) { ?> <span class="subheader"><?php echo $subtitle; ?></span> <?php } ?>
 
