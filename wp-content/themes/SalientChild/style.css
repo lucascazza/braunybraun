@@ -609,3 +609,8 @@ img.afectado {
         height: 400px !important;
     }
 }
+
+.heading-title.title-entrada.pt-0{
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+}

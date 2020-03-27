@@ -106,7 +106,7 @@ endwhile; endif;
 			
 			    if((empty($bg) && empty($bg_color)) && $fullscreen_header != true) { ?>
 
-					<div class="row heading-title hentry pt-0" data-header-style="<?php echo $blog_header_type; ?>">
+					<div class="row heading-title hentry pt-0 pb-0 mb-0 title-entrada" data-header-style="<?php echo $blog_header_type; ?>">
 						<div class="col span_12 section-title blog-title">
 							<?php if($blog_header_type == 'default_minimal' && 'post' == get_post_type() ) { ?> 
 							<span class="meta-category">
