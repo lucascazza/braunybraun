@@ -46,7 +46,7 @@ endwhile; endif;
 						}
 						?>
 						
-						<h1 class="entry-title"><?php the_title(); ?></h1>
+						<!-- <h1 class="entry-title"><?php //the_title(); ?></h1> -->
 						<div class="author-section">
 						 	<span class="meta-author">  
 						 		<?php if (function_exists('get_avatar')) { echo get_avatar( get_the_author_meta('email'), 100 ); }?>
@@ -122,7 +122,7 @@ endwhile; endif;
 									</span> 
 
 							</span> <?php } ?>
-							<h1 class="entry-title"><?php the_title(); ?></h1>
+							<!-- <h1 class="entry-title"><?php //the_title(); ?></h1> -->
 							<div class="divider-wrap" data-alignment="default"><div style="margin: auto; margin-top: 15px; width: 120px; height: 3px; margin-bottom: 15px;" data-width="120" data-animate="yes" data-animation-delay="100" data-color="extra-color-1" class="divider-small-border"></div></div>
 
 							<?php if( 'post' == get_post_type()) { ?>
@@ -197,7 +197,7 @@ endwhile; endif;
 			
 		<?php } ?>
 			
-		<div class="row">
+		<div class="row row-imagen">
 			
 			<?php 
 
@@ -217,9 +217,9 @@ endwhile; endif;
 				$std_minimal_class = '';
 
 			if($blog_type == 'std-blog-fullwidth' || $hide_sidebar == '1'){
-				echo '<div class="post-area col '.$std_minimal_class.' span_12 col_last">';
+				echo '<div class="post-area col sin-img'.$std_minimal_class.' span_12 col_last">';
 			} else {
-				echo '<div class="post-area col '.$std_minimal_class.' span_9">';
+				echo '<div class="post-area col sin-img'.$std_minimal_class.' span_9">';
 			}
 			
 				 if(have_posts()) : while(have_posts()) : the_post(); 

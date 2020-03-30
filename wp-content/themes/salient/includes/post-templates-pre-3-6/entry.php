@@ -1,6 +1,6 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<div class="post-content">
+	<div class="post-content jajaja">
 		
 		<?php if( !is_single() ) { ?>
 			

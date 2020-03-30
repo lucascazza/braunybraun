@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Jetpack by WordPress.com - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-02-23 12:24:37+0000\n"
+"PO-Revision-Date: 2020-03-29 12:28:03+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -4500,10 +4500,6 @@ msgstr "¡La conexión del sitio falló!"
 msgid "Underline"
 msgstr "Subrayar"
 
-#: modules/wpcom-block-editor/class-jetpack-wpcom-block-editor.php:292
-msgid "Justify"
-msgstr "Jusfificar"
-
 #: modules/wpcom-block-editor/class-jetpack-wpcom-block-editor.php:288
 msgid "Switch to Classic Editor"
 msgstr "Cambiar el editor clásico"
@@ -4511,6 +4507,10 @@ msgstr "Cambiar el editor clásico"
 #: modules/likes.php:629
 msgid "Are Likes enabled?"
 msgstr "¿Están activados los «me gusta»?"
+
+#: modules/wpcom-block-editor/class-jetpack-wpcom-block-editor.php:292
+msgid "Justify"
+msgstr "Justificar"
 
 #: modules/module-headings.php:217
 msgctxt "Module Description"
@@ -8557,10 +8557,6 @@ msgstr "Iniciada una nueva sincronización completa con los módulos: %s"
 msgid "{{span}}You can now also configure related posts in the Customizer. {{ExternalLink}}Try it out!{{/ExternalLink}}{{/span}}"
 msgstr "{{span}}Ahora también puedes configurar las entradas relacionados en el personalizador. {{ExternalLink}}¡Pruébalo!{{/ExternalLink}}{{/span}}"
 
-#: _inc/jetpack-strings.php:706
-msgid "Display an ad unit at the top of your site."
-msgstr "Mostrar un bloque de anuncios en la parte superior de tu sitio."
-
 #: _inc/jetpack-strings.php:663
 msgid "Your server is misconfigured, which means that Jetpack Protect is unable to effectively protect your site."
 msgstr "Tu servidor está mal configurado, lo que significa que la protección de Jetpack no puede proteger tu sitio con efectividad."
@@ -8572,6 +8568,10 @@ msgstr "{{link}}Configura tus ajustes de avisos del supervisor en WordPress.com{
 #: modules/module-info.php:778 _inc/jetpack-strings.php:705
 msgid "By default ads are shown at the end of every page, post, or the first article on your front page. You can also add them to the top of your site and to any widget area to increase your earnings!"
 msgstr "Por defecto, los anuncios se muestran al final de cada página, entrada, o el primer artículo en tu portada. ¡También puedes añadirlos a la parte superior de tu sitio y en cualquier área de widgets para aumentar tus ganancias!"
+
+#: _inc/jetpack-strings.php:706
+msgid "Display an ad unit at the top of your site."
+msgstr "Mostrar un bloque de anuncios en la parte superior de tu sitio."
 
 #: _inc/lib/core-api/class.jetpack-core-api-site-endpoints.php:221
 #: _inc/jetpack-strings.php:206

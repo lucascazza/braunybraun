@@ -531,6 +531,11 @@ html body .row .col.section-title h1 {
     height: 135px !important;
 }
 
+.imagen-legales.img-popai{
+    padding: 10px 0px;
+    height: 135px !important;
+}
+
 .position-relative {
     position: relative !important;
 }
@@ -613,4 +618,8 @@ img.afectado {
 .heading-title.title-entrada.pt-0{
     margin-bottom: 0px !important;
     padding-bottom: 0px !important;
+}
+
+.row-imagen .sin-img .post-featured-img{
+    display: none !important;
 }
