@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Jetpack by WordPress.com - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-03-29 12:28:03+0000\n"
+"PO-Revision-Date: 2020-03-31 18:12:02+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1243,11 +1243,6 @@ msgstr "La prevención contra ataques de fuerza bruta de Jetpack no puede manten
 msgid "Upgrade to a paid plan to use this block on your site."
 msgstr "Actualizar a un plan de pago para usar este bloque en tu sitio."
 
-#: _inc/blocks/editor-experimental.js:2 _inc/blocks/editor-beta.js:2
-#: _inc/blocks/editor.js:2
-msgid "Upgrade to %(planName)s to use this block on your site."
-msgstr "Actualiza a %(planName)s para usar este bloque en tu sitio."
-
 #: _inc/jetpack-strings.php:733
 msgid "Boost your search engine ranking with the powerful SEO tools in Jetpack Premium or Professional."
 msgstr "Mejora tu clasificación en los motores de búsqueda con las potentes herramientas de SEO del plan Jetpack Premium o el Professional."
@@ -1268,6 +1263,11 @@ msgstr "Puedes probarlo antes de actualizar, pero solo lo verás tú. Estará oc
 #: _inc/jetpack-strings.php:757
 msgid "Verifying…"
 msgstr "Verificando…"
+
+#: _inc/blocks/editor-experimental.js:2 _inc/blocks/editor-beta.js:2
+#: _inc/blocks/editor.js:2
+msgid "Upgrade to %(planName)s to use this block on your site."
+msgstr "Actualiza a %(planName)s para usar este bloque en tu sitio."
 
 #: _inc/jetpack-strings.php:487
 msgctxt "Settings header"
@@ -8557,6 +8557,10 @@ msgstr "Iniciada una nueva sincronización completa con los módulos: %s"
 msgid "{{span}}You can now also configure related posts in the Customizer. {{ExternalLink}}Try it out!{{/ExternalLink}}{{/span}}"
 msgstr "{{span}}Ahora también puedes configurar las entradas relacionados en el personalizador. {{ExternalLink}}¡Pruébalo!{{/ExternalLink}}{{/span}}"
 
+#: _inc/jetpack-strings.php:706
+msgid "Display an ad unit at the top of your site."
+msgstr "Mostrar un bloque de anuncios en la parte superior de tu sitio."
+
 #: _inc/jetpack-strings.php:663
 msgid "Your server is misconfigured, which means that Jetpack Protect is unable to effectively protect your site."
 msgstr "Tu servidor está mal configurado, lo que significa que la protección de Jetpack no puede proteger tu sitio con efectividad."
@@ -8568,10 +8572,6 @@ msgstr "{{link}}Configura tus ajustes de avisos del supervisor en WordPress.com{
 #: modules/module-info.php:778 _inc/jetpack-strings.php:705
 msgid "By default ads are shown at the end of every page, post, or the first article on your front page. You can also add them to the top of your site and to any widget area to increase your earnings!"
 msgstr "Por defecto, los anuncios se muestran al final de cada página, entrada, o el primer artículo en tu portada. ¡También puedes añadirlos a la parte superior de tu sitio y en cualquier área de widgets para aumentar tus ganancias!"
-
-#: _inc/jetpack-strings.php:706
-msgid "Display an ad unit at the top of your site."
-msgstr "Mostrar un bloque de anuncios en la parte superior de tu sitio."
 
 #: _inc/lib/core-api/class.jetpack-core-api-site-endpoints.php:221
 #: _inc/jetpack-strings.php:206
