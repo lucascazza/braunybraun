@@ -623,3 +623,8 @@ img.afectado {
 .row-imagen .sin-img .post-featured-img{
     display: none !important;
 }
+
+#header-outer #social-in-menu a i.fa.fa-phone:before,
+#header-outer #social-in-menu a i.fa.fa-phone:after{
+    content: "\f232" !important;
+}
