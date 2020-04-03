@@ -3466,3 +3466,58 @@
 [2020-04-03 22:27:50 : INFO] - 94 
 [2020-04-03 22:27:51 : INFO] - Re_Smush_It_Task with attachment ID : 7207, autocreated on : April 03, 2020 10:21:00 
 [2020-04-03 22:27:51 : INFO] - 94 
+[2020-04-03 22:37:06 : INFO] - 
+ 
+[2020-04-03 22:37:06 : INFO] - Header for logs at time:  Fri, 03 Apr 2020 22:37:06 +0000 on http://localhost/braunybraun 
+[2020-04-03 22:37:06 : INFO] - WP: 5.4 
+[2020-04-03 22:37:06 : INFO] - PHP: 7.3.12 (apache2handler, Windows NT LAPTOP-RM20BIP4 10.0 build 18362 (Windows 10) AMD64) 
+[2020-04-03 22:37:06 : INFO] - MySQL: 5.5.5 
+[2020-04-03 22:37:06 : INFO] - WPLANG: es_AR 
+[2020-04-03 22:37:06 : INFO] - Server: Apache/2.4.41 (Win64) PHP/7.3.12 
+[2020-04-03 22:37:06 : INFO] - Outbound connections: N 
+[2020-04-03 22:37:06 : INFO] - safe_mode: 0 
+[2020-04-03 22:37:06 : INFO] - max_execution_time: 120 
+[2020-04-03 22:37:06 : INFO] - memory_limit: 128M (used: 11.5M | 12M) 
+[2020-04-03 22:37:06 : INFO] - multisite: N 
+[2020-04-03 22:37:06 : INFO] - openssl: OpenSSL 1.1.1d  10 Sep 2019 
+[2020-04-03 22:37:06 : INFO] - A total of 1 tasks of type smush found and will be processed in this iteration 
+[2020-04-03 22:37:06 : INFO] - Semaphore (smush, wp_options) was stuck, set lock time to 2020-04-03 22:37:06 
+[2020-04-03 22:37:06 : INFO] - Semaphore (smush, wp_options) reset to 1 
+[2020-04-03 22:37:06 : INFO] - Set semaphore last lock (smush) time to 2020-04-03 22:37:06 
+[2020-04-03 22:37:06 : INFO] - Semaphore lock (smush) complete 
+[2020-04-03 22:37:06 : INFO] - Processing task with ID : 454, and type 'smush' 
+[2020-04-03 22:37:06 : INFO] - Re_Smush_It_Task with attachment ID : 7207, autocreated on : April 03, 2020 10:21:00 
+[2020-04-03 22:37:06 : INFO] - 94 
+[2020-04-03 22:37:09 : INFO] - Backing up the original image - 2020/04/gestion-card-updraft-pre-smush-original.png 
+[2020-04-03 22:37:09 : INFO] - Re_Smush_It_Task with attachment ID : 7207, autocreated on : April 03, 2020 10:21:00 
+[2020-04-03 22:37:09 : INFO] - 94 
+[2020-04-03 22:37:12 : INFO] - Re_Smush_It_Task with attachment ID : 7207, autocreated on : April 03, 2020 10:21:00 
+[2020-04-03 22:37:12 : INFO] - 94 
+[2020-04-03 22:37:13 : INFO] - Re_Smush_It_Task with attachment ID : 7207, autocreated on : April 03, 2020 10:21:00 
+[2020-04-03 22:37:13 : INFO] - 94 
+[2020-04-03 22:37:17 : INFO] - Re_Smush_It_Task with attachment ID : 7207, autocreated on : April 03, 2020 10:21:00 
+[2020-04-03 22:37:17 : INFO] - 94 
+[2020-04-03 22:37:19 : INFO] - Re_Smush_It_Task with attachment ID : 7207, autocreated on : April 03, 2020 10:21:00 
+[2020-04-03 22:37:19 : INFO] - 94 
+[2020-04-03 22:37:21 : INFO] - Re_Smush_It_Task with attachment ID : 7207, autocreated on : April 03, 2020 10:21:00 
+[2020-04-03 22:37:21 : INFO] - 94 
+[2020-04-03 22:37:22 : INFO] - Re_Smush_It_Task with attachment ID : 7207, autocreated on : April 03, 2020 10:21:00 
+[2020-04-03 22:37:22 : INFO] - 94 
+[2020-04-03 22:37:25 : INFO] - Re_Smush_It_Task with attachment ID : 7207, autocreated on : April 03, 2020 10:21:00 
+[2020-04-03 22:37:25 : INFO] - 94 
+[2020-04-03 22:37:28 : INFO] - Re_Smush_It_Task with attachment ID : 7207, autocreated on : April 03, 2020 10:21:00 
+[2020-04-03 22:37:28 : INFO] - 94 
+[2020-04-03 22:37:32 : INFO] - Re_Smush_It_Task with attachment ID : 7207, autocreated on : April 03, 2020 10:21:00 
+[2020-04-03 22:37:32 : INFO] - 94 
+[2020-04-03 22:37:34 : INFO] - Re_Smush_It_Task with attachment ID : 7207, autocreated on : April 03, 2020 10:21:00 
+[2020-04-03 22:37:34 : INFO] - 94 
+[2020-04-03 22:37:37 : INFO] - Re_Smush_It_Task with attachment ID : 7207, autocreated on : April 03, 2020 10:21:00 
+[2020-04-03 22:37:37 : INFO] - 94 
+[2020-04-03 22:37:41 : INFO] - Successfully optimized the image - C:\wamp64\www\braunybraun/wp-content/uploads/2020/04/gestion-card.png.El archivo ha sido comprimido de 74.68 KB a 74.68 KB ahorrando un 0 por ciento utilizando WP-Optimize 
+[2020-04-03 22:37:41 : INFO] - Completed processing task with ID : 454, and type 'smush' 
+[2020-04-03 22:37:41 : INFO] - Set semaphore last lock (smush) time to 2020-04-03 22:37:41 
+[2020-04-03 22:37:41 : INFO] - Decremented the semaphore (smush) by 1 
+[2020-04-03 22:37:41 : INFO] - Semaphore (smush) unlocked 
+[2020-04-03 22:37:41 : INFO] - Successfully processed the queue (smush). 1 tasks were processed out of 1. 
+[2020-04-03 22:37:41 : INFO] - Semaphore (smush, wp_options) was successfully cleaned up 
+[2020-04-03 22:37:41 : INFO] - Cleaning up tasks of type (smush). A total of 3 tasks will be deleted. 
