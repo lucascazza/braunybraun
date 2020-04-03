@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 03, 2020 at 10:29 PM
+-- Generation Time: Apr 03, 2020 at 10:33 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -504,7 +504,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (5763, '_site_transient_browser_b4046c447614dcbe06d949fe3062a42a', 'a:10:{s:4:\"name\";s:6:\"Chrome\";s:7:\"version\";s:13:\"80.0.3987.149\";s:8:\"platform\";s:7:\"Windows\";s:10:\"update_url\";s:29:\"https://www.google.com/chrome\";s:7:\"img_src\";s:43:\"http://s.w.org/images/browsers/chrome.png?1\";s:11:\"img_src_ssl\";s:44:\"https://s.w.org/images/browsers/chrome.png?1\";s:15:\"current_version\";s:2:\"18\";s:7:\"upgrade\";b:0;s:8:\"insecure\";b:0;s:6:\"mobile\";b:0;}', 'no'),
 (5764, '_site_transient_timeout_php_check_7ddb89c02f1abf791c6717dc46cef1eb', '1586462808', 'no'),
 (5765, '_site_transient_php_check_7ddb89c02f1abf791c6717dc46cef1eb', 'a:5:{s:19:\"recommended_version\";s:3:\"7.3\";s:15:\"minimum_version\";s:6:\"5.6.20\";s:12:\"is_supported\";b:1;s:9:\"is_secure\";b:1;s:13:\"is_acceptable\";b:1;}', 'no'),
-(5766, '_site_transient_timeout_community-events-d41d8cd98f00b204e9800998ecf8427e', '1585996110', 'no'),
+(5766, '_site_transient_timeout_community-events-d41d8cd98f00b204e9800998ecf8427e', '1585996276', 'no'),
 (5767, '_site_transient_community-events-d41d8cd98f00b204e9800998ecf8427e', 'a:3:{s:9:\"sandboxed\";b:0;s:8:\"location\";a:1:{s:2:\"ip\";b:0;}s:6:\"events\";a:0:{}}', 'no'),
 (5838, '_transient_timeout_feed_9bbd59226dc36b9b26cd43f15694c5c3', '1585964483', 'no');
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
@@ -820,7 +820,7 @@ CREATE TABLE IF NOT EXISTS `wp_postmeta` (
   PRIMARY KEY (`meta_id`),
   KEY `post_id` (`post_id`),
   KEY `meta_key` (`meta_key`(191))
-) ENGINE=MyISAM AUTO_INCREMENT=5181 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5182 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Dumping data for table `wp_postmeta`
@@ -3708,7 +3708,8 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (5176, 7206, 'smush-complete', '1'),
 (5177, 7206, 'smush-info', 'El archivo ha sido comprimido de 113.45 KB a 71.43 KB ahorrando un 37.04 por ciento utilizando WP-Optimize'),
 (5178, 7206, 'smush-stats', 'a:4:{s:12:\"smushed-with\";s:11:\"re-smush-it\";s:13:\"original-size\";i:116176;s:12:\"smushed-size\";i:73142;s:15:\"savings-percent\";d:37.04;}'),
-(5179, 7207, 'original-file', '2020/04/gestion-card-updraft-pre-smush-original.png');
+(5179, 7207, 'original-file', '2020/04/gestion-card-updraft-pre-smush-original.png'),
+(5181, 7213, '_vc_post_settings', 'a:1:{s:10:\"vc_grid_id\";a:0:{}}');
 
 -- --------------------------------------------------------
 
@@ -3746,7 +3747,7 @@ CREATE TABLE IF NOT EXISTS `wp_posts` (
   KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`ID`),
   KEY `post_parent` (`post_parent`),
   KEY `post_author` (`post_author`)
-) ENGINE=MyISAM AUTO_INCREMENT=7213 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7214 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Dumping data for table `wp_posts`
@@ -4080,7 +4081,8 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (7162, 2, '2020-03-30 15:42:56', '2020-03-30 18:42:56', '', '20191108_100518', '', 'inherit', 'closed', 'closed', '', '20191108_100518', '', '', '2020-03-30 15:42:56', '2020-03-30 18:42:56', '', 7136, 'http://localhost/braunybraun/wp-content/uploads/2020/03/20191108_100518.jpg', 0, 'attachment', 'image/jpeg', 0),
 (7205, 2, '2020-04-03 19:20:28', '2020-04-03 22:20:28', '', 'actitud-card', '', 'inherit', 'closed', 'closed', '', 'actitud-card', '', '', '2020-04-03 19:20:28', '2020-04-03 22:20:28', '', 5284, 'http://localhost/braunybraun/wp-content/uploads/2020/04/actitud-card.png', 0, 'attachment', 'image/png', 0),
 (7206, 2, '2020-04-03 19:20:45', '2020-04-03 22:20:45', '', 'creatividad-card', '', 'inherit', 'closed', 'closed', '', 'creatividad-card', '', '', '2020-04-03 19:20:45', '2020-04-03 22:20:45', '', 5284, 'http://localhost/braunybraun/wp-content/uploads/2020/04/creatividad-card.png', 0, 'attachment', 'image/png', 0),
-(7207, 2, '2020-04-03 19:21:00', '2020-04-03 22:21:00', '', 'gestion-card', '', 'inherit', 'closed', 'closed', '', 'gestion-card', '', '', '2020-04-03 19:21:00', '2020-04-03 22:21:00', '', 5284, 'http://localhost/braunybraun/wp-content/uploads/2020/04/gestion-card.png', 0, 'attachment', 'image/png', 0);
+(7207, 2, '2020-04-03 19:21:00', '2020-04-03 22:21:00', '', 'gestion-card', '', 'inherit', 'closed', 'closed', '', 'gestion-card', '', '', '2020-04-03 19:21:00', '2020-04-03 22:21:00', '', 5284, 'http://localhost/braunybraun/wp-content/uploads/2020/04/gestion-card.png', 0, 'attachment', 'image/png', 0),
+(7213, 2, '2020-04-03 19:31:15', '0000-00-00 00:00:00', '', 'Borrador automático', '', 'auto-draft', 'closed', 'closed', '', '', '', '', '2020-04-03 19:31:15', '0000-00-00 00:00:00', '', 0, 'http://localhost/braunybraun/?p=7213', 0, 'post', '', 0);
 
 -- --------------------------------------------------------
 
@@ -4312,7 +4314,8 @@ INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_orde
 (7196, 55, 0),
 (7199, 55, 0),
 (7203, 55, 0),
-(7212, 55, 0);
+(7212, 55, 0),
+(7213, 55, 0);
 
 -- --------------------------------------------------------
 
@@ -12264,7 +12267,7 @@ CREATE TABLE IF NOT EXISTS `wp_usermeta` (
   PRIMARY KEY (`umeta_id`),
   KEY `user_id` (`user_id`),
   KEY `meta_key` (`meta_key`(191))
-) ENGINE=MyISAM AUTO_INCREMENT=108 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=136 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Dumping data for table `wp_usermeta`
@@ -12286,14 +12289,42 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 (96, 2, 'wp_capabilities', 'a:1:{s:13:\"administrator\";b:1;}'),
 (97, 2, 'wp_user_level', '10'),
 (98, 2, 'dismissed_wp_pointers', ''),
-(100, 2, 'wp_dashboard_quick_press_last_post_id', '7212'),
+(100, 2, 'wp_dashboard_quick_press_last_post_id', '7213'),
 (101, 2, 'tgmpa_dismissed_notice_tgmpa', '1'),
 (102, 2, 'trp_new_feature_image_translation_dismiss_notification', 'true'),
 (103, 2, 'wp_user-settings', 'editor=tinymce&libraryContent=browse&edit_element_vcUIPanelWidth=650&edit_element_vcUIPanelLeft=951px&edit_element_vcUIPanelTop=74px'),
 (104, 2, 'wp_user-settings-time', '1585952491'),
 (105, 2, 'nav_menu_recently_edited', '36'),
 (106, 2, 'managenav-menuscolumnshidden', 'a:5:{i:0;s:11:\"link-target\";i:1;s:11:\"css-classes\";i:2;s:3:\"xfn\";i:3;s:11:\"description\";i:4;s:15:\"title-attribute\";}'),
-(107, 2, 'metaboxhidden_nav-menus', 'a:6:{i:0;s:31:\"add-post-type-language_switcher\";i:1;s:23:\"add-post-type-portfolio\";i:2;s:12:\"add-post_tag\";i:3;s:15:\"add-post_format\";i:4;s:16:\"add-project-type\";i:5;s:22:\"add-project-attributes\";}');
+(107, 2, 'metaboxhidden_nav-menus', 'a:6:{i:0;s:31:\"add-post-type-language_switcher\";i:1;s:23:\"add-post-type-portfolio\";i:2;s:12:\"add-post_tag\";i:3;s:15:\"add-post_format\";i:4;s:16:\"add-project-type\";i:5;s:22:\"add-project-attributes\";}'),
+(108, 3, 'nickname', 'procesos'),
+(109, 3, 'first_name', ''),
+(110, 3, 'last_name', ''),
+(111, 3, 'description', ''),
+(112, 3, 'rich_editing', 'true'),
+(113, 3, 'syntax_highlighting', 'true'),
+(114, 3, 'comment_shortcuts', 'false'),
+(115, 3, 'admin_color', 'fresh'),
+(116, 3, 'use_ssl', '0'),
+(117, 3, 'show_admin_bar_front', 'true'),
+(118, 3, 'locale', ''),
+(119, 3, 'wp_capabilities', 'a:1:{s:6:\"editor\";b:1;}'),
+(120, 3, 'wp_user_level', '7'),
+(121, 3, 'dismissed_wp_pointers', ''),
+(122, 4, 'nickname', 'dgrafico'),
+(123, 4, 'first_name', 'Flavia'),
+(124, 4, 'last_name', 'Gonzalez'),
+(125, 4, 'description', ''),
+(126, 4, 'rich_editing', 'true'),
+(127, 4, 'syntax_highlighting', 'true'),
+(128, 4, 'comment_shortcuts', 'false'),
+(129, 4, 'admin_color', 'fresh'),
+(130, 4, 'use_ssl', '0'),
+(131, 4, 'show_admin_bar_front', 'true'),
+(132, 4, 'locale', ''),
+(133, 4, 'wp_capabilities', 'a:1:{s:6:\"editor\";b:1;}'),
+(134, 4, 'wp_user_level', '7'),
+(135, 4, 'dismissed_wp_pointers', '');
 
 -- --------------------------------------------------------
 
@@ -12317,14 +12348,16 @@ CREATE TABLE IF NOT EXISTS `wp_users` (
   KEY `user_login_key` (`user_login`),
   KEY `user_nicename` (`user_nicename`),
   KEY `user_email` (`user_email`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Dumping data for table `wp_users`
 --
 
 INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES
-(2, 'lucascazza', '$P$ByLArFFkROarjk1sEPCD96OQ6VDCKG1', 'lucascazza', 'scazzariello.lucas@gmail.com', '', '2020-04-03 14:03:25', '1585922607:$P$BH8ytaU685j6XZ3baeQsAfSUXvoz0B0', 0, 'Lucas Scazzariello');
+(2, 'lucascazza', '$P$ByLArFFkROarjk1sEPCD96OQ6VDCKG1', 'lucascazza', 'scazzariello.lucas@gmail.com', '', '2020-04-03 14:03:25', '1585922607:$P$BH8ytaU685j6XZ3baeQsAfSUXvoz0B0', 0, 'Lucas Scazzariello'),
+(3, 'procesos', '$P$BQF33ggH5t.U6Yzoc57pfa7TayZeVZ/', 'procesos', 'procesos@bybraun.com.ar', '', '2020-04-03 22:32:31', '', 0, 'procesos'),
+(4, 'dgrafico', '$P$BL4JZmPEBsGaQ2Mx02Il5FGbfo824w.', 'dgrafico', 'fgonzalezg@bybraun.com.ar', '', '2020-04-03 22:33:33', '', 0, 'Flavia Gonzalez');
 
 --
 -- Indexes for dumped tables
