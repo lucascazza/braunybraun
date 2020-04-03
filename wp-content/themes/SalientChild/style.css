@@ -628,3 +628,11 @@ img.afectado {
 #header-outer #social-in-menu a i.fa.fa-phone:after{
     content: "\f232" !important;
 }
+
+.owl-stage-outer .carousel-item .nectar-flip-box .flip-box-front h2{
+    font-size: 2.25rem !important;
+    color: #d90e21 !important;
+}
+.owl-stage-outer .carousel-item .nectar-flip-box .flip-box-front .inner{
+    padding-bottom: 2rem;
+}
