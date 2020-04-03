@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.4.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-03-30 21:14:44+0000\n"
+"PO-Revision-Date: 2020-04-01 23:53:07+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -102,7 +102,7 @@ msgstr "Solo para los desarrolladores"
 
 #: wp-admin/about.php:131
 msgid "Plus, little enhancements throughout give the privacy tools a little cleaner look. Your eyes will thank you!"
-msgstr "Además, pequeñas mejoras en todo dan a las herramientas de privacidad un aspecto más limpio. ¡Tus ojos te lo agradecerán!"
+msgstr "Además, pequeñas mejoras en todo, dan a las herramientas de privacidad un aspecto más limpio. ¡Tus ojos te lo agradecerán!"
 
 #: wp-admin/about.php:127
 msgid "Take a look:"
@@ -126,11 +126,11 @@ msgstr "Descubre a simple vista si estás en el modo de edición o de navegació
 
 #: wp-admin/about.php:106
 msgid "Tips are gone. In their place, a Welcome Guide window you can bring up when you need it&mdash;and only when you need it&mdash;again and again."
-msgstr "Las sugerencias han desaparecido. En su lugar, una ventana con la guía de bienvenida puede llevarte a dónde necesites —y solo cuando lo necesites— una y otra vez."
+msgstr "Las sugerencias han desaparecido. En su lugar, una ventana con la guía de bienvenida puede llevarte a donde necesites —y solo cuando lo necesites— una y otra vez."
 
 #: wp-admin/about.php:105
 msgid "Speed! 14% faster loading of the editor, 51% faster time-to-type!"
-msgstr "¡Velocidad! Un 14 % más rápido en cargar el editor, un 51 % más rápido en el tiempo de tecleo!"
+msgstr "¡Velocidad! ¡Un 14 % más rápido en cargar el editor, un 51 % más rápido en el tiempo de tecleo!"
 
 #: wp-admin/about.php:104
 msgid "For when you need to navigate with the keyboard, better tabbing and focus. Plus, you can tab over to the sidebar of nearly any block."
@@ -9441,7 +9441,7 @@ msgstr "Traductores"
 #. https://wordpress.org/about/license
 #: wp-admin/freedoms.php:107
 msgid "Every plugin and theme in WordPress.org&#8217;s directory is 100%% GPL or a similarly free and compatible license, so you can feel safe finding <a href=\"%1$s\">plugins</a> and <a href=\"%2$s\">themes</a> there. If you get a plugin or theme from another source, make sure to <a href=\"%3$s\">ask them if it&#8217;s GPL</a> first. If they don&#8217;t respect the WordPress license, we don&#8217;t recommend them."
-msgstr "Cada plugin y tema del directorio de WordPress.org es 100%% GPL o con una licencia libre similar y compatible, así que puedes sentirte seguro buscando <a href=\"%1$s\">plugins</a> y <a href=\"%2$s\">temas</a> aquí. Si obtienes un plugin o tema desde otra fuente, asegúrate de preguntar primero si <a href=\"%3$s\">es GPL</a>. Si no respeta la licencia de WordPress, no lo recomedamos."
+msgstr "Cada plugin y tema del directorio de WordPress.org es 100%% GPL o con una licencia libre similar y compatible, así que puedes sentirte seguro aquí buscando <a href=\"%1$s\">plugins</a> y <a href=\"%2$s\">temas</a>. Si obtienes un plugin o tema desde otra fuente, asegúrate de preguntar primero si <a href=\"%3$s\">es GPL</a>. Si no respeta la licencia de WordPress, no lo recomedamos."
 
 #. translators: %s: https://wordpressfoundation.org/trademark-policy
 #: wp-admin/freedoms.php:95
