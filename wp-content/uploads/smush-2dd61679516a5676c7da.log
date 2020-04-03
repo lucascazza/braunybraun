@@ -3269,3 +3269,201 @@
 [2020-04-03 17:41:30 : INFO] - Re_Smush_It_Task with attachment ID : 7200, autocreated on : April 03, 2020 05:41:30 
 [2020-04-03 17:41:33 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
 [2020-04-03 17:41:36 : INFO] - Re_Smush_It_Task with attachment ID : 7202, autocreated on : April 03, 2020 05:41:35 
+[2020-04-03 17:47:36 : INFO] - 
+ 
+[2020-04-03 17:47:36 : INFO] - Header for logs at time:  Fri, 03 Apr 2020 17:47:36 +0000 on http://localhost/braunybraun 
+[2020-04-03 17:47:36 : INFO] - WP: 5.4 
+[2020-04-03 17:47:36 : INFO] - PHP: 7.3.12 (apache2handler, Windows NT LAPTOP-RM20BIP4 10.0 build 18362 (Windows 10) AMD64) 
+[2020-04-03 17:47:36 : INFO] - MySQL: 5.5.5 
+[2020-04-03 17:47:36 : INFO] - WPLANG: es_AR 
+[2020-04-03 17:47:36 : INFO] - Server: Apache/2.4.41 (Win64) PHP/7.3.12 
+[2020-04-03 17:47:36 : INFO] - Outbound connections: N 
+[2020-04-03 17:47:36 : INFO] - safe_mode: 0 
+[2020-04-03 17:47:36 : INFO] - max_execution_time: 120 
+[2020-04-03 17:47:36 : INFO] - memory_limit: 128M (used: 11.6M | 10M) 
+[2020-04-03 17:47:36 : INFO] - multisite: N 
+[2020-04-03 17:47:36 : INFO] - openssl: OpenSSL 1.1.1d  10 Sep 2019 
+[2020-04-03 17:47:36 : INFO] - A total of 3 tasks of type smush found and will be processed in this iteration 
+[2020-04-03 17:47:36 : INFO] - Set semaphore last lock (smush) time to 2020-04-03 17:47:36 
+[2020-04-03 17:47:36 : INFO] - Semaphore lock (smush) complete 
+[2020-04-03 17:47:36 : INFO] - Processing task with ID : 375, and type 'smush' 
+[2020-04-03 17:47:36 : INFO] - Re_Smush_It_Task with attachment ID : 7200, autocreated on : April 03, 2020 05:41:30 
+[2020-04-03 17:47:36 : INFO] - 94 
+[2020-04-03 17:47:45 : INFO] - Backing up the original image - 2020/04/Ingles_Mesa-de-trabajo-1-updraft-pre-smush-original.jpg 
+[2020-04-03 17:47:45 : INFO] - Re_Smush_It_Task with attachment ID : 7200, autocreated on : April 03, 2020 05:41:30 
+[2020-04-03 17:47:45 : INFO] - 94 
+[2020-04-03 17:47:47 : INFO] - Re_Smush_It_Task with attachment ID : 7200, autocreated on : April 03, 2020 05:41:30 
+[2020-04-03 17:47:47 : INFO] - 94 
+[2020-04-03 17:47:50 : INFO] - Re_Smush_It_Task with attachment ID : 7200, autocreated on : April 03, 2020 05:41:30 
+[2020-04-03 17:47:50 : INFO] - 94 
+[2020-04-03 17:47:52 : INFO] - Re_Smush_It_Task with attachment ID : 7200, autocreated on : April 03, 2020 05:41:30 
+[2020-04-03 17:47:52 : INFO] - 94 
+[2020-04-03 17:47:54 : INFO] - Re_Smush_It_Task with attachment ID : 7200, autocreated on : April 03, 2020 05:41:30 
+[2020-04-03 17:47:54 : INFO] - 94 
+[2020-04-03 17:47:56 : INFO] - Re_Smush_It_Task with attachment ID : 7200, autocreated on : April 03, 2020 05:41:30 
+[2020-04-03 17:47:56 : INFO] - 94 
+[2020-04-03 17:47:57 : INFO] - Re_Smush_It_Task with attachment ID : 7200, autocreated on : April 03, 2020 05:41:30 
+[2020-04-03 17:47:58 : INFO] - 94 
+[2020-04-03 17:47:59 : INFO] - Re_Smush_It_Task with attachment ID : 7200, autocreated on : April 03, 2020 05:41:30 
+[2020-04-03 17:47:59 : INFO] - 94 
+[2020-04-03 17:48:01 : INFO] - Re_Smush_It_Task with attachment ID : 7200, autocreated on : April 03, 2020 05:41:30 
+[2020-04-03 17:48:01 : INFO] - 94 
+[2020-04-03 17:48:03 : INFO] - Re_Smush_It_Task with attachment ID : 7200, autocreated on : April 03, 2020 05:41:30 
+[2020-04-03 17:48:03 : INFO] - 94 
+[2020-04-03 17:48:05 : INFO] - Re_Smush_It_Task with attachment ID : 7200, autocreated on : April 03, 2020 05:41:30 
+[2020-04-03 17:48:05 : INFO] - 94 
+[2020-04-03 17:48:07 : INFO] - Re_Smush_It_Task with attachment ID : 7200, autocreated on : April 03, 2020 05:41:30 
+[2020-04-03 17:48:07 : INFO] - 94 
+[2020-04-03 17:48:08 : INFO] - Re_Smush_It_Task with attachment ID : 7200, autocreated on : April 03, 2020 05:41:30 
+[2020-04-03 17:48:08 : INFO] - 94 
+[2020-04-03 17:48:12 : INFO] - Re_Smush_It_Task with attachment ID : 7200, autocreated on : April 03, 2020 05:41:30 
+[2020-04-03 17:48:12 : INFO] - 94 
+[2020-04-03 17:48:14 : INFO] - Re_Smush_It_Task with attachment ID : 7200, autocreated on : April 03, 2020 05:41:30 
+[2020-04-03 17:48:14 : INFO] - 94 
+[2020-04-03 17:48:18 : INFO] - Re_Smush_It_Task with attachment ID : 7200, autocreated on : April 03, 2020 05:41:30 
+[2020-04-03 17:48:18 : INFO] - 94 
+[2020-04-03 17:48:21 : INFO] - Re_Smush_It_Task with attachment ID : 7200, autocreated on : April 03, 2020 05:41:30 
+[2020-04-03 17:48:21 : INFO] - 94 
+[2020-04-03 17:48:24 : INFO] - Successfully optimized the image - C:\wamp64\www\braunybraun/wp-content/uploads/2020/04/Ingles_Mesa-de-trabajo-1.jpg.El archivo ha sido comprimido de 333.76 KB a 166.83 KB ahorrando un 50.02 por ciento utilizando WP-Optimize 
+[2020-04-03 17:48:24 : INFO] - Completed processing task with ID : 375, and type 'smush' 
+[2020-04-03 17:48:24 : INFO] - Set semaphore last lock (smush) time to 2020-04-03 17:48:24 
+[2020-04-03 17:48:24 : INFO] - Processing task with ID : 376, and type 'smush' 
+[2020-04-03 17:48:24 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:48:24 : INFO] - 94 
+[2020-04-03 17:48:33 : INFO] - Backing up the original image - 2020/04/Ingles-02-updraft-pre-smush-original.jpg 
+[2020-04-03 17:48:33 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:48:33 : INFO] - 94 
+[2020-04-03 17:48:34 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:48:34 : INFO] - 94 
+[2020-04-03 17:48:38 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:48:38 : INFO] - 94 
+[2020-04-03 17:48:39 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:48:39 : INFO] - 94 
+[2020-04-03 17:48:43 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:48:43 : INFO] - 94 
+[2020-04-03 17:48:46 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:48:46 : INFO] - 94 
+[2020-04-03 17:48:48 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:48:48 : INFO] - 94 
+[2020-04-03 17:48:50 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:48:50 : INFO] - 94 
+[2020-04-03 17:48:51 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:48:51 : INFO] - 94 
+[2020-04-03 17:48:53 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:48:53 : INFO] - 94 
+[2020-04-03 17:48:55 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:48:55 : INFO] - 94 
+[2020-04-03 17:48:57 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:48:57 : INFO] - 94 
+[2020-04-03 17:48:59 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:48:59 : INFO] - 94 
+[2020-04-03 17:49:02 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:49:02 : INFO] - 94 
+[2020-04-03 17:49:04 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:49:04 : INFO] - 94 
+[2020-04-03 17:57:45 : INFO] - 
+ 
+[2020-04-03 17:57:45 : INFO] - Header for logs at time:  Fri, 03 Apr 2020 17:57:45 +0000 on http://localhost/braunybraun 
+[2020-04-03 17:57:45 : INFO] - WP: 5.4 
+[2020-04-03 17:57:45 : INFO] - PHP: 7.3.12 (apache2handler, Windows NT LAPTOP-RM20BIP4 10.0 build 18362 (Windows 10) AMD64) 
+[2020-04-03 17:57:45 : INFO] - MySQL: 5.5.5 
+[2020-04-03 17:57:45 : INFO] - WPLANG: es_AR 
+[2020-04-03 17:57:45 : INFO] - Server: Apache/2.4.41 (Win64) PHP/7.3.12 
+[2020-04-03 17:57:45 : INFO] - Outbound connections: N 
+[2020-04-03 17:57:45 : INFO] - safe_mode: 0 
+[2020-04-03 17:57:45 : INFO] - max_execution_time: 120 
+[2020-04-03 17:57:45 : INFO] - memory_limit: 128M (used: 11.5M | 2M) 
+[2020-04-03 17:57:45 : INFO] - multisite: N 
+[2020-04-03 17:57:45 : INFO] - openssl: OpenSSL 1.1.1d  10 Sep 2019 
+[2020-04-03 17:57:45 : INFO] - A total of 2 tasks of type smush found and will be processed in this iteration 
+[2020-04-03 17:57:45 : INFO] - Semaphore (smush, wp_options) was stuck, set lock time to 2020-04-03 17:57:45 
+[2020-04-03 17:57:45 : INFO] - Semaphore (smush, wp_options) reset to 1 
+[2020-04-03 17:57:45 : INFO] - Set semaphore last lock (smush) time to 2020-04-03 17:57:45 
+[2020-04-03 17:57:45 : INFO] - Semaphore lock (smush) complete 
+[2020-04-03 17:57:45 : INFO] - Processing task with ID : 376, and type 'smush' 
+[2020-04-03 17:57:45 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:57:45 : INFO] - 94 
+[2020-04-03 17:57:49 : INFO] - Backing up the original image - 2020/04/Ingles-02-updraft-pre-smush-original.jpg 
+[2020-04-03 17:57:49 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:57:49 : INFO] - 94 
+[2020-04-03 17:57:51 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:57:51 : INFO] - 94 
+[2020-04-03 17:57:54 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:57:54 : INFO] - 94 
+[2020-04-03 17:57:55 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:57:55 : INFO] - 94 
+[2020-04-03 17:57:57 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:57:57 : INFO] - 94 
+[2020-04-03 17:57:59 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:57:59 : INFO] - 94 
+[2020-04-03 17:58:01 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:58:01 : INFO] - 94 
+[2020-04-03 17:58:02 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:58:02 : INFO] - 94 
+[2020-04-03 17:58:03 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:58:03 : INFO] - 94 
+[2020-04-03 17:58:05 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:58:05 : INFO] - 94 
+[2020-04-03 17:58:07 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:58:07 : INFO] - 94 
+[2020-04-03 17:58:08 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:58:08 : INFO] - 94 
+[2020-04-03 17:58:10 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:58:10 : INFO] - 94 
+[2020-04-03 17:58:12 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:58:12 : INFO] - 94 
+[2020-04-03 17:58:14 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:58:14 : INFO] - 94 
+[2020-04-03 17:58:16 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:58:16 : INFO] - 94 
+[2020-04-03 17:58:18 : INFO] - Re_Smush_It_Task with attachment ID : 7201, autocreated on : April 03, 2020 05:41:33 
+[2020-04-03 17:58:18 : INFO] - 94 
+[2020-04-03 17:58:21 : INFO] - Successfully optimized the image - C:\wamp64\www\braunybraun/wp-content/uploads/2020/04/Ingles-02.jpg.El archivo ha sido comprimido de 159.23 KB a 159.22 KB ahorrando un 0.01 por ciento utilizando WP-Optimize 
+[2020-04-03 17:58:21 : INFO] - Completed processing task with ID : 376, and type 'smush' 
+[2020-04-03 17:58:21 : INFO] - Set semaphore last lock (smush) time to 2020-04-03 17:58:21 
+[2020-04-03 17:58:21 : INFO] - Processing task with ID : 377, and type 'smush' 
+[2020-04-03 17:58:21 : INFO] - Re_Smush_It_Task with attachment ID : 7202, autocreated on : April 03, 2020 05:41:35 
+[2020-04-03 17:58:21 : INFO] - 94 
+[2020-04-03 17:58:26 : INFO] - Backing up the original image - 2020/04/Ingles-03-updraft-pre-smush-original.jpg 
+[2020-04-03 17:58:26 : INFO] - Re_Smush_It_Task with attachment ID : 7202, autocreated on : April 03, 2020 05:41:35 
+[2020-04-03 17:58:26 : INFO] - 94 
+[2020-04-03 17:58:28 : INFO] - Re_Smush_It_Task with attachment ID : 7202, autocreated on : April 03, 2020 05:41:35 
+[2020-04-03 17:58:28 : INFO] - 94 
+[2020-04-03 17:58:30 : INFO] - Re_Smush_It_Task with attachment ID : 7202, autocreated on : April 03, 2020 05:41:35 
+[2020-04-03 17:58:30 : INFO] - 94 
+[2020-04-03 17:58:33 : INFO] - Re_Smush_It_Task with attachment ID : 7202, autocreated on : April 03, 2020 05:41:35 
+[2020-04-03 17:58:33 : INFO] - 94 
+[2020-04-03 17:58:35 : INFO] - Re_Smush_It_Task with attachment ID : 7202, autocreated on : April 03, 2020 05:41:35 
+[2020-04-03 17:58:35 : INFO] - 94 
+[2020-04-03 17:58:38 : INFO] - Re_Smush_It_Task with attachment ID : 7202, autocreated on : April 03, 2020 05:41:35 
+[2020-04-03 17:58:38 : INFO] - 94 
+[2020-04-03 17:58:40 : INFO] - Re_Smush_It_Task with attachment ID : 7202, autocreated on : April 03, 2020 05:41:35 
+[2020-04-03 17:58:40 : INFO] - 94 
+[2020-04-03 17:58:42 : INFO] - Re_Smush_It_Task with attachment ID : 7202, autocreated on : April 03, 2020 05:41:35 
+[2020-04-03 17:58:42 : INFO] - 94 
+[2020-04-03 17:58:43 : INFO] - Re_Smush_It_Task with attachment ID : 7202, autocreated on : April 03, 2020 05:41:35 
+[2020-04-03 17:58:43 : INFO] - 94 
+[2020-04-03 17:58:45 : INFO] - Re_Smush_It_Task with attachment ID : 7202, autocreated on : April 03, 2020 05:41:35 
+[2020-04-03 17:58:45 : INFO] - 94 
+[2020-04-03 17:58:47 : INFO] - Re_Smush_It_Task with attachment ID : 7202, autocreated on : April 03, 2020 05:41:35 
+[2020-04-03 17:58:47 : INFO] - 94 
+[2020-04-03 17:58:49 : INFO] - Re_Smush_It_Task with attachment ID : 7202, autocreated on : April 03, 2020 05:41:35 
+[2020-04-03 17:58:49 : INFO] - 94 
+[2020-04-03 17:58:51 : INFO] - Re_Smush_It_Task with attachment ID : 7202, autocreated on : April 03, 2020 05:41:35 
+[2020-04-03 17:58:51 : INFO] - 94 
+[2020-04-03 17:58:54 : INFO] - Re_Smush_It_Task with attachment ID : 7202, autocreated on : April 03, 2020 05:41:35 
+[2020-04-03 17:58:54 : INFO] - 94 
+[2020-04-03 17:58:57 : INFO] - Re_Smush_It_Task with attachment ID : 7202, autocreated on : April 03, 2020 05:41:35 
+[2020-04-03 17:58:57 : INFO] - 94 
+[2020-04-03 17:58:59 : INFO] - Re_Smush_It_Task with attachment ID : 7202, autocreated on : April 03, 2020 05:41:35 
+[2020-04-03 17:58:59 : INFO] - 94 
+[2020-04-03 17:59:03 : INFO] - Re_Smush_It_Task with attachment ID : 7202, autocreated on : April 03, 2020 05:41:35 
+[2020-04-03 17:59:03 : INFO] - 94 
+[2020-04-03 17:59:05 : INFO] - Successfully optimized the image - C:\wamp64\www\braunybraun/wp-content/uploads/2020/04/Ingles-03.jpg.El archivo ha sido comprimido de 372.65 KB a 178.57 KB ahorrando un 52.08 por ciento utilizando WP-Optimize 
+[2020-04-03 17:59:05 : INFO] - Completed processing task with ID : 377, and type 'smush' 
+[2020-04-03 17:59:05 : INFO] - Set semaphore last lock (smush) time to 2020-04-03 17:59:05 
+[2020-04-03 17:59:05 : INFO] - Decremented the semaphore (smush) by 1 
+[2020-04-03 17:59:05 : INFO] - Semaphore (smush) unlocked 
+[2020-04-03 17:59:05 : INFO] - Successfully processed the queue (smush). 2 tasks were processed out of 2. 
+[2020-04-03 17:59:05 : INFO] - Semaphore (smush, wp_options) was successfully cleaned up 
+[2020-04-03 17:59:05 : INFO] - Cleaning up tasks of type (smush). A total of 3 tasks will be deleted. 
